@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+%\usepackage[latin1]{inputenc}  
+
+     
+\sloppy
+
+\title{Relatório de Projetos de Engenharia 1\\ FeedPet Comedouro Automático}
+
+\author{Emily D. Guimarães\inst{1}, Flávio S. Martins Filho\inst{1}, Lauro V. Garcês Lima\inst{1},\\
+Marcos Lobato Chagas\inst{1}, Sophia A. de Sousa da Silva\inst{1}}
+
+
+\address{Instituto de Tecnologia -- Universidade Federal do Pará \\
+  Caixa Postal 479 – 66075-110 – Belém – Pará – Brasil \\
+  \email{\{emily.guimaraes, flavio.filho, lauro.lima\}@itec.ufpa.br} \\
+  \email{\{marcos.chagas, sophia.silva\}@itec.ufpa.br}
+}
+
+
+
+\begin{document} 
+
+\maketitle
+
+\begin{abstract}
+
+  This article describes the implications of creating an automatic feeder for domestic animals, such as dogs and cats, presenting the project's context, justification, and objective. *insert chatgpt text petty please*
+  
+\end{abstract}
+     
+\begin{resumo}
+
+  Este artigo descreve as implicações da criação de um comedouro automático para animais de estimação, como cães e gatos, com apresentação do contexto, justificativa e objetivo do projeto. *insira texto chatgpt porfa*
+
+\end{resumo}
+
+\section{Introdução}
+
+O projeto propõe formular um alimentador automático integrado com um aplicativo para smartphones Android que atenda às necessidades dos donos de animais domésticos.
+
+\subsection{Contexto}
+Ultimamente, é possível observar que diversos tutores estão procurando certas facilidades no seu dia a dia e também produtos que garantem qualidade de vida para os animais domésticos. Em contrapartida, de acordo com o Folha de Pernanbuco, cerca de 25\% a 40\% dos animais no Brasil são obesos, isso significa que o cuidado alimentar não está sendo devidamente controlado.
+
+\subsection{Justificativa}
+Para garantir que o nosso projeto seja eficiente, o diferencial é a integração do aplicativo no dispositivo. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a ração e a água são controladas todo momento. Além disso, por contra desse monitoramento, ele é ideal para rotinas imprevisíveis, uma vez que o dispositivo será controlado por uma dosagem correta. E por fim, a união desses fatores garantem disciplina e qualidade de vida para cães e gatos.
+
+\subsection{Objetivo}
+
+O objetivo do projeto é criar um comedouro e bebedouro automático com o auxílio de um aplicativo, a fim de facilitar o cuidado do tutor com o animal e também garantir qualidade de vida para cães e gatos. O dispositivo é focado em animais de pequeno a médio porte, contendo um pote para ração e um para a água. Já o aplicativo é responsável por selecionar os intervalos e horários que o alimento e a água serão despejados no pote do dispositivo.
+
+\section{Análise}
+
+Dentro desses parâmetros será projetado um comedouro automático capaz de enviar informações sobre seu estado atual e receber instruções interpretadas pelo microcontrolador ESP32 (da Espressif Systems).
+
+\subsection{Soluções existentes}
+
+
+\subsection{Proposta}
+
+
+\section{Dispositivo}
+
+
+\section{Aplicativo}
+
+
+\section{Fluxogramas}
+
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.5\linewidth]{}
+%    \caption{Fluxograma do dispositivo}
+%    \label{fig:placeholder}
+%\end{figure}
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.5\linewidth]{}
+%    \caption{Fluxograma do aplicativo}
+%    \label{fig:placeholder2}
+%\end{figure}
+
+\section{Custos do projeto}
+
+\begin{table}[ht]
+    \centering
+    \caption{Resultados dos testes de consumo de energia do ESP32}
+    \label{tab:consumo_esp32}
+    \vskip 0.1in % Garante o espaçamento correto exigido pela SBC abaixo da legenda
+    \begin{tabular}{|l|c|r|}
+    \hline
+    \textbf{Componente}        & \textbf{Quantidade}    & \textbf{Preço}      \\ \hline
+    Microcontrolador ESP32    & 1                            & R\$40,90            \\ \hline
+    Módulo L293N                    & 1                            & R\$19,50            \\ \hline
+    Modo Deep-sleep               & 0,01 a 0,15            & Hibernação          \\ \hline
+    \end{tabular}
+\end{table}
+
+\section{Referências}
+
+A construção do dispositivo e do aplicativo foram criados, respectivamente, com o auxílio de ferramentas onlines, como \cite{mermaid:26}, \cite{tinkercad:23}, \cite{gettyimages:19}, \cite{blueoprint:26} e \cite{pandasuite:26}. Já as soluções existentes disponíveis nos sites \cite{onizoomi:26}, \cite{surecare:26}, \cite{freepik:26} serviram de base para a consolidação da proposta do projeto. Ademais, os  seguintes dados \cite{folha:23} contribuiram para fundamentar a visão do projeto. 
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
+\end{document}
