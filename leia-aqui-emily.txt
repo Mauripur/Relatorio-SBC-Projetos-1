@@ -1,5 +1,9 @@
-Pra achar o main, é só abrir essa pasta logo acima e vai ta la todos os arquivos.
+Pra achar o main, é só abrir essa pasta logo acima (na esquerda) e vai ta la todos os arquivos.
 
-Caso queiras editar esse repositório, terás que instalar o git e criar uma conta aqui no github. Vou colocar abaixo um tutorial básico de git/github, caso tenhas interesse. Mesmo assim, creio que no overleaf seja mais prático pelo fato de ser possível editar ao mesmo tempo. Eu só quis usar o github mesmo pra ter um registro das coisas que eu editei pra saber quando eu fiz besteira aí posso voltar sem atrapalhar vc :)
+Caso queiras editar esse repositório, terás que instalar o git e criar uma conta aqui no github. Vou colocar abaixo um tutorial básico de git/github, caso tenhas interesse.
+Mesmo assim, creio que no overleaf seja mais prático pelo fato de ser possível editar ao mesmo tempo.
+Eu só quis usar o github mesmo pra ter um registro das coisas que eu editei pra saber quando eu fiz besteira aí posso voltar sem atrapalhar vc :)
+
+Qualquer dúvida, só me perguntar
 
 https://www.youtube.com/watch?v=VmkEZ9qEPDU&t=21s
