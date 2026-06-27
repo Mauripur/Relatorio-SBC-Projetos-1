@@ -1,6 +1,9 @@
 Pra achar o main.tex, é só abrir essa pasta logo acima (na esquerda) e vai ta la todos os arquivos.
 
-Caso queiras editar esse repositório, terás que instalar o git e criar uma conta aqui no github. Vou colocar abaixo um tutorial básico de git/github, caso tenhas interesse.
+Caso queiras editar esse repositório, terás que instalar o git e/ou criar uma conta aqui no github.
+Acho que dá pra editar direto pelo github se vc pedir autorização para editar.
+Vou colocar abaixo um tutorial básico de git/github, caso tenhas interesse.
+
 Mesmo assim, creio que no overleaf seja mais prático pelo fato de ser possível editar ao mesmo tempo.
 Eu só quis usar o github mesmo pra ter um registro das coisas que eu editei pra saber quando eu fiz besteira aí posso voltar sem atrapalhar vc :)
 
