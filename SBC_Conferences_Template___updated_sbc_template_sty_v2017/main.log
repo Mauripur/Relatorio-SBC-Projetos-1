@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  27 JUN 2026 17:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  27 JUN 2026 18:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -180,7 +180,10 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 .def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count293
-) (main.aux)
+) (main.aux
+Package babel Info: 'brazil' activates 'portuges' shorthands.
+(babel)             Reported on input line 6.
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -288,8 +291,6 @@ G,.JBIG2,.JB2,.eps]
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package babel Info: 'brazil' activates 'portuges' shorthands.
-(babel)             Reported on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -367,18 +368,15 @@ L3 programming layer <2026-04-28>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 5853 strings out of 467682
- 101655 string characters out of 5416153
- 527765 words of memory out of 5000000
- 34841 multiletter control sequences out of 15000+600000
+ 5854 strings out of 467682
+ 101663 string characters out of 5416153
+ 529739 words of memory out of 5000000
+ 34842 multiletter control sequences out of 15000+600000
  645739 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,12n,79p,539b,424s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,79p,658b,424s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
 8.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/
@@ -388,7 +386,7 @@ b8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8
 a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.p
 fb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb
 >
-Output written on main.pdf (2 pages, 104487 bytes).
+Output written on main.pdf (2 pages, 105734 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
