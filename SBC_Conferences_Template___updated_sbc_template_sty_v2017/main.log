@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  27 JUN 2026 16:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  27 JUN 2026 17:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -180,10 +180,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 .def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count293
-) (main.aux
-Package babel Info: 'brazil' activates 'portuges' shorthands.
-(babel)             Reported on input line 5.
-)
+) (main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -291,6 +288,8 @@ G,.JBIG2,.JB2,.eps]
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
+Package babel Info: 'brazil' activates 'portuges' shorthands.
+(babel)             Reported on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -331,32 +330,32 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
-LaTeX Warning: Citation `mermaid:26' on page 2 undefined on input line 109.
+LaTeX Warning: Citation `mermaid:26' on page 2 undefined on input line 119.
 
 
-LaTeX Warning: Citation `tinkercad:23' on page 2 undefined on input line 109.
+LaTeX Warning: Citation `tinkercad:23' on page 2 undefined on input line 119.
 
 
-LaTeX Warning: Citation `gettyimages:19' on page 2 undefined on input line 109.
+LaTeX Warning: Citation `gettyimages:19' on page 2 undefined on input line 119.
 
 
 
-LaTeX Warning: Citation `blueoprint:26' on page 2 undefined on input line 109.
+LaTeX Warning: Citation `blueoprint:26' on page 2 undefined on input line 119.
 
 
-LaTeX Warning: Citation `pandasuite:26' on page 2 undefined on input line 109.
+LaTeX Warning: Citation `pandasuite:26' on page 2 undefined on input line 119.
 
 
-LaTeX Warning: Citation `onizoomi:26' on page 2 undefined on input line 109.
+LaTeX Warning: Citation `onizoomi:26' on page 2 undefined on input line 119.
 
 
-LaTeX Warning: Citation `surecare:26' on page 2 undefined on input line 109.
+LaTeX Warning: Citation `surecare:26' on page 2 undefined on input line 119.
 
 
-LaTeX Warning: Citation `freepik:26' on page 2 undefined on input line 109.
+LaTeX Warning: Citation `freepik:26' on page 2 undefined on input line 119.
 
 
-LaTeX Warning: Citation `folha:23' on page 2 undefined on input line 109.
+LaTeX Warning: Citation `folha:23' on page 2 undefined on input line 119.
 
 No file main.bbl.
 [2] (main.aux)
@@ -368,13 +367,16 @@ L3 programming layer <2026-04-28>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 5851 strings out of 467682
- 101635 string characters out of 5416153
- 526739 words of memory out of 5000000
- 34840 multiletter control sequences out of 15000+600000
- 645428 words of font info for 71 fonts, out of 8000000 for 9000
+ 5853 strings out of 467682
+ 101655 string characters out of 5416153
+ 527765 words of memory out of 5000000
+ 34841 multiletter control sequences out of 15000+600000
+ 645739 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,12n,79p,539b,424s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
@@ -386,7 +388,7 @@ b8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8
 a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.p
 fb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb
 >
-Output written on main.pdf (2 pages, 103390 bytes).
+Output written on main.pdf (2 pages, 104487 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
