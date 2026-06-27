@@ -1,4 +1,4 @@
-Pra achar o main, é só abrir essa pasta logo acima (na esquerda) e vai ta la todos os arquivos.
+Pra achar o main.tex, é só abrir essa pasta logo acima (na esquerda) e vai ta la todos os arquivos.
 
 Caso queiras editar esse repositório, terás que instalar o git e criar uma conta aqui no github. Vou colocar abaixo um tutorial básico de git/github, caso tenhas interesse.
 Mesmo assim, creio que no overleaf seja mais prático pelo fato de ser possível editar ao mesmo tempo.
