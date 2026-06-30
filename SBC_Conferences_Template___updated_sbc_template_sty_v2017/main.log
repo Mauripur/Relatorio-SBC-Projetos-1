@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  30 JUN 2026 17:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  30 JUN 2026 18:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -328,44 +328,44 @@ LaTeX Warning: Citation `onizoomi:26' on page 2 undefined on input line 66.
 
 LaTeX Warning: Citation `surecare:26' on page 2 undefined on input line 66.
 
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
-01.
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 9
+4.
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-07.
+00.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
-LaTeX Warning: Citation `mermaid:26' on page 2 undefined on input line 127.
+LaTeX Warning: Citation `mermaid:26' on page 2 undefined on input line 120.
 
 
-LaTeX Warning: Citation `tinkercad:23' on page 2 undefined on input line 127.
+LaTeX Warning: Citation `tinkercad:23' on page 2 undefined on input line 120.
 
 
-LaTeX Warning: Citation `gettyimages:19' on page 2 undefined on input line 127.
+LaTeX Warning: Citation `gettyimages:19' on page 2 undefined on input line 120.
 
 
 
-LaTeX Warning: Citation `blueoprint:26' on page 2 undefined on input line 127.
+LaTeX Warning: Citation `blueoprint:26' on page 2 undefined on input line 120.
 
 
-LaTeX Warning: Citation `pandasuite:26' on page 2 undefined on input line 127.
+LaTeX Warning: Citation `pandasuite:26' on page 2 undefined on input line 120.
 
 
-LaTeX Warning: Citation `onizoomi:26' on page 2 undefined on input line 127.
+LaTeX Warning: Citation `onizoomi:26' on page 2 undefined on input line 120.
 
 
-LaTeX Warning: Citation `surecare:26' on page 2 undefined on input line 127.
+LaTeX Warning: Citation `surecare:26' on page 2 undefined on input line 120.
 
 
-LaTeX Warning: Citation `freepik:26' on page 2 undefined on input line 127.
+LaTeX Warning: Citation `freepik:26' on page 2 undefined on input line 120.
 
 
-LaTeX Warning: Citation `folha:23' on page 2 undefined on input line 127.
+LaTeX Warning: Citation `folha:23' on page 2 undefined on input line 120.
 
 No file main.bbl.
 [2] [3] (main.aux)
@@ -381,7 +381,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  5857 strings out of 467682
  101699 string characters out of 5416153
- 531749 words of memory out of 5000000
+ 532749 words of memory out of 5000000
  34845 multiletter control sequences out of 15000+600000
  645739 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -395,7 +395,7 @@ b8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8
 a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.p
 fb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb
 >
-Output written on main.pdf (3 pages, 107900 bytes).
+Output written on main.pdf (3 pages, 106057 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

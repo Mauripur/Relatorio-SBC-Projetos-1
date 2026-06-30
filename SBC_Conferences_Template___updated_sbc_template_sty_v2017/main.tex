@@ -33,31 +33,31 @@ Marcos Lobato Chagas\inst{1}, Sophia A. de Sousa da Silva\inst{1}}
 
 \begin{abstract}
 
-  This report presents the development of an automatic feeder for dogs and cats featuring an app-based monitoring system capable of tracking the animals' feeding routines. The final project employs an implementation methodology distinct from those currently on the market by integrating the feeder-waterer unit with an Android smartphone app; the app displays graphs showing the history of portions served and the animal's weight, and—based on this data—offers suggestions for future food portions, thereby maintaining a healthy diet for the dog or cat.
+  This report presents the development of a smart feeder for dogs and cats featuring an app-based monitoring system capable of tracking the animals' feeding routines. The final project employs an implementation methodology distinct from those currently on the market by integrating the feeder-waterer unit with an Android smartphone app; the app displays graphs showing the history of portions served and the animal's weight, and—based on this data—offers suggestions for future food portions, thereby maintaining a healthy diet for the dog or cat.
   
 \end{abstract}
      
 \begin{resumo}
 
-  Este relatório apresenta a criação de um comedouro automático para cães e gatos com sistema de monitoramento através de aplicativo capaz de registrar a rotina alimentar desses animais. O projeto final adota uma metodologia de implementação diferente das já aplicadas no mercado ao integrar o dispositivo comedouro-bebedouro com um aplicativo para smartphones Android que possui gráficos que exibem o histórico de porções servidas e de peso do animal e, a partir desses dados, apresenta sugestões para as próximas doses de ração, mantendo, assim, a dieta saudável do cão/gato.
+  Este relatório apresenta a criação de um comedouro inteligente para cães e gatos com sistema de monitoramento através de aplicativo capaz de registrar a rotina alimentar desses animais. O projeto final adota uma metodologia de implementação diferente das já aplicadas no mercado ao integrar o dispositivo comedouro-bebedouro com um aplicativo para smartphones Android que possui gráficos que exibem o histórico de porções servidas e de peso do animal e, a partir desses dados, apresenta sugestões para as próximas doses de ração, mantendo, assim, a dieta saudável do cão/gato.
 
 \end{resumo}
 
 \section{Introdução}
 
-O projeto propõe formular um alimentador automático integrado com um aplicativo para smartphones Android que atenda às necessidades dos donos de animais domésticos.
+O projeto propõe formular um alimentador automático integrado com um aplicativo para smartphones Android que atenda às necessidades dos donos de cães e gatos.
 
 \subsection{Contexto}
 Ultimamente, é possível observar que diversos tutores estão procurando certas facilidades no seu dia a dia e também produtos que garantem qualidade de vida para os animais domésticos. Em contrapartida, de acordo com o \cite{folha:23}, cerca de 25\% a 40\% dos animais no Brasil são obesos, isso significa que o cuidado alimentar não está sendo devidamente controlado.
 
 \subsection{Justificativa}
-Para garantir que o nosso projeto seja eficiente, o diferencial é a integração do aplicativo no dispositivo. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é passada para o alimentador eletrônico. Além disso, por contra desse monitoramento, ele é ideal para rotinas imprevisíveis, uma vez que o dispositivo será controlado por uma dosagem correta. Assim, os donos poderão monitorar a rotina alimentar de seus animais. Por fim, a união desses fatores garante a disciplina e a qualidade de vida para esses cães e gatos.
+Para garantir que o projeto seja eficiente, o diferencial é a integração do aplicativo no dispositivo. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é passada para o alimentador eletrônico. Além disso, por contra desse monitoramento, ele é ideal para rotinas imprevisíveis, uma vez que o dispositivo será controlado por uma dosagem correta. Assim, os donos poderão monitorar a rotina alimentar de seus animais. Por fim, a união desses fatores garante a disciplina e a qualidade de vida para esses cães e gatos.
 
 \subsection{Objetivo}
 
 O objetivo do projeto é criar um comedouro e bebedouro automático com o auxílio de um aplicativo, a fim de facilitar o cuidado do tutor com o animal e também garantir qualidade de vida para cães e gatos. O dispositivo é focado em animais de pequeno a médio porte, contendo um pote para ração e um para a água. Já o aplicativo é responsável por selecionar os intervalos e horários que o alimento e a água serão despejados no pote do dispositivo.
 
-\section{Análise}
+\section{Trabalhos Relacionados}
 
 Dentro desses parâmetros foi projetado um comedouro automático capaz de enviar informações sobre seu estado atual e receber instruções interpretadas pelo microcontrolador ESP32 (da Espressif Systems).
 
@@ -65,64 +65,57 @@ Dentro desses parâmetros foi projetado um comedouro automático capaz de enviar
 
 As soluções já adotadas no mercado, como o \cite{onizoomi:26} e o \cite{surecare:26}, possuem limitações simples de serem resolvidas, a saber: o alto custo monetário, a venda separada do comedouro e bebedouro (ou a ausência completa do bebedouro) e a baixa capacidade de personalização da ração e água disponibilizada. Isso se deve ao fato desses produtos priorizarem a praticidade acima da individualidade de cada animal doméstico, o que ocasiona na padronização de um sistema universal que se limita à porções de ração pré-definidas com o aplicativo - o qual não está incluso em alguns dos produtos disponíveis no mercado atualmente.
 
+\section{Arquitetura do Sistema / Metodologia}
+
 \subsection{Proposta}
 
 Com isso, a ideia inicial do projeto foi solucionar essas limitações dos produtos à venda no mercado atual. Para que o objetivo seja atingido, foi necessário adotar duas medidas imprescindíveis: a criação de um dispositivo único que gerenciasse as porções de ração e a quantidade de água despejada e a formulação  de um app com baixo custo de manutenção. 
 
-\section{Dispositivo}
+\subsection{Dispositivo}
 
 
 
-\section{Aplicativo}
+\subsection{Aplicativo}
 
 
 
-\section{Fluxogramas}
+\subsection{Fluxogramas}
 
 
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=0.5\linewidth]{}
-%    \caption{Fluxograma do dispositivo}
-%    \label{fig:placeholder}
-%\end{figure}
 
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=0.5\linewidth]{}
-%    \caption{Fluxograma do aplicativo}
-%    \label{fig:placeholder2}
-%\end{figure}
+\section{Avaliação e Resultados}
+
+
 
 \section{Custos do projeto}
 
 \begin{table}[ht]
     \centering
-    \caption{Resultados dos testes de consumo de energia do ESP32}
+    \caption{Custos do projeto}
     \label{tab:consumo_esp32}
     \vskip 0.1in % Garante o espaçamento correto exigido pela SBC abaixo da legenda
     \begin{tabular}{|l|c|r|}
     \hline
-    \textbf{Componente}        					& \textbf{Quantidade}   	& \textbf{Preço}      	\\ \hline
-    Microcontrolador ESP32    				& 1                            		& R\$40,90            		\\ \hline
-    Módulo L293N                    				& 1                            		& R\$19,50              	\\ \hline
-    Sensor de nível e detecção de água               	& 1            				& R\$08,60          	 	\\ \hline
-    Célula de carga + 1 Módulo Hx711			& 1						& R\$11,30			\\ \hline
+    \textbf{Componente}        		           		& \textbf{Quantidade}    	& \textbf{Preço}    		\\ \hline
+    Microcontrolador ESP32    			       	& 1                      			& R\$40,90          		\\ \hline
+    Módulo L293N                    	       			& 1                      			& R\$19,50          		\\ \hline
+    Sensor de nível e detecção de água         		& 1            		    		& R\$08,60          		\\ \hline
+    Célula de carga + 1 Módulo Hx711	       		& 1						& R\$11,30			\\ \hline
     Motor 9V								& 1						& R\$18,90			\\ \hline
     Bomba 9V								& 1						& R\$24,00			\\ \hline
-    Buck Boost								& 1						& R\$12,00			\\ \hline
-    Bateria 9V								& 1						& R\$				\\ \hline
+    Buck Boost							       	& 1						& R\$12,00			\\ \hline
+    Bateria 9V							       	& 1						& R\$				\\ \hline
     LED									& 						& R\$02,00			\\ \hline
-    Botão									& 2						& R\$03,00			\\ \hline
-    Buzzer									& 1						& R\$05,00			\\ \hline
-    Protoboard								& 1						& R\$10,00			\\ \hline
-    Jumpers								& 						& R\$10,00			\\ \hline
-    Resistores								& 						& R\$05,00			\\ \hline
-    \multicolumn{2}{|l|}{\textbf{Total}}			& \textbf{R\$170,00}							\\ \hline
+    Botão								       	& 2						& R\$03,00			\\ \hline
+    Buzzer							           	& 1						& R\$05,00			\\ \hline
+    Protoboard							       	& 1						& R\$10,00			\\ \hline
+    Jumpers								& 						& R\$10,00		    	\\ \hline
+    Resistores							       	& 						& R\$05,00			\\ \hline
+    \multicolumn{2}{|l|}{\textbf{Total}}       		& \textbf{R\$170,00}				            		\\ \hline
     \end{tabular}
 \end{table}
 
-\section{Referências}
+\section{Conclusão}
 
 A construção do dispositivo e do aplicativo foram criados, respectivamente, com o auxílio de ferramentas onlines, como \cite{mermaid:26}, \cite{tinkercad:23}, \cite{gettyimages:19}, \cite{blueoprint:26} e \cite{pandasuite:26}. Já as soluções existentes disponíveis nos sites \cite{onizoomi:26}, \cite{surecare:26}, \cite{freepik:26} serviram de base para a consolidação da proposta do projeto. Ademais, os  seguintes dados \cite{folha:23} contribuiram para fundamentar a visão do projeto. 
 
