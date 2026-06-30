@@ -33,13 +33,13 @@ Marcos Lobato Chagas\inst{1}, Sophia A. de Sousa da Silva\inst{1}}
 
 \begin{abstract}
 
-  This report presents the development of a smart feeder for dogs and cats featuring an app-based monitoring system capable of tracking the animals' feeding routines. The final project employs an implementation methodology distinct from those currently on the market by integrating the feeder-waterer unit with an Android smartphone app; the app displays graphs showing the history of portions served and the animal's weight, and—based on this data—offers suggestions for future food portions, thereby maintaining a healthy diet for the dog or cat.
+  This report details the development of an automated and intelligent pet feeding and watering system integrated with an Android smartphone application. The system aims to solve common modern challenges in pet care, ensuring precise nutritional portioning and fresh water availability. Utilizing an ESP32 microcontroller, load cells, ultrasonic sensors, and solenoid valves, the hardware interacts seamlessly with a mobile application via Wi-Fi. The article details the architecture, methodology, implementation, and verification processes of the prototype.
   
 \end{abstract}
      
 \begin{resumo}
 
-  Este relatório apresenta a criação de um comedouro inteligente para cães e gatos com sistema de monitoramento através de aplicativo capaz de registrar a rotina alimentar desses animais. O projeto final adota uma metodologia de implementação diferente das já aplicadas no mercado ao integrar o dispositivo comedouro-bebedouro com um aplicativo para smartphones Android que possui gráficos que exibem o histórico de porções servidas e de peso do animal e, a partir desses dados, apresenta sugestões para as próximas doses de ração, mantendo, assim, a dieta saudável do cão/gato.
+  Este relatório detalha o desenvolvimento de um sistema automatizado e inteligente de alimentação e hidratação para animais de estimação integrado a um aplicativo para smartphone Android. O sistema visa resolver desafios modernos no cuidado de pets, garantindo porcionamento nutricional preciso e disponibilidade de água fresca. Utilizando um microcontrolador ESP32, células de carga, sensores ultrassônicos e válvulas solenoides, o hardware interage diretamente com um aplicativo móvel via Wi-Fi. O artigo detalha a arquitetura, metodologia, implementação e os processos de verificação do protótipo.
 
 \end{resumo}
 
@@ -55,11 +55,11 @@ Para garantir que o projeto seja eficiente, o diferencial é a integração do a
 
 \subsection{Objetivo}
 
-O objetivo do projeto é criar um comedouro e bebedouro automático com o auxílio de um aplicativo, a fim de facilitar o cuidado do tutor com o animal e também garantir qualidade de vida para cães e gatos. O dispositivo é focado em animais de pequeno a médio porte, contendo um pote para ração e um para a água. Já o aplicativo é responsável por selecionar os intervalos e horários que o alimento e a água serão despejados no pote do dispositivo.
+O objetivo do projeto é criar um comedouro e bebedouro inteligente com o auxílio de um aplicativo, a fim de facilitar o cuidado do tutor com o animal e também garantir qualidade de vida para cães e gatos. O dispositivo é focado em animais de pequeno a médio porte, contendo um pote para ração e um para a água. Já o aplicativo é responsável por selecionar os intervalos e horários que o alimento e a água serão despejados no pote do dispositivo.
 
 \section{Trabalhos Relacionados}
 
-Dentro desses parâmetros foi projetado um comedouro automático capaz de enviar informações sobre seu estado atual e receber instruções interpretadas pelo microcontrolador ESP32 (da Espressif Systems).
+Para a formulação de um sistema embarcado que atenda a todos os requisitos até então expostos, é necessário antes analisar as opções já comercializadas.
 
 \subsection{Soluções existentes}
 
