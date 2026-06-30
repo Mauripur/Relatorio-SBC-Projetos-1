@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  30 JUN 2026 15:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  30 JUN 2026 16:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -375,10 +375,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5855 strings out of 467682
- 101671 string characters out of 5416153
- 532739 words of memory out of 5000000
- 34843 multiletter control sequences out of 15000+600000
+ 5856 strings out of 467682
+ 101688 string characters out of 5416153
+ 532782 words of memory out of 5000000
+ 34844 multiletter control sequences out of 15000+600000
  645739 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,12n,79p,700b,424s stack positions out of 10000i,1000n,20000p,200000b,200000s
