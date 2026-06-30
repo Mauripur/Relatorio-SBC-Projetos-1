@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  27 JUN 2026 19:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  30 JUN 2026 15:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -318,45 +318,50 @@ LaTeX Warning: Citation `folha:23' on page 1 undefined on input line 47.
 
 {C:/Users/LV/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/LV/AppD
 ata/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 9
-3.
 
+LaTeX Warning: Citation `onizoomi:26' on page 2 undefined on input line 62.
+
+
+LaTeX Warning: Citation `surecare:26' on page 2 undefined on input line 62.
+
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 9
+5.
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
-9.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+01.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
-LaTeX Warning: Citation `mermaid:26' on page 2 undefined on input line 121.
+LaTeX Warning: Citation `mermaid:26' on page 2 undefined on input line 123.
 
 
-LaTeX Warning: Citation `tinkercad:23' on page 2 undefined on input line 121.
+LaTeX Warning: Citation `tinkercad:23' on page 2 undefined on input line 123.
 
 
-LaTeX Warning: Citation `gettyimages:19' on page 2 undefined on input line 121.
+LaTeX Warning: Citation `gettyimages:19' on page 2 undefined on input line 123.
 
 
 
-LaTeX Warning: Citation `blueoprint:26' on page 2 undefined on input line 121.
+LaTeX Warning: Citation `blueoprint:26' on page 2 undefined on input line 123.
 
 
-LaTeX Warning: Citation `pandasuite:26' on page 2 undefined on input line 121.
+LaTeX Warning: Citation `pandasuite:26' on page 2 undefined on input line 123.
 
 
-LaTeX Warning: Citation `onizoomi:26' on page 2 undefined on input line 121.
+LaTeX Warning: Citation `onizoomi:26' on page 2 undefined on input line 123.
 
 
-LaTeX Warning: Citation `surecare:26' on page 2 undefined on input line 121.
+LaTeX Warning: Citation `surecare:26' on page 2 undefined on input line 123.
 
 
-LaTeX Warning: Citation `freepik:26' on page 2 undefined on input line 121.
+LaTeX Warning: Citation `freepik:26' on page 2 undefined on input line 123.
 
 
-LaTeX Warning: Citation `folha:23' on page 2 undefined on input line 121.
+LaTeX Warning: Citation `folha:23' on page 2 undefined on input line 123.
 
 No file main.bbl.
 [2] [3] (main.aux)
@@ -370,13 +375,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5854 strings out of 467682
- 101663 string characters out of 5416153
- 526739 words of memory out of 5000000
- 34842 multiletter control sequences out of 15000+600000
+ 5855 strings out of 467682
+ 101671 string characters out of 5416153
+ 532739 words of memory out of 5000000
+ 34843 multiletter control sequences out of 15000+600000
  645739 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,12n,79p,658b,424s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,79p,700b,424s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
 8.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/
@@ -386,7 +391,7 @@ b8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8
 a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.p
 fb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb
 >
-Output written on main.pdf (3 pages, 106772 bytes).
+Output written on main.pdf (3 pages, 107903 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
