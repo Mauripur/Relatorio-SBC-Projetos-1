@@ -70,7 +70,6 @@ void setup() {
   Serial.begin(9600);
   if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("Alocação de SSD1306 falhou"));
-    for (;;);
   }
   playStartupAnimation();
   WiFi.begin(ssid, password);
@@ -139,17 +138,20 @@ Esta arquitetura viabiliza uma Renderização de Alto Desempenho através do mot
 
 \begin{small}
 \begin{verbatim}
-// Laço de Verificação Lógica de Agendamentos Recebidos pelo App
 boolean agendamentoCheck() {
   if (!getLocalTime(&timeinfo)) {
-    Serial.println("Erro: Obtencao da data atual falhou"); return false;
+    Serial.println("Erro: Obtencao da data atual falhou");
+    return false;
   } else {
-    if (tupdate.minuto != timeinfo.tm_min || tupdate.hora != timeinfo.tm_hour) {
+    if (tupdate.minuto != timeinfo.tm_min ||
+        tupdate.hora != timeinfo.tm_hour)
+    {
       tupdate.hora = timeinfo.tm_hour;
       tupdate.minuto = timeinfo.tm_min; tupdate.flag = false;
     }
     for (int i = 0; i < 10; i++) {
-      if (timeinfo.tm_hour == hAgen[i] && timeinfo.tm_min == mAgen[i])
+      if (timeinfo.tm_hour == hAgen[i] &&
+          timeinfo.tm_min == mAgen[i])
         return true;
     }
     return false;
