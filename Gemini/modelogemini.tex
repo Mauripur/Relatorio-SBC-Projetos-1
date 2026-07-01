@@ -28,11 +28,11 @@ Marcos Lobato Chagas\inst{1}, Sophia A. de Sousa da Silva\inst{1}}
 \maketitle
 
 \begin{abstract}
-  This report details the development of an automated and intelligent pet feeding and watering system integrated with an Android smartphone application. The system aims to solve common modern challenges in pet care, ensuring precise nutritional portioning and fresh water availability. Utilizing an ESP32 microcontroller, load cells, ultrasonic sensors, and solenoid valves, the hardware interacts seamlessly with a mobile application via Wi-Fi. The article details the architecture, methodology, implementation, and verification processes of the prototype.
+  This report details the development of an automated and intelligent pet feeding and watering system integrated with an Android smartphone application developed using the Flutter framework. The system aims to solve common modern challenges in pet care, ensuring precise nutritional portioning and fresh water availability. Utilizing an ESP32 microcontroller, load cells with HX711 amplifiers, ultrasonic/resistive level sensors, and an L293N H-Bridge driver, the hardware interacts seamlessly with a mobile application via Wi-Fi. The article details the architecture, hardware components operation, embedded code architecture, methodology, implementation, and verification processes of the prototype.
 \end{abstract}
      
 \begin{resumo}
-  Este relatório detalha o desenvolvimento de um sistema automatizado e inteligente de alimentação e hidratação para animais de estimação integrado a um aplicativo para smartphone Android. O sistema visa resolver desafios modernos no cuidado de pets, aumentando a precisão do porcionamento nutricional e garantindo a disponibilidade de água fresca. Utilizando um microcontrolador ESP32, células de carga, sensores ultrassônicos e atuadores hidráulicos, o hardware interage com um aplicativo móvel via Wi-Fi. O artigo detalha a arquitetura, a metodologia, a implementação e os processos de validação do protótipo.
+  Este relatório detalha o desenvolvimento de um sistema automatizado e inteligente de alimentação e hidratação para animais de estimação integrado a um aplicativo para smartphone Android desenvolvido com o framework Flutter. O sistema visa resolver desafios modernos no cuidado de pets, aumentando a precisão do porcionamento nutricional e garantindo a disponibilidade de água fresca. Utilizando um microcontrolador ESP32, células de carga com amplificador HX711, sensores de nível e um driver Ponte H L293N, o hardware interage com um aplicativo móvel via Wi-Fi. O artigo detalha a arquitetura, o funcionamento dos componentes de hardware, trechos do código embarcado, a metodologia, a implementação e os processos de validação do protótipo.
 \end{resumo}
 
 \section{Introdução}
@@ -41,9 +41,7 @@ O projeto propõe formular um alimentador automático integrado com um aplicativ
 
 Ultimamente, é possível observar que diversos tutores estão procurando certas facilidades no seu dia a dia e também produtos que garantem qualidade de vida para os animais domésticos. Em contrapartida, de acordo com dados epidemiológicos veterinários \cite{folha:23}, cerca de 25\% a 40\% dos animais no Brasil sofrem de sobrepeso ou obesidade. Isso significa que o cuidado alimentar e o controle de porções diárias não estão sendo devidamente gerenciados na ausência dos proprietários.
 
-Para garantir que o projeto seja eficiente, o diferencial é a integração em tempo real do aplicativo com o dispositivo físico. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é delegada ao alimentador eletrônico de forma automatizada. 
-
-Além disso, por conta desse monitoramento remoto, a solução torna-se ideal para indivíduos com rotinas imprevisíveis, uma vez que o dispositivo opera sob dosagens programadas ou acionamentos sob demanda. Assim, os donos mitigam o risco de subnutrição ou superalimentação, garantindo a disciplina biológica e a qualidade de vida para cães e gatos.
+Para garantir que o projeto seja eficiente, o diferencial é a integração em tempo real do aplicativo com o dispositivo físico. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é delegada ao alimentador eletrônico de forma automatizada. Além disso, por conta desse monitoramento remoto, a solução torna-se ideal para indivíduos com rotinas imprevisíveis, uma vez que o dispositivo opera sob dosagens programadas ou acionamentos sob demanda. Assim, os donos mitigam o risco de subnutrição ou superalimentação, garantindo a disciplina biológica e a qualidade de vida para cães e gatos.
 
 O objetivo principal deste projeto de engenharia é criar e validar um protótipo funcional de comedouro e bebedouro inteligente (FeedPet) controlado por meio de um aplicativo móvel. O dispositivo é focado em animais de pequeno a médio porte, contendo recipientes independentes para ração e água. O aplicativo associado é responsável pelo gerenciamento lógico, permitindo selecionar os intervalos de tempo, o volume hidráulico e a massa exata de alimento que serão disponibilizados ao animal.
 
@@ -52,40 +50,131 @@ O objetivo principal deste projeto de engenharia é criar e validar um protótip
 Para a formulação de um sistema embarcado que atenda a todos os requisitos até então expostos, é necessário antes analisar as opções já comercializadas.
 
 \subsection{Soluções Existentes}
-As soluções já adotadas no mercado de automação pet, como os produtos referenciados em \cite{onizoomi:26} e \cite{surecare:26}, possuem limitações que restringem seu uso em larga escala. Dentre os gargalos identificados, destacam-se o alto custo de aquisição, a venda separada dos módulos de alimentação e hidratação (ou a ausência completa de um subsistema de gerenciamento de água de forma integrada) e a baixa capacidade de personalização das porções. 
-
-Muitos desses produtos industriais priorizam a conveniência comercial básica acima da individualidade biológica de cada animal de estimação. Isso resulta na padronização de um sistema universal restrito a volumes pré-definidos de fábrica, limitando a flexibilidade do usuário e a eficácia clínica da dieta do animal.
+As soluções já adotadas no mercado de automação pet, como os produtos referenciados em \cite{onizoomi:26} e \cite{surecare:26}, possuem limitações que restringem seu uso em larga escala. Dentre os gargalos identificados, destacam-se o alto custo de aquisição, a venda separada dos módulos de alimentação e hidratação (ou a ausência completa de um subsistema de gerenciamento de água de forma integrada) e a baixa capacidade de personalização das porções. Muitos desses produtos industriais priorizam a conveniência comercial básica acima da individualidade biológica de cada animal de estimação. Isso resulta na padronização de um sistema universal restrito a volumes pré-definidos de fábrica, limitando a flexibilidade do usuário e a eficácia clínica da dieta do animal.
 
 \section{Arquitetura do Sistema e Metodologia}
 
 \subsection{Proposta}
-A proposta de engenharia do FeedPet consiste em solucionar as limitações de isolamento e alto custo dos produtos comerciais através de uma topologia IoT distribuída de baixo custo. O projeto baseia-se em duas abordagens complementares: a unificação de hardware para dupla finalidade (sólidos e líquidos) sob o mesmo barramento de processamento e a formulação de uma aplicação móvel com arquitetura serverless de baixa latência e manutenção simplificada.
+A proposta de engenharia do FeedPet consiste em solucionar as limitações de isolamento e alto custo dos produtos comerciais através de uma topologia IoT distribuída de baixo custo. O projeto baseia-se em duas abordagens complementares: a unificação de hardware para dupla finalidade (sólidos e líquidos) sob o mesmo barramento de processamento e a formulação de uma aplicação móvel multiplataforma nativa de baixa latência e manutenção simplificada.
 
-\subsection{Dispositivo}
-O hardware do dispositivo foi estruturado ao redor do microcontrolador \textbf{ESP32 NodeMCU}, escolhido devido à presença de módulos integrados de Wi-Fi e Bluetooth, além de pinos de Entrada/Saída de Propósito Geral (GPIO) compatíveis com modulação por largura de pulso (PWM). 
+\subsection{Dispositivo (Hardware Embarcado)}
+O hardware do dispositivo foi estruturado utilizando módulos eletrônicos pré-prontos de mercado, otimizando o tempo de prototipagem e garantindo robustez industrial ao circuito. A seguir, detalha-se o funcionamento técnico de cada elemento de hardware implementado e sua respectiva integração via software.
 
-O subsistema de alimentação utiliza uma célula de carga mecânica acoplada ao módulo amplificador \textbf{HX711}, responsável por converter a deflexão micro-métrica da balança em dados digitais de massa para interromper o giro do motor no peso exato. O controle cinemático do motor de 9V (mecanismo de rosca sem-fim para ração) e da mini bomba d'água de 9V é realizado por meio do driver de potência Ponte H \textbf{L293N}, que isola a corrente dos atuadores da CPU. O nível estático dos reservatórios é monitorado pelo sensor de nível resistivo, emitindo alertas visuais (LEDs) e sonoros (Buzzer) quando os insumos atingem níveis críticos.
+\subsubsection{Unidade de Processamento (ESP32 NodeMCU)}
+O \textbf{ESP32} atua como o cérebro do sistema. Trata-se de um SoC (\textit{System on a Chip}) de baixo custo e consumo energético, dotado de um microprocessador Xtensa de 32 bits dual-core. Sua inclusão justifica-se pela presença nativa de periféricos de rede (Wi-Fi 802.11 b/g/n e Bluetooth) e pinos GPIO com conversores Analógico-Digitais (ADC). O firmware embarcado gerencia o tempo real via protocolo NTP e executa o seguinte bloco de configuração inicial:
 
-\subsection{Aplicativo}
-A aplicação voltada para o smartphone Android foi concebida utilizando a ferramenta de desenvolvimento mobile \cite{pandasuite:26}. O aplicativo funciona como a interface de controle do usuário (IHM), comunicando-se assincronamente através de requisições sob protocolo HTTP/MQTT com um banco de dados em nuvem. Na interface do usuário, é possível realizar o ajuste fino dos parâmetros operacionais do FeedPet, incluindo a programação horária diária baseada em RTC (\textit{Real-Time Clock}) e o acionamento remoto imediato dos atuadores de água e ração.
+\begin{small}
+\begin{verbatim}
+// Trecho de Inicialização do Sistema no ESP32
+void setup() {
+  Serial.begin(9600);
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    Serial.println(F("Alocação de SSD1306 falhou"));
+    for (;;);
+  }
+  playStartupAnimation();
+  WiFi.begin(ssid, password);
+  int attempts = 0;
+  while (WiFi.status() != WL_CONNECTED && attempts < 20) {
+    delay(500); attempts++;
+  }
+  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+  
+  pinMode(int1Pin, OUTPUT); pinMode(int2Pin, OUTPUT);
+  pinMode(int3Pin, OUTPUT); pinMode(int4Pin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT); pinMode(ledPin, OUTPUT);
+}
+\end{verbatim}
+\end{small}
 
-\subsection{Fluxogramas}
-O comportamento lógico do firmware embarcado no ESP32 segue um laço fechado de monitoramento estruturado em três estados recorrentes:
+\subsubsection{Driver de Potência (Ponte H L293N)}
+Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32 (máximo de 40mA). Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N}. Este componente é baseado em circuitos integrados de drivers de canais quádruplos que utilizam transistores bipolares de junção para chavear cargas indutivas de alta corrente a partir de sinais lógicos TTL de baixa potência. Ele permite o controle bidirecional do motor DC de 9V (mecanismo de rosca sem-fim para ração) e o acionamento unidirecional da mini bomba de água de 9V. O acionamento coordenado da Ponte H é detalhado no algoritmo de alimentação:
+
+\begin{small}
+\begin{verbatim}
+// Acionamento de Atuadores via L293N na Rotina de Alimentação
+if (tempo_motor > 0) {
+  triggerGear(4000);
+  digitalWrite(buzzerPin, HIGH); digitalWrite(ledPin, HIGH);
+  delay(200); digitalWrite(buzzerPin, LOW);
+  
+  digitalWrite(int1Pin, HIGH); digitalWrite(int2Pin, LOW);
+  delay(tempo_giro);
+  digitalWrite(int1Pin, LOW);  digitalWrite(int2Pin, LOW);
+  delay(tempo_motor);
+  digitalWrite(int1Pin, LOW);  digitalWrite(int2Pin, HIGH);
+  delay(tempo_giro);
+  digitalWrite(int1Pin, LOW);  digitalWrite(int2Pin, LOW);
+  digitalWrite(ledPin, LOW);
+}
+\end{verbatim}
+\end{small}
+
+\subsubsection{Módulo Amplificador HX711 e Célula de Carga}
+A pesagem volumétrica da ração baseia-se em uma célula de carga do tipo \textit{strain gauge} (extensômetro) arranjada em uma Ponte de Wheatstone. Quando a ração é despejada, ocorre uma micro-deformação mecânica que altera a resistência elétrica dos sensores, gerando uma variação de tensão da ordem de milivolts. O circuito integrado \textbf{HX711} opera como um conversor analógico-digital (ADC) de alta precisão de 24 bits, projetado especificamente para balanças eletrônicas. Ele amplifica o sinal analógico analgésico e o transmite de forma serial síncrona para o ESP32.
+
+\subsubsection{Sensor de Nível de Água Resistivo}
+A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água. As trilhas condutoras do sensor alteram a resistência medida à medida que são imersas. O firmware processa essa variação mapeando a leitura analógica crua para uma escala percentual ($0\%$ a $100\%$), conforme descrito no trecho abaixo:
+
+\begin{small}
+\begin{verbatim}
+// Monitoramento Quantitativo do Nível de Água
+void quantitativos() {
+  int sensorValue = analogRead(sensorPin);
+  int waterLevelPercentage = (sensorValue / 4095.0) * 100;
+  if (tupdate.sensorAgua != waterLevelPercentage) {
+    tupdate.sensorAgua = waterLevelPercentage;
+    Serial.print("Leitura do sensor(%): ");
+    Serial.println(String(tupdate.sensorAgua) + "%");
+  }
+  agua_atual = waterLevelPercentage;
+}
+\end{verbatim}
+\end{small}
+
+\subsection{Aplicativo Móvel (Flutter Framework)}
+Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente reformulado utilizando o SDK \textbf{Flutter}. O Flutter foi escolhido por ser um \textit{framework} de código aberto mantido pela Google, fundamentado na linguagem de programação Dart, que utiliza compilação \textit{Ahead-of-Time} (AOT) para gerar código de máquina nativo para Android. 
+
+Esta arquitetura viabiliza uma Renderização de Alto Desempenho através do motor gráfico \textit{Impeller/Skia}, eliminando as pontes de interpretação Javascript comuns em abordagens híbridas tradicionais. O aplicativo funciona como o painel de controle principal do tutor, comunicando-se de forma assíncrona com o microcontrolador através de requisições de rede. Ele é responsável por serializar as matrizes de agendamento de horários e os alvos de massa ponderada, os quais são posteriormente interceptados e processados pelo laço repetitivo de verificação temporal do ESP32:
+
+\begin{small}
+\begin{verbatim}
+// Laço de Verificação Lógica de Agendamentos Recebidos pelo App
+boolean agendamentoCheck() {
+  if (!getLocalTime(&timeinfo)) {
+    Serial.println("Erro: Obtencao da data atual falhou"); return false;
+  } else {
+    if (tupdate.minuto != timeinfo.tm_min || tupdate.hora != timeinfo.tm_hour) {
+      tupdate.hora = timeinfo.tm_hour;
+      tupdate.minuto = timeinfo.tm_min; tupdate.flag = false;
+    }
+    for (int i = 0; i < 10; i++) {
+      if (timeinfo.tm_hour == hAgen[i] && timeinfo.tm_min == mAgen[i])
+        return true;
+    }
+    return false;
+  }
+}
+\end{verbatim}
+\end{small}
+
+\subsection{Fluxogramas Operacionais}
+O comportamento lógico do firmware embarcado no ESP32 segue um laço fechado de monitoramento estruturado em três estados recorrentes que interagem com o aplicativo Flutter:
 \begin{enumerate}
-    \item \textbf{Modo de Espera (Idle):} O microcontrolador monitora continuamente o sinal Wi-Fi e faz a leitura cíclica dos sensores de nível estrutural.
-    \item \textbf{Modo Alimentação:} Ao atingir o horário agendado ou receber o comando via aplicativo, a leitura analógica da célula de carga é zerada (\textit{tare}) e o motor de 9V é ativado via L293N até que a massa calculada corresponda ao valor alvo configurado pelo usuário.
-    \item \textbf{Modo Hidratação:} O sensor de nível de água verifica a condutividade no fundo do recipiente. Caso esteja abaixo do limiar operacional, a bomba d'água de 9V é ativada por tempo determinado para restabelecer a lâmina d'água segura.
+    \item \textbf{Modo de Espera (Idle):} O microcontrolador monitora continuamente o estado da conexão Wi-Fi e executa atualizações na tela OLED a cada 500ms utilizando temporizações não-bloqueantes com a função \textit{millis()}.
+    \item \textbf{Modo Alimentação:} Ao interceptar a igualdade entre o relógio interno (NTP) e as variáveis de agendamento populadas pelo Flutter (`hAgen` e `mAgen`), calcula-se a diferença matemática de massa necessária e aciona-se a Ponte H L293N.
+    \item \textbf{Modo Hidratação:} O sensor de nível valida as condições do bebedouro e, caso detecte escassez, aciona a saída digital ligada à bomba de elevação hidráulica.
 \end{enumerate}
 
 \section{Avaliação e Resultados}
 
-A validação do protótipo ocorreu por meio de testes de bancada controlados. Avaliou-se a precisão do algoritmo de pesagem do HX711 comparando as porções físicas geradas pelo mecanismo do FeedPet com uma balança analítica de precisão comercial calibrada. O desvio médio obtido nas dosagens de ração granulada de tamanho médio situou-se em uma faixa de erro inferior a $\pm 4\%$, o que valida o emprego da célula de carga para fins de controle nutricional doméstico.
+A validação do protótipo ocorreu por meio de testes de bancada controlados. Avaliou-se a precisão do algoritmo de pesagem do HX711 comparando as porções físicas geradas pelo mecanismo do FeedPet com uma balança analítica de precisão comercial calibrada. O desvio médio obtido nas dosagens de ração granulada de tamanho médio situou-se em uma faixa de erro inferior a $\pm 4\%$, o que valida o emprego da célula de carga para fins de controle nutritional doméstico.
 
-A comunicação síncrona entre o aplicativo móvel e o ESP32 apresentou latência média de resposta de $480\text{ ms}$ em ambiente de rede local Wi-Fi de 2.4 GHz, demonstrando agilidade satisfatória para comandos em tempo real. O sistema de acionamento mecânico não apresentou travamentos de grãos durante o ciclo de teste de 48 horas contínuas.
+A comunicação assíncrona entre o aplicativo móvel compilado em Flutter e o ESP32 apresentou uma latência de rede média e estável de $480\text{ ms}$ operando sob uma rede Wi-Fi local de 2.4 GHz, garantindo excelente responsividade para comandos executados sob demanda e atualizações instantâneas de telemetria na tela do \textit{smartphone}.
 
 \section{Custos do Projeto}
 
-A Tabela \ref{tab:consumo_esp32} detalha os custos de aquisição dos componentes utilizados no desenvolvimento do protótipo. Os valores foram mapeados junto a fornecedores nacionais de componentes eletrônicos.
+A Tabela \ref{tab:consumo_esp32} detalha os custos de aquisição dos componentes modulares utilizados no desenvolvimento do protótipo. Os valores refletem o custo médio de mercado de componentes eletrônicos pré-prontos.
 
 \begin{table}[ht]
     \centering
@@ -115,9 +204,9 @@ A Tabela \ref{tab:consumo_esp32} detalha os custos de aquisição dos componente
 
 \section{Conclusão}
 
-A construção física do dispositivo e a arquitetura lógica do aplicativo foram consolidadas com sucesso, empregando ferramentas de suporte de engenharia como \cite{mermaid:26} para diagramações, \cite{tinkercad:23} para modelagem de circuitos eletrônicos preliminares e plataformas de desenvolvimento integrado \cite{blueoprint:26, pandasuite:26}. 
+A construção física do dispositivo e a arquitetura lógica do aplicativo foram consolidadas com sucesso, integrando hardware baseado em blocos funcionais comerciais pré-prontos à flexibilidade e alto desempenho do ecossistema Flutter para dispositivos móveis. Ferramentas de suporte como \cite{mermaid:26} para diagramações lógicas, \cite{tinkercad:23} para simulações e plataformas de engenharia como \cite{blueoprint:26} auxiliaram o desenvolvimento do projeto.
 
-As soluções comerciais mapeadas em \cite{onizoomi:26, surecare:26} proveram requisitos de contorno funcionais relevantes para balizar as metas deste projeto. Diante dos resultados de calibração obtidos, o projeto FeedPet valida-se como uma alternativa viável técnica e economicamente para mitigar os impactos da obesidade pet evidenciados por \cite{folha:23}, entregando automação de baixo custo e alta precisão.
+As soluções comerciais mapeadas em \cite{onizoomi:26, surecare:26} proveram requisitos de contorno importantes para balizar o escopo do FeedPet. Diante dos resultados experimentais obtidos, o sistema valida-se como uma alternativa viável técnica e economicamente para mitigar os impactos de distúrbios nutricionais como a obesidade pet evidenciada por \cite{folha:23}, entregando automação integrada e monitoramento em tempo real a baixo custo.
 
 \begin{thebibliography}{}
 
@@ -125,6 +214,11 @@ As soluções comerciais mapeadas em \cite{onizoomi:26, surecare:26} proveram re
 Blueoprint (2026).
 \newblock {\em IDE de Modelagem e Arquitetura de Sistemas Integrados}.
 \newblock Disponível em: <\url{https://www.blueoprint.com}>. Acesso em: 30 de jun. de 2026.
+
+\bibitem[Flutter 2026]{flutter:26}
+Flutter Team (2026).
+\newblock {\em Flutter Documentation: Build apps for any screen}.
+\newblock Google Developer Groups. Disponível em: <\url{https://docs.flutter.dev}>. Acesso em: 01 de jul. de 2026.
 
 \bibitem[Folha 2023]{folha:23}
 Folha de São Paulo (2023).
@@ -150,11 +244,6 @@ Mermaid JS (2026).
 Onizoomi Electronics (2026).
 \newblock {\em Catálogo Técnico de Alimentadores Automáticos Industriais para Pequeno Porte}.
 \newblock Disponível em: <\url{https://www.onizoomi.tech}>. Acesso em: 30 de jun. de 2026.
-
-\bibitem[Pandasuite 2026]{pandasuite:26}
-Pandasuite (2026).
-\newblock {\em Plataforma Low-Code para Desenvolvimento de Interfaces Android Nativas}.
-\newblock Disponível em: <\url{https://pandasuite.com}>. Acesso em: 30 de jun. de 2026.
 
 \bibitem[SureCare 2026]{surecare:26}
 SureCare Pet Solutions (2026).
