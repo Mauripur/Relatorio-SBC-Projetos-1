@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  3 JUL 2026 18:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  3 JUL 2026 18:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -419,68 +419,53 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [3]
-[4] [5]
-
-LaTeX Warning: Reference `lst:schedule_model' on page 6 undefined on input line
- 174.
-
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
-76.
-(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
-File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
-) [6]
+[4] [5] [6]
 LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 1
 93.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-)
-
-LaTeX Warning: Reference `lst:schedule_service' on page 7 undefined on input li
-ne 213.
-
-
-Underfull \vbox (badness 2334) has occurred while \output is active []
-
- [7]
+) [7]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
-[9] [10] [11] (modelogemini.aux)
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 3
+07.
+
+(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
+File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
+) [9]
+[10] [11] (modelogemini.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-04-28>
  ***********
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 8100 strings out of 467682
- 128917 string characters out of 5416153
- 804530 words of memory out of 5000000
- 37054 multiletter control sequences out of 15000+600000
+ 8094 strings out of 467682
+ 128821 string characters out of 5416153
+ 803530 words of memory out of 5000000
+ 37048 multiletter control sequences out of 15000+600000
  652191 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,12n,79p,962b,1712s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
-i12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmr12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr8.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/u
-rw/courier/ucrr8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/ur
-w/helvetic/uhvb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/ur
-w/times/utmb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
-imes/utmbi8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
-es/utmr8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
-utmri8a.pfb>
-Output written on modelogemini.pdf (11 pages, 174151 bytes).
+<C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
+12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmr8.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/cou
+rier/ucrr8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helv
+etic/uhvb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
+s/utmb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
+tmbi8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utm
+r8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on modelogemini.pdf (11 pages, 160238 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
+ 84 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
