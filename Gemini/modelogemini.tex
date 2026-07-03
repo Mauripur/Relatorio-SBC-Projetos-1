@@ -93,7 +93,7 @@ Para superar as barreiras de custo dos sistemas comerciais e as limitações de 
 \subsection{Análise Comparativa de Funcionalidades}
 A análise das soluções mapeadas e do sistema proposto evidencia as vantagens competitivas e tecnológicas do FeedPet frente às alternativas comerciais e acadêmicas vigentes. Dispositivos industriais de prateleira consagrados, como os desenvolvidos pela SureCare \cite{surecare:26}, entregam dosagem fundamentada em peso real absoluto, porém manifestam alto custo de aquisição, operam sob arquitetura de código fechado (\textit{closed source}) e carecem de um módulo de água integrado. Por outro lado, soluções como a da Onizoomi \cite{onizoomi:26} são disponibilizadas em faixas de preço medianas por meio de aplicações web, mas negligenciam tanto o controle por peso real quanto o monitoramento hídrico.
 
-No cenário das abordagens e modelos acadêmicos tradicionais, a inclusão simultânea de pesagem por célula de carga e de um módulo de hidratação independente sob o mesmo barramento é classificada como rara; adicionalmente, a interface com o usuário nestas pesquisas costuma depender de ferramentas *no-code* de alta abstração visual, como o MIT App Inventor, operando com baixo custo de componentes, mas com restrições severas de desempenho. O FeedPet diferencia-se de forma definitiva de todas as alternativas ao integrar a pesagem gravimétrica da ração e a gestão hidráulica automatizada de água em uma aplicação nativa Flutter de alta performance e baixa latência, alcançando um custo total de prototipagem altamente viável de apenas R\$ 182,00.
+No cenário das abordagens e modelos acadêmicos tradicionais, a inclusão simultânea de pesagem por célula de carga e de um módulo de hidratação independente sob o mesmo barramento é classificada como rara; adicionalmente, a interface com o usuário nestas pesquisas costuma depender de ferramentas *no-code* de alta abstração visual, como o MIT App Inventor, operando com baixo custo de componentes, mas com restrições severas de desempenho. O FeedPet diferencia-se de forma definitiva de todas as alternativas ao integrar a pesagem gravimétrica da ração e a gestão hidráulica automatizada de água em uma aplicação nativa Flutter de alta performance e baixa latência, alcançando um custo total de prototipagem altamente viável de apenas R\$ 210,00.
 
 \section{Arquitetura do Sistema e Metodologia}
 
@@ -232,7 +232,8 @@ A Tabela \ref{tab:consumo_esp32} detalha os custos de aquisição dos componente
     Protoboard de 830 pontos                       & 1                         & R\$ 10,00                 \\ \hline
     Cabos de Conexão (Jumpers)                     & 1 (kit)                   & R\$ 10,00                 \\ \hline
     Resistores de Película de Carbono              & 1 (kit)                   & R\$ 05,00                 \\ \hline
-    \multicolumn{2}{|l|}{\textbf{Total Geral}}                                 & \textbf{R\$ 182,00}       \\ \hline
+    Produção do App				& \multicolumn{2}{|r|}{R\$ 38,00}		\\ \hline
+    \multicolumn{2}{|l|}{\textbf{Total Geral}}                                 & \textbf{R\$ 220,00}       \\ \hline
     \end{tabular}
 \end{table}
 
