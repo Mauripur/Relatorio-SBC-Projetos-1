@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  1 JUL 2026 20:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  3 JUL 2026 17:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -246,8 +246,54 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
-5.
+(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count305
+\lst@gtempboxa=\box56
+\lst@token=\toks27
+\lst@length=\count306
+\lst@currlwidth=\dimen184
+\lst@column=\count307
+\lst@pos=\count308
+\lst@lostspace=\dimen185
+\lst@width=\dimen186
+\lst@newlines=\count309
+\lst@lineno=\count310
+\lst@maxwidth=\dimen187
+
+(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+)
+(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count311
+\lst@skipnumbers=\count312
+\lst@framebox=\box57
+)
+(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
+))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
+Package: color 2025/01/14 v1.3e Standard LaTeX Color (DPC)
+
+(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+
+(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx))
+(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2025/11/14 1.11b listings language file
+)
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 4
+9.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -255,27 +301,27 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex
 .def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count305
+\l__color_backend_stack_int=\count313
 ) (modelogemini.aux
 Package babel Info: 'brazil' activates 'portuges' shorthands.
 (babel)             Reported on input line 6.
 )
 \openout1 = `modelogemini.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -312,20 +358,21 @@ LaTeX Font Info:    ... okay on input line 25.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count306
-\scratchdimen=\dimen184
-\scratchbox=\box56
-\nofMPsegments=\count307
-\nofMParguments=\count308
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count309
-\MPscratchDim=\dimen185
-\MPnumerator=\count310
-\makeMPintoPDFobject=\count311
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count314
+\scratchdimen=\dimen188
+\scratchbox=\box58
+\nofMPsegments=\count315
+\nofMParguments=\count316
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count317
+\MPscratchDim=\dimen189
+\MPnumerator=\count318
+\makeMPintoPDFobject=\count319
+\everyMPtoPDFconversion=\toks29
 )
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base
 .sty
@@ -336,62 +383,63 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
+\c@lstlisting=\count320
+LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
 
  (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
 
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
-7.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
+1.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Trying to load font information for OMS+pcr on input line 2
-7.
+LaTeX Font Info:    Trying to load font information for OMS+pcr on input line 5
+1.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 51.
  [1
 
 {C:/Users/LV/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/LV/AppD
 ata/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
-5.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 8
+9.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [3]
 [4] [5] [6]
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 2
-03.
+16.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 ) [7]
-[8] [9] (modelogemini.aux)
+[8] (modelogemini.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-04-28>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6210 strings out of 467682
- 103111 string characters out of 5416153
- 538932 words of memory out of 5000000
- 35190 multiletter control sequences out of 15000+600000
- 651898 words of font info for 96 fonts, out of 8000000 for 9000
+ 8020 strings out of 467682
+ 127863 string characters out of 5416153
+ 785530 words of memory out of 5000000
+ 36979 multiletter control sequences out of 15000+600000
+ 651383 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,12n,79p,962b,441s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,79p,962b,1712s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
 12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmr8.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
@@ -402,9 +450,9 @@ s/utmb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
 tmbi8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utm
 r8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on modelogemini.pdf (9 pages, 155308 bytes).
+Output written on modelogemini.pdf (8 pages, 153333 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
+ 75 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
