@@ -1,6 +1,4 @@
-\documentclass[12pt]{article}
-\usepackage{sbc-template}
-\usepackage{graphicx,url}
+\documentclass[12pt]{article}\usepackage{sbc-template}\usepackage{graphicx,url}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage{amsmath}
@@ -14,7 +12,7 @@
 
 \lstset{
   frame=tb,
-  language=Java, % Funciona bem para destacar a sintaxe de Dart e C++ nesta configuração básica
+  language=Java, % Mude para a sua linguagem: Python, C++, etc.
   aboveskip=3mm,
   belowskip=3mm,
   showstringspaces=false,
@@ -67,7 +65,7 @@ Ultimamente, é possível observar que diversos tutores estão procurando certas
 
 Para garantir que o projeto seja eficiente, o diferencial é a integração em tempo real do aplicativo com o dispositivo físico. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é delegada ao alimentador eletrônico de forma automatizada. Além disso, por conta desse monitoramento remoto, a solução torna-se ideal para indivíduos com rotinas imprevisíveis, uma vez que o dispositivo opera sob dosagens programadas ou acionamentos sob demanda. Assim, os donos mitigam o risco de subnutrição ou superalimentação, garantindo a disciplina biológica e a qualidade de vida para cães e gatos.
 
-O objetivo principal deste projeto de engenharia é criar e validar um protótipo functional de comedouro e bebedouro inteligente (FeedPet) controlado por meio de um aplicativo móvel. O dispositivo é focado em animais de pequeno a médio porte, contendo recipientes independentes para ração e água. O aplicativo associado é responsável pelo gerenciamento lógico, permitindo selecionar os intervalos de tempo, o volume hidráulico e a massa exata de alimento que serão disponibilizados ao animal.
+O objetivo principal deste projeto de engenharia é criar e validar um protótipo funcional de comedouro e bebedouro inteligente (FeedPet) controlado por meio de um aplicativo móvel. O dispositivo é focado em animais de pequeno a médio porte, contendo recipientes independentes para ração e água. O aplicativo associado é responsável pelo gerenciamento lógico, permitindo selecionar os intervalos de tempo, o volume hidráulico e a massa exata de alimento que serão disponibilizados ao animal.
 
 \section{Trabalhos Relacionados}
 
@@ -100,7 +98,7 @@ No cenário das abordagens e modelos acadêmicos tradicionais, a inclusão simul
 \section{Arquitetura do Sistema e Metodologia}
 
 \subsection{Proposta}
-A proposta de engenharia do FeedPet consiste em solucionar as limitações de isolamento e alto custo dos produtos comerciais através de uma topologia IoT distribuída de baixo custo. O projeto baseia-se em duas abordagens complementares: a unificação de hardware para dupla finalidade (sólidos e líquidos) sob o mesmo barramento de processamento e a formulação de uma aplicação móvel multiplataforma nativa de baixa latência e manutenção simplificada.
+A proposta de engenharia do FeedPet consiste em solucionar as limitações de isolamento e alto custo dos produtos comerciais através de uma topologia IoT distribuída de baixo custo. O projeto baseia-se em duas abordagens complementar: a unificação de hardware para dupla finalidade (sólidos e líquidos) sob o mesmo barramento de processamento e a formulação de uma aplicação móvel multiplataforma nativa de baixa latência e manutenção simplificada.
 
 \subsection{Dispositivo (Hardware Embarcado)}
 O hardware do dispositivo foi estruturado utilizando módulos eletrônicos pré-prontos de mercado, otimizando o tempo de prototipagem e garantindo robustez industrial ao circuito. A seguir, detalha-se o funcionamento técnico de cada elemento de hardware implementado e sua respectiva integração via software.
@@ -149,10 +147,10 @@ if (tempo_motor > 0) {
 \end{lstlisting}
 
 \subsubsection{Módulo Amplificador HX711 e Célula de Carga}
-A pesagem volumétrica da ração baseia-se em uma célula de carga do tipo \textit{strain gauge} (extensômetro) arranjada em uma Ponte de Wheatstone. Quando a ração é despejada, ocorre uma micro-deformação mecânica que altera a resistência elétrica dos sensores, gerando uma variação de tensão da ordem de milivolts. O circuito integrado \textbf{HX711} opera como um conversor analógico-digital (ADC) de alta precisão de 24 bits, projetado especificamente para balanças eletrônicas. Ele amplifica o sinal analógico e o transmite de forma serial síncrona para o ESP32.
+A pesagem volumétrica da ração baseia-se em uma célula de carga do tipo \textit{strain gauge} (extensômetro) arranjada em uma Ponte de Wheatstone. Quando a ração é despejada, ocorre uma micro-deformação mecânica que altera a resistência elétrica dos sensores, gerando uma variação de tensão da ordem de milivolts. O circuito integrado \textbf{HX711} opera como um conversor analógico-digital (ADC) de alta precisão de 24 bits, projetado especificamente para balanças eletrônicas. Ele amplifica o sinal analógico analgésico e o transmite de forma serial síncrona para o ESP32.
 
 \subsubsection{Sensor de Nível de Água Resistivo}
-A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água. As trilhas condutoras do sensor alteram a resistência medida à medida que são imersas. O firmware processa essa variação mapeando a leitura analógica crua para uma escala percentual ($0\%$ a $100\%$), conforme descrito no trecho abaixo:
+A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água. As trilhas condutoras do sensor alteram a resistência measured à medida que são imersas. O firmware processa essa variação mapeando a leitura analógica crua para uma escala percentual ($0\%$ a $100\%$), conforme descrito no trecho abaixo:
 
 \begin{lstlisting}
 void measurements() {
@@ -168,99 +166,9 @@ void measurements() {
 \end{lstlisting}
 
 \subsection{Aplicativo Móvel (Flutter Framework)}
-Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente desenvolvido utilizando o SDK \textbf{Flutter} corporativo e a linguagem orientada a objetos \textbf{Dart}. A arquitetura lógica do \textit{software} móvel foi dividida em camadas funcionais bem definidas: a Camada de Modelo (responsável pela estrutura lógica de dados), a Camada de Serviço (gerenciamento de regras de negócio e persistência local estável) e a Camada de Interface do Usuário (UI reativa com atualização a 60 FPS).
+Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente reformulado utilizando o SDK \textbf{Flutter}. O Flutter foi escolhido por ser um \textit{framework} de código aberto mantido pela Google, fundamentado na linguagem de programação Dart, que utiliza compilação \textit{Ahead-of-Time} (AOT) para gerar código de máquina nativo para Android. 
 
-\subsubsection{Modelagem Descritiva de Agendamentos}
-Para representar as rotinas cronológicas estipuladas pelos tutores no aplicativo, construiu-se a classe \texttt{Schedule}. Esse modelo matemático-lógico encapsula as propriedades exclusivas de cada ativação do comedouro, como identificação única (\texttt{id}), tipo de operação alimentícia (\texttt{type}), hora (\texttt{hour}), minuto (\texttt{minute}) e o estado lógico de ativação do gatilho (\texttt{enabled}). Além de fornecer a \textit{label} textual de formatação temporal via interpolação de \textit{strings}, o modelo incorpora o mecanismo de serialização em mapas chave-valor binários (\texttt{Map<String, dynamic>}). Essa tradução estruturada viabiliza que o aplicativo realize a conversão bidirecional em formato JSON, preparando os dados para persistência física e posterior comunicação síncrona com o ecossistema IoT:
-
-\begin{lstlisting}
-class Schedule {
-  final String id;
-  final String type; // 'food'
-  final int hour;
-  final int minute;
-  bool enabled;
-
-  Schedule({
-    required this.id,
-    required this.type,
-    required this.hour,
-    required this.minute,
-    this.enabled = true,
-  });
-
-  String get timeLabel =>
-      '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'hour': hour,
-        'minute': minute,
-        'enabled': enabled,
-      };
-
-  factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
-        id: json['id'],
-        type: json['type'],
-        hour: json['hour'],
-        minute: json['minute'],
-        enabled: json['enabled'] ?? true,
-      );
-}
-\end{lstlisting}
-
-\subsubsection{Camada de Serviço e Persistência Não-Volátil Local}
-A manipulação operacional dos cronogramas criados e modificados pelo usuário é delegada ao componente central de controle nomeado \texttt{ScheduleService}. Esta classe estática gerencia o ciclo de vida dos dados na memória não-volátil do \textit{smartphone} por meio do pacote nativo \texttt{shared\_preferences}, que interage diretamente com o armazenamento chave-valor do sistema operacional (como o SharedPreferences no Android). 
-
-O método assíncrono \texttt{getAll()} exemplifica o processamento em segundo plano do aplicativo: ele extrai uma coleção de strings codificadas associadas à constante \texttt{\_key}, processa e decodifica cada item através de mapeamento linear assistido pela biblioteca \texttt{dart:convert} (\texttt{jsonDecode}) e, por fim, executa uma ordenação cronológica estrita calculando o tempo absoluto decorrido do dia em minutos (\texttt{hour * 60 + minute}). Métodos mutadores complementares (\texttt{save}, \texttt{add}, \texttt{remove} e \texttt{toggle}) garantem integridade transacional imediata: toda modificação efetuada na interface do usuário atualiza o armazenamento físico de forma automática e reativa, como demonstrado a seguir:
-
-\begin{lstlisting}
-class ScheduleService {
-  static const _key = 'schedules';
-
-  static Future<List<Schedule>> getAll() async {
-    final prefs = await SharedPreferences.getInstance();
-    final raw = prefs.getStringList(_key) ?? [];
-    final list = raw.map((e) => Schedule.fromJson(jsonDecode(e))).toList();
-    list.sort((a, b) {
-      final aMin = a.hour * 60 + a.minute;
-      final bMin = b.hour * 60 + b.minute;
-      return aMin.compareTo(bMin);
-    });
-    return list;
-  }
-
-  static Future<void> save(List<Schedule> schedules) async {
-    final prefs = await SharedPreferences.getInstance();
-    final raw = schedules.map((e) => jsonEncode(e.toJson())).toList();
-    await prefs.setStringList(_key, raw);
-  }
-
-  static Future<void> add(Schedule s) async {
-    final list = await getAll();
-    list.add(s);
-    await save(list);
-  }
-
-  static Future<void> remove(String id) async {
-    final list = await getAll();
-    list.removeWhere((s) => s.id == id);
-    await save(list);
-  }
-
-  static Future<void> toggle(String id, bool enabled) async {
-    final list = await getAll();
-    final idx = list.indexWhere((s) => s.id == id);
-    if (idx >= 0) {
-      list[idx].enabled = enabled;
-      await save(list);
-    }
-  }
-}
-\end{lstlisting}
-
-Os vetores e matrizes temporais resultantes e ordenados por este barramento de serviço em Dart são serializados e transmitidos via requisições assíncronas assinaladas sobre o protocolo Wi-Fi para o dispositivo físico. No receptor, o firmware embarcado no ESP32 hospeda em seu núcleo de conectividade um laço repetitivo de variação temporal que intercepta essas matrizes (`hAgen` e `mAgen`), comparando-as sequencialmente com a hora atual fornecida pelos servidores NTP de rede:
+Esta arquitetura viabiliza uma Renderização de Alto Desempenho através do motor gráfico \textit{Impeller/Skia}, eliminando as pontes de interpretação Javascript comuns em abordagens híbridas tradicionais. O aplicativo funciona como o painel de controle principal do tutor, comunicando-se de forma assíncrona com o microcontrolador através de requisições de rede. Ele é responsável por serializar as matrizes de agendamento de horários e os alvos de massa ponderada, os quais são posteriormente interceptados e processados pelo laço repetitivo de verificação temporal do ESP32:
 
 \begin{lstlisting}
 boolean agendamentoCheck() {
@@ -287,14 +195,14 @@ boolean agendamentoCheck() {
 \subsection{Fluxogramas Operacionais}
 O comportamento lógico do firmware embarcado no ESP32 segue um laço fechado de monitoramento estruturado em três estados recorrentes que interagem com o aplicativo Flutter:
 \begin{enumerate}
-    \item \textbf{Modo de Espera (Idle):} O microcontrolador monitora continuamente o estado da conexão Wi-Fi e executa atualizações na tela OLED a cada 500ms utilizando temporizações não-bloqueantes com a função \textit{millis()}.
+    \item \textbf{Modo de Espera (Idle):} O microcontrolador monitora continuamente o estado da conexão Wi-Fi e executes atualizações na tela OLED a cada 500ms utilizando temporizações não-bloqueantes com a função \textit{millis()}.
     \item \textbf{Modo Alimentação:} Ao interceptar a igualdade entre o relógio interno (NTP) e as variáveis de agendamento populadas pelo Flutter (`hAgen` e `mAgen`), calcula-se a diferença matemática de massa necessária e aciona-se a Ponte H L293N.
     \item \textbf{Modo Hidratação:} O sensor de nível valida as condições do bebedouro e, caso detecte escassez, aciona a saída digital ligada à bomba de elevação hidráulica.
 \end{enumerate}
 
 \section{Avaliação e Resultados}
 
-A validação do protótipo ocorreu por meio de testes de bancada controlados. Avaliou-se a precisão do algoritmo de pesagem do HX711 comparando as porções físicas geradas pelo mecanismo do FeedPet com uma balança analítica de precisão comercial calibrada. O desvio médio obtido nas dosagens de ração granulada de tamanho médio situou-se em uma faixa de erro inferior a $\pm 4\%$, o que valida o emprego da célula de carga para fins de controle nutricional doméstico.
+A validação do protótipo ocorreu por meio de testes de bancada controlados. Avaliou-se a precisão do algoritmo de pesagem do HX711 comparando as porções físicas geradas pelo mecanismo do FeedPet com uma balança analítica de precisão comercial calibrada. O desvio médio obtido nas dosagens de ração granulada de tamanho médio situou-se em uma faixa de erro inferior a $\pm 4\%$, o que valida o emprego da célula de carga para fins de controle nutritional doméstico.
 
 A comunicação assíncrona entre o aplicativo móvel compilado em Flutter e o ESP32 apresentou uma latência de rede média e estável de $480\text{ ms}$ operando sob uma rede Wi-Fi local de 2.4 GHz, garantindo excelente responsividade para comandos executados sob demanda e atualizações instantâneas de telemetria na tela do \textit{smartphone}.
 
