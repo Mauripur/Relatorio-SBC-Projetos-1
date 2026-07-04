@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  4 JUL 2026 20:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  4 JUL 2026 20:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -298,8 +298,8 @@ File: lstlang1.sty 2025/11/14 1.11b listings language file
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 4
-8.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 5
+2.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -314,20 +314,20 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 )
 \openout1 = `modelogemini.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -390,75 +390,81 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 \c@lstlisting=\count320
-LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 54.
 
  (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 54.
 
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
-0.
+4.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Trying to load font information for OMS+pcr on input line 5
-0.
+4.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 50.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 54.
  [1
 
 {C:/Users/LV/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/LV/AppD
 ata/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 8
-8.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
+4.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [3]
-[4] [5] [6]
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 2
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
 15.
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
-) [7]
-[8] (modelogemini.aux)
+) [4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2025/11/14 1.11b listings language file
+)
+[6] [7] [8] [9] (modelogemini.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-04-28>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8150 strings out of 467682
- 129772 string characters out of 5416153
- 785794 words of memory out of 5000000
- 37105 multiletter control sequences out of 15000+600000
- 651383 words of font info for 94 fonts, out of 8000000 for 9000
+ 8190 strings out of 467682
+ 130444 string characters out of 5416153
+ 778801 words of memory out of 5000000
+ 37143 multiletter control sequences out of 15000+600000
+ 650369 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,12n,79p,962b,1757s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
-12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr8.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/cou
-rier/ucrr8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helv
-etic/uhvb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
-s/utmb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
-tmbi8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utm
-r8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8
-a.pfb>
-Output written on modelogemini.pdf (8 pages, 153176 bytes).
+ 72i,12n,79p,962b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
+i12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmr12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr8.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/u
+rw/courier/ucrr8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/ur
+w/helvetic/uhvb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/ur
+w/times/utmb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
+imes/utmbi8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
+es/utmr8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on modelogemini.pdf (9 pages, 168863 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
+ 83 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
