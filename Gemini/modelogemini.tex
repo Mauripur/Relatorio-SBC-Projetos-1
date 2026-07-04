@@ -12,7 +12,7 @@
 
 \lstset{
   frame=tb,
-  language=Java, % Mude para a sua linguagem: Python, C++, etc.
+  language=C++, % Mude para a sua linguagem: Python, C++, etc.
   aboveskip=3mm,
   belowskip=3mm,
   showstringspaces=false,
@@ -72,7 +72,7 @@ O objetivo principal deste projeto de engenharia é criar e validar um protótip
 Para a fundamentação de um sistema embarcado distribuído focado no monitoramento animal, faz-se necessário mapear e contrapor as abordagens vigentes sob as óticas comercial e acadêmica, explicitando as lacunas de desenvolvimento (*gaps*) que justificam a concepção do FeedPet.
 
 \subsection{Soluções Comerciais de Mercado}
-As soluções já adotadas no mercado de automação pet, como os produtos referenciados in \cite{onizoomi:26} e \cite{surecare:26}, possuem limitações que restringem seu uso em larga escala. Dentre os gargalos identificados, destacam-se o alto custo de aquisição, a venda isolada de módulos de alimentação e hidratação (forçando o tutor a adquirir dois ecossistemas distintos para obter uma solução completa) e a baixa capacidade de personalização das porções. 
+As soluções já adotadas no mercado de automação pet, como os produtos referenciados em \cite{onizoomi:26} e \cite{surecare:26}, possuem limitações que restringem seu uso em larga escala. Dentre os gargalos identificados, destacam-se o alto custo de aquisição, a venda isolada de módulos de alimentação e hidratação (forçando o tutor a adquirir dois ecossistemas distintos para obter uma solução completa) e a baixa capacidade de personalização das porções. 
 
 Muitos desses produtos industriais priorizam a conveniência de prateleira em detrimento da individualidade biológica de cada animal de estimação. Isso resulta na padronização de sistemas universais restritos a tempos fixos de descarga mecânica ou volumes pré-definidos de fábrica, limitando a flexibilidade do usuário e a eficácia clínica da dieta de animais com restrições calóricas.
 
@@ -87,7 +87,7 @@ Para superar as barreiras de custo dos sistemas comerciais e as limitações de 
 \begin{itemize}
     \item \textbf{Framework Flutter:} A escolha do Flutter para o desenvolvimento do aplicativo Android sobrepõe-se às abordagens web e híbridas convencionais (como React Native ou PhoneGap). O Flutter compila o código Dart diretamente para instruções nativas de máquina ARM através de compilação *Ahead-of-Time* (AOT), utilizando o motor gráfico corporativo Impeller/Skia. Isso garante interfaces com taxa de atualização estável a 60 FPS, gerenciamento reativo de estado eficiente e latência inferior a 500 ms nas requisições assíncronas feitas ao hardware.
     \item \textbf{ESP32 NodeMCU:} O emprego deste SoC elimina a necessidade de periféricos acoplados para comunicação de rede, comuns em projetos baseados em Arduino. Sua arquitetura *dual-core* permite que um núcleo processe estritamente as tarefas de conectividade Wi-Fi/NTP e a comunicação com o app em Flutter, enquanto o segundo núcleo executa as interrupções de hardware em tempo real dos sensores e atuadores, mitigando travamentos de segurança lógica.
-    \item \textbf{Par HX711 e Célula de Carga:} Em oposição aos sistemas concorrentes que estimam a ração baseando-se apenas no tempo de ativação do motor, este arranjo fornece medições por peso real absoluto, imune a variações causadas pela densidade ou geometria geométrica dos grãos de ração.
+    \item \textbf{Par HX711 e Célula de Carga:} Em oposição aos sistemas concorrentes que estimam a ração baseando-se apenas no tempo de ativação do motor, este arranjo fornece medições por peso real absoluto, imune a variações causadas pela densidade ou geometria dos grãos de ração.
 \end{itemize}
 
 \subsection{Análise Comparativa de Funcionalidades}
@@ -98,7 +98,7 @@ No cenário das abordagens e modelos acadêmicos tradicionais, a inclusão simul
 \section{Arquitetura do Sistema e Metodologia}
 
 \subsection{Proposta}
-A proposta de engenharia do FeedPet consiste em solucionar as limitações de isolamento e alto custo dos produtos comerciais através de uma topologia IoT distribuída de baixo custo. O projeto baseia-se em duas abordagens complementar: a unificação de hardware para dupla finalidade (sólidos e líquidos) sob o mesmo barramento de processamento e a formulação de uma aplicação móvel multiplataforma nativa de baixa latência e manutenção simplificada.
+A proposta de engenharia do FeedPet consiste em solucionar as limitações de isolamento e alto custo dos produtos comerciais através de uma topologia IoT distribuída de baixo custo. O projeto baseia-se em duas abordagens complementares: a unificação de hardware para dupla finalidade (sólidos e líquidos) sob o mesmo barramento de processamento e a formulação de uma aplicação móvel multiplataforma nativa de baixa latência e manutenção simplificada.
 
 \subsection{Dispositivo (Hardware Embarcado)}
 O hardware do dispositivo foi estruturado utilizando módulos eletrônicos pré-prontos de mercado, otimizando o tempo de prototipagem e garantindo robustez industrial ao circuito. A seguir, detalha-se o funcionamento técnico de cada elemento de hardware implementado e sua respectiva integração via software.
@@ -147,10 +147,10 @@ if (tempo_motor > 0) {
 \end{lstlisting}
 
 \subsubsection{Módulo Amplificador HX711 e Célula de Carga}
-A pesagem volumétrica da ração baseia-se em uma célula de carga do tipo \textit{strain gauge} (extensômetro) arranjada em uma Ponte de Wheatstone. Quando a ração é despejada, ocorre uma micro-deformação mecânica que altera a resistência elétrica dos sensores, gerando uma variação de tensão da ordem de milivolts. O circuito integrado \textbf{HX711} opera como um conversor analógico-digital (ADC) de alta precisão de 24 bits, projetado especificamente para balanças eletrônicas. Ele amplifica o sinal analógico analgésico e o transmite de forma serial síncrona para o ESP32.
+A pesagem volumétrica da ração baseia-se em uma célula de carga do tipo \textit{strain gauge} (extensômetro) arranjada em uma Ponte de Wheatstone. Quando a ração é despejada, ocorre uma micro-deformação mecânica que altera a resistência elétrica dos sensores, gerando uma variação de tensão da ordem de milivolts. O circuito integrado \textbf{HX711} opera como um conversor analógico-digital (ADC) de alta precisão de 24 bits, projetado especificamente para balanças eletrônicas. Ele amplifica o sinal analógico da célula de carga e o transmite de forma serial síncrona para o ESP32.
 
 \subsubsection{Sensor de Nível de Água Resistivo}
-A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água. As trilhas condutoras do sensor alteram a resistência measured à medida que são imersas. O firmware processa essa variação mapeando a leitura analógica crua para uma escala percentual ($0\%$ a $100\%$), conforme descrito no trecho abaixo:
+A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água. As trilhas condutoras do sensor alteram a resistência mensurada à medida que são imersas. O firmware processa essa variação mapeando a leitura analógica crua para uma escala percentual ($0\%$ a $100\%$), conforme descrito no trecho abaixo:
 
 \begin{lstlisting}
 void measurements() {
@@ -195,7 +195,7 @@ boolean agendamentoCheck() {
 \subsection{Fluxogramas Operacionais}
 O comportamento lógico do firmware embarcado no ESP32 segue um laço fechado de monitoramento estruturado em três estados recorrentes que interagem com o aplicativo Flutter:
 \begin{enumerate}
-    \item \textbf{Modo de Espera (Idle):} O microcontrolador monitora continuamente o estado da conexão Wi-Fi e executes atualizações na tela OLED a cada 500ms utilizando temporizações não-bloqueantes com a função \textit{millis()}.
+    \item \textbf{Modo de Espera (Idle):} O microcontrolador monitora continuamente o estado da conexão Wi-Fi e executa atualizações na tela OLED a cada 500ms utilizando temporizações não-bloqueantes com a função \textit{millis()}.
     \item \textbf{Modo Alimentação:} Ao interceptar a igualdade entre o relógio interno (NTP) e as variáveis de agendamento populadas pelo Flutter (`hAgen` e `mAgen`), calcula-se a diferença matemática de massa necessária e aciona-se a Ponte H L293N.
     \item \textbf{Modo Hidratação:} O sensor de nível valida as condições do bebedouro e, caso detecte escassez, aciona a saída digital ligada à bomba de elevação hidráulica.
 \end{enumerate}
