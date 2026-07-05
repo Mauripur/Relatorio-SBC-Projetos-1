@@ -1,5 +1,4 @@
-\documentclass[12pt]{article}
-\usepackage{sbc-template}
+\documentclass[12pt]{article}\usepackage{sbc-template}
 \usepackage{graphicx,url}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
@@ -71,7 +70,7 @@ Ultimamente, é possível observar que diversos tutores estão procurando certas
 
 Para garantir que o projeto seja eficiente, o diferencial é a integração em tempo real do aplicativo com o dispositivo físico. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é delegada ao alimentador eletrônico de forma automatizada. Além disso, por conta desse monitoramento remoto, a solução torna-se ideal para indivíduos com rotinas imprevisíveis, uma vez que o dispositivo opera sob dosagens programadas ou acionamentos sob demanda. Assim, os donos mitigam o risco de subnutrição ou superalimentação, garantindo a disciplina biológica e a qualidade de vida para cães e gatos.
 
-O objetivo principal deste projeto é criar e validar um protótipo funcional de comedouro e bebedouro inteligente (FeedPet) controlado por meio de um aplicativo móvel. O dispositivo é focado em animais de pequeno a médio porte, contendo recipientes independentes para ração e água. O aplicativo associado é responsável pelo gerenciamento lógico, permitindo selecionar os intervalos de tempo, o volume hidráulico e a massa exata de alimento que serão disponibilizados ao animal.
+O objetivo principal deste projeto é criar e validar um protótipo functional de comedouro e bebedouro inteligente (FeedPet) controlado por meio de um aplicativo móvel. O dispositivo é focado em animais de pequeno a médio porte, contendo recipientes independentes para ração e água. O aplicativo associado é responsável pelo gerenciamento lógico, permitindo selecionar os intervalos de tempo, o volume hidráulico e a massa exata de alimento que serão disponibilizados ao animal.
 
 \section{Trabalhos Relacionados}
 
@@ -110,45 +109,102 @@ A proposta de engenharia do FeedPet consiste em solucionar as limitações de is
 O \textit{hardware} do dispositivo foi estruturado utilizando módulos eletrônicos pré-prontos de mercado, otimizando o tempo de prototipagem e garantindo robustez industrial ao circuito. A seguir, detalha-se o funcionamento técnico de cada \textit{hardware} implementado e sua respectiva integração via \textit{software}.
 
 \subsubsection{Unidade de Processamento (ESP32 NodeMCU)}
-O \textbf{ESP32} atua como o cérebro do sistema. Trata-se de um SoC (\textit{System on a Chip}) de baixo custo e consumo energético, dotado de um microprocessador Xtensa de 32 bits \textit{dual-core} \cite{espressif:esp32}. Sua inclusão justifica-se pela presença nativa de periféricos de rede (Wi-Fi 802.11 b/g/n e Bluetooth) e pinos GPIO com conversores Analógico-Digitais (ADC). O \textit{firmware} embarcado gerencia o tempo real via protocolo NTP e executa o bloco de inicialização apresentado na Listagem~\ref{lst:setup_esp32}:
+O \textbf{ESP32} atua como o cérebro do sistema. Trata-se de um SoC (\textit{System on a Chip}) de baixo custo e consumo energético, dotado de um microprocessador Xtensa de 32 bits \textit{dual-core} \cite{espressif:esp32}. Sua inclusão justifica-se pela presença nativa de periféricos de rede (Wi-Fi 802.11 b/g/n e Bluetooth) e pinos GPIO com conversores Analógico-Digitais (ADC). O \textit{firmware} embarcado gerencia o tempo real via protocolo NTP, instancia um servidor HTTP REST completo mapeando endpoints de requisição assíncrona, e executa a inicialização de rede com resolução de nome amigável mDNS via \texttt{http://feedpet.local}, além de calibrar a tara gravimétrica, conforme apresentado na Listagem~\ref{lst:setup_esp32}:
 
-\begin{lstlisting}[caption={Configuração inicial de periféricos e conexões de rede do ESP32.}, label={lst:setup_esp32}]
-void setup() {
+\begin{lstlisting}[caption={Configuração inicial de periféricos, inicialização de rede com mDNS, servidor REST e calibração da balança.}, label={lst:setup_esp32}]
+void setup(){
   Serial.begin(9600);
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
-    Serial.println(F("SSD1306 allocation failed"));
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)){
+    Serial.println(F("Alocacao de SSD1306 falhou"));
   }
   playStartupAnimation();
+  display.clearDisplay();
+  display.setTextColor(SSD1306_WHITE);
+
   WiFi.begin(ssid, password);
   int attempts = 0;
-  while (WiFi.status() != WL_CONNECTED && attempts < 20) {
-    delay(500); attempts++;
+  while (WiFi.status() != WL_CONNECTED && attempts < 20){
+    Serial.print("."); delay(500); attempts++;
   }
-  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
-  
-  pinMode(int1Pin, OUTPUT); pinMode(int2Pin, OUTPUT);
-  pinMode(int3Pin, OUTPUT); pinMode(int4Pin, OUTPUT);
-  pinMode(buzzerPin, OUTPUT); pinMode(ledPin, OUTPUT);
+
+  if (WiFi.status() == WL_CONNECTED){
+    deviceIP = WiFi.localIP().toString();
+    printIPBanner();
+    if (MDNS.begin(MDNS_HOSTNAME)){
+      MDNS.addService("http", "tcp", 80);
+      Serial.println("mDNS ativo: http://" + String(MDNS_HOSTNAME) + ".local");
+    }
+    configTime(gmtOffset_sec, daylightOffset_sec, "pool.ntp.org", "time.nist.gov");
+  }
+
+  // Rotas do servidor HTTP para interface assincrona orientada a objetos (JSON)
+  server.on("/", HTTP_GET, handleRoot);
+  server.on("/status", HTTP_GET, handleStatus);
+  server.on("/food", HTTP_GET, handleFood);
+  server.on("/schedule", HTTP_GET, handleGetSchedules);
+  server.on("/schedule", HTTP_POST, handlePostSchedule);
+  server.on("/schedule", HTTP_DELETE, handleDeleteSchedule);
+  server.begin();
+  Serial.println("Servidor HTTP iniciado na porta 80");
+
+  // Inicializacao e calibracao da celula de carga acoplada ao ADC do HX711
+  scale.begin(DTPin, SCKPin);
+  scale.set_scale(cFactor);
+  scale.tare();
+
+  pinMode(INT1, OUTPUT); pinMode(INT2, OUTPUT);
+  pinMode(INT3, OUTPUT); pinMode(INT4, OUTPUT);
+  pinMode(ledPin, OUTPUT); pinMode(buzzerPin, OUTPUT);
 }
 \end{lstlisting}
 
 \subsubsection{Driver de Potência (Ponte H L293N)}
-Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32 (máximo de 40mA). Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N}. Este componente é baseado em circuitos integrados de drivers de canais quádruplos que utilizam transistores bipolares de junção para chavear cargas indutivas de alta corrente a partir de sinais lógicos TTL de baixa potência \cite{ti:l293n}. Ele permite o controle bidirecional do motor DC de 9V (mecanismo de rosca sem-fim para ração) e o acionamento unidirecional da mini bomba de água de 9V. O acionamento coordenado da Ponte H é detalhado na Listagem~\ref{lst:ponte_h}:
+Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32 (máximo de 40mA). Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N}. Este componente é baseado em circuitos integrados de drivers de canais quádruplos que utilizam transistores bipolares de junção para chavear cargas indutivas de alta corrente a partir de sinais lógicos TTL de baixa potência \cite{ti:l293n}. Ele permite o controle bidirecional do motor DC de 9V (mecanismo de rosca sem-fim para ração) e o acionamento unidirecional da mini bomba de água de 9V. 
 
-\begin{lstlisting}[caption={Lógica de acionamento do motor e da bomba de água via Ponte H.}, label={lst:ponte_h}]
-if (tempo_motor > 0) {
-  triggerGear(4000);
-  digitalWrite(buzzerPin, HIGH); digitalWrite(ledPin, HIGH);
-  delay(200); digitalWrite(buzzerPin, LOW);
-  
-  digitalWrite(int1Pin, HIGH); digitalWrite(int2Pin, LOW);
-  delay(tempo_giro);
-  digitalWrite(int1Pin, LOW);  digitalWrite(int2Pin, LOW);
-  delay(tempo_motor);
-  digitalWrite(int1Pin, LOW);  digitalWrite(int2Pin, HIGH);
-  delay(tempo_giro);
-  digitalWrite(int1Pin, LOW);  digitalWrite(int2Pin, LOW);
-  digitalWrite(ledPin, LOW);
+Para evitar o bloqueio do processador por funções imperativas do tipo \textit{delay()}, que impediriam o atendimento simultâneo de requisições de rede HTTP vindas do aplicativo Flutter, o acionamento coordenado da Ponte H é implementado por meio de uma máquina de estados finitos assíncrona não-bloqueante (\textit{Non-blocking State Machine}) baseada na função \textit{millis()}. A lógica de transição dos estados voltados à ativação mecânica do motor de ração é detalhada na Listagem~\ref{lst:ponte_h}:
+
+\begin{lstlisting}[caption={Máquina de estados finitos não-bloqueante (\textit{millis()}) aplicada ao controle de fases do motor na Ponte H.}, label={lst:ponte_h}]
+void updateRotinaAlimentacao(){
+  if (feedState == FEED_IDLE) return; // Estado ocioso
+  unsigned long now = millis();
+
+  switch (feedState) {
+    case FEED_MOTOR_ALERT: // Alerta do motor (buzzer + LED ativo por 200ms)
+      if (now - feedPhaseStart >= 200) {
+        digitalWrite(buzzerPin, LOW);
+        digitalWrite(INT1, HIGH); digitalWrite(INT2, LOW); // Abertura mecanica
+        feedState = FEED_MOTOR_OPEN;
+        feedPhaseStart = now;
+      }
+      break;
+
+    case FEED_MOTOR_OPEN: // Transicao de abertura pelo tempo ciclico definido
+      if (now - feedPhaseStart >= feedCycleTime) {
+        digitalWrite(INT1, LOW); digitalWrite(INT2, LOW); // Parada de seguranca
+        feedState = FEED_MOTOR_DISPENSE;
+        feedPhaseStart = now;
+      }
+      break;
+
+    case FEED_MOTOR_DISPENSE: // Despejo continuo ate computar a massa ponderada
+      if (now - feedPhaseStart >= feedMotorTime) {
+        digitalWrite(INT1, LOW); digitalWrite(INT2, HIGH); // Fechamento forcado
+        feedState = FEED_MOTOR_CLOSE;
+        feedPhaseStart = now;
+      }
+      break;
+
+    case FEED_MOTOR_CLOSE: // Finalizacao do ciclo mecanico do atuador de solidos
+      if (now - feedPhaseStart >= feedCycleTime) {
+        digitalWrite(INT1, LOW); digitalWrite(INT2, LOW);
+        digitalWrite(ledPin, LOW); feedLedOn = false;
+        // Verifica se ha demanda hidrica subsequente
+        feedState = (feedPumpTime > min_time) ? FEED_PUMP_ALERT : FEED_DONE;
+        feedPhaseStart = now;
+      }
+      break;
+    // Demais estados estruturais (FEED_PUMP_ALERT, FEED_PUMP_RUN, FEED_DONE)
+  }
 }
 \end{lstlisting}
 
@@ -156,18 +212,16 @@ if (tempo_motor > 0) {
 A pesagem volumétrica da ração baseia-se em uma célula de carga do tipo \textit{strain gauge} (extensômetro) arranjada em uma Ponte de Wheatstone. Quando a ração é despejada, ocorre uma micro-deformação mecânica que altera a resistência elétrica dos sensores, gerando uma variação de tensão da ordem de milivolts. O circuito integrado \textbf{HX711} opera como um conversor analógico-digital (ADC) de alta precisão de 24 bits, projetado especificamente para balanças eletrônicas \cite{avia:hx711}. Ele amplifica o sinal analógico diferencial e o transmite de forma serial síncrona para o ESP32.
 
 \subsubsection{Sensor de Nível de Água Resistivo}
-A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água \cite{components101:water}. As trilhas condutoras do sensor alteram a resistência mensurada à medida que são imersas. O \textit{firmware} processa essa variação mapeando a leitura analógica crua para uma escala percentual ($0\%$ a $100\%$), conforme descrito na Listagem~\ref{lst:sensor_agua}:
+A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água \cite{components101:water}. As trilhas condutoras do sensor alteram a resistência mensurada à medida que são imersas. O \textit{firmware} processa essa variação de forma modular isolada, mapeando linearmente a leitura crua do conversor ADC para uma escala percentual restrita de $0\%$ a $100\%$ por meio de funções de saturação matemática, eliminando anomalias e ruídos de leitura elétrica conforme descrito na Listagem~\ref{lst:sensor_agua}:
 
-\begin{lstlisting}[caption={Leitura analógica e conversão para escala percentual hídrica.}, label={lst:sensor_agua}]
-void measurements() {
-  int sensorValue = analogRead(sensorPin);
-  int waterLevelPercentage = (sensorValue / 4095.0) * 100;
-  if (tupdate.waterSensor != waterLevelPercentage) {
-    tupdate.waterSensor = waterLevelPercentage;
-    Serial.print("Sensor read(%): ");
-    Serial.println(String(tupdate.waterSensor) + "%");
-  }
-  agua_atual = waterLevelPercentage;
+\begin{lstlisting}[caption={Rotina modularizada de leitura analógica do nível de água e calibração por restrição gráfica.}, label={lst:sensor_agua}]
+int readLevel(int pin){ 
+  // Captura a tensao analogica exposta a condutividade da agua
+  int raw = analogRead(pin);
+  // Mapeamento matematico com base nos limites de calibracao experimentais
+  int level = map(raw, 0, 2050, 0, 100);
+  // Saturacao por restricao logica para manter o valor contido na escala percentual
+  return constrain(level, 0, 100);
 }
 \end{lstlisting}
 

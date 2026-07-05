@@ -21,42 +21,40 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Dispositivo (Hardware Embarcado)}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Unidade de Processamento (ESP32 NodeMCU)}{4}{}\protected@file@percent }
 \newlabel{lst:setup_esp32}{{1}{4}{Unidade de Processamento (ESP32 NodeMCU)}{lstlisting.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces Configuração inicial de periféricos e conexões de rede do ESP32.}}{4}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces Configuração inicial de periféricos, inicialização de rede com mDNS, servidor REST e calibração da balança.}}{4}{}\protected@file@percent }
 \citation{ti:l293n}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Driver de Potência (Ponte H L293N)}{5}{}\protected@file@percent }
+\newlabel{lst:ponte_h}{{2}{6}{Driver de Potência (Ponte H L293N)}{lstlisting.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces Máquina de estados finitos não-bloqueante (\textit  {millis()}) aplicada ao controle de fases do motor na Ponte H.}}{6}{}\protected@file@percent }
 \citation{avia:hx711}
 \citation{components101:water}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Driver de Potência (Ponte H L293N)}{5}{}\protected@file@percent }
-\newlabel{lst:ponte_h}{{2}{5}{Driver de Potência (Ponte H L293N)}{lstlisting.2}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces Lógica de acionamento do motor e da bomba de água via Ponte H.}}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Módulo Amplificador HX711 e Célula de Carga}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Módulo Amplificador HX711 e Célula de Carga}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Sensor de Nível de Água Resistivo}{7}{}\protected@file@percent }
+\newlabel{lst:sensor_agua}{{3}{7}{Sensor de Nível de Água Resistivo}{lstlisting.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces Rotina modularizada de leitura analógica do nível de água e calibração por restrição gráfica.}}{7}{}\protected@file@percent }
 \citation{flutter:26}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Sensor de Nível de Água Resistivo}{6}{}\protected@file@percent }
-\newlabel{lst:sensor_agua}{{3}{6}{Sensor de Nível de Água Resistivo}{lstlisting.3}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces Leitura analógica e conversão para escala percentual hídrica.}}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Aplicativo Móvel (Flutter Framework)}{6}{}\protected@file@percent }
-\newlabel{lst:app_flutter}{{4}{6}{Aplicativo Móvel (Flutter Framework)}{lstlisting.4}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces Rotina em Dart/Flutter para serialização e envio de agendamento.}}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Aplicativo Móvel (Flutter Framework)}{8}{}\protected@file@percent }
+\newlabel{lst:app_flutter}{{4}{8}{Aplicativo Móvel (Flutter Framework)}{lstlisting.4}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces Rotina em Dart/Flutter para serialização e envio de agendamento.}}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Fluxogramas Operacionais}{8}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Representação estrutural do fluxograma de estados do firmware.}}{8}{}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:fluxo_firmware}{{1}{8}{Fluxogramas Operacionais}{figure.1}{}}
 \citation{mermaid:26}
 \citation{tinkercad:23}
 \citation{blueoprint:26}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Fluxogramas Operacionais}{7}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Representação estrutural do fluxograma de estados do firmware.}}{7}{}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:fluxo_firmware}{{1}{7}{Fluxogramas Operacionais}{figure.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Avaliação e Resultados}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Custos do Projeto}{7}{}\protected@file@percent }
 \citation{onizoomi:26}
 \citation{surecare:26}
 \citation{alves:20}
 \citation{folha:23}
 \bibcite{alves:20}{Alves 2020}
 \bibcite{tinkercad:23}{Tinkercad 2023}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Avaliação e Resultados}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Custos do Projeto}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusão}{9}{}\protected@file@percent }
 \bibcite{avia:hx711}{Avia Semiconductor 2014}
 \bibcite{blueoprint:26}{Blueoprint 2026}
 \bibcite{components101:water}{Components101 2020}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Custos detalhados dos componentes do projeto FeedPet.}}{8}{}\protected@file@percent }
-\newlabel{tab:custos_projeto}{{1}{8}{Custos do Projeto}{table.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusão}{8}{}\protected@file@percent }
 \bibcite{espressif:esp32}{Espressif 2023}
 \bibcite{flutter:26}{Flutter 2026}
 \bibcite{folha:23}{Folha 2023}
@@ -66,4 +64,6 @@
 \bibcite{onizoomi:26}{Onizoomi 2026}
 \bibcite{surecare:26}{SureCare 2026}
 \bibcite{ti:l293n}{Texas Instruments 2002}
-\gdef \@abspage@last{9}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Custos detalhados dos componentes do projeto FeedPet.}}{10}{}\protected@file@percent }
+\newlabel{tab:custos_projeto}{{1}{10}{Custos do Projeto}{table.1}{}}
+\gdef \@abspage@last{11}
