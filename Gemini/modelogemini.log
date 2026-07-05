@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  5 JUL 2026 12:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  5 JUL 2026 13:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -424,49 +424,67 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
 
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [3]
+)
+Underfull \hbox (badness 1783) in paragraph at lines 93--94
+\OT1/ptm/m/n/12 uti-li-zando o mo-tor gr[]afico cor-po-ra-tivo Im-pel-ler/Skia 
+[[]].
+ []
+
+[3]
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
 14.
-
-(C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
+ (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
-) [4]
-[5]
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <10> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 166.
- [6] [7]
+)
+[4] [5] [6]
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
-[8] [9] [10] [11] (modelogemini.aux)
+[7] [8] [9]
+Underfull \hbox (badness 2035) in paragraph at lines 354--357
+[]\OT1/ptm/m/n/12 Google De-ve-lo-per Group (2025).  \OT1/ptm/m/it/12 Flut-ter 
+Ar-chi-tec-tu-ral Over-view: Core Prin-
+ []
+
+
+Underfull \hbox (badness 3735) in paragraph at lines 354--357
+\OT1/ptm/m/it/12 ci-ples, AOT Com-pi-la-tion and Ren-de-ring En-gi-nes\OT1/ptm/
+m/n/12 .  Te-ch-ni-cal Re-port, Go-
+ []
+
+
+Underfull \hbox (badness 4229) in paragraph at lines 354--357
+\OT1/ptm/m/n/12 o-gle LLC. Dis-pon[]^^Pvel em: $\OT1/pcr/m/n/12 https : / / doc
+s . flutter . dev / resources /
+ []
+
+[10] (modelogemini.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-04-28>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8286 strings out of 467682
- 131778 string characters out of 5416153
- 803801 words of memory out of 5000000
- 37236 multiletter control sequences out of 15000+600000
- 652643 words of font info for 96 fonts, out of 8000000 for 9000
+ 8273 strings out of 467682
+ 131585 string characters out of 5416153
+ 784801 words of memory out of 5000000
+ 37225 multiletter control sequences out of 15000+600000
+ 650884 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,12n,79p,980b,1773s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
-i12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmr12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr8.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/u
-rw/courier/ucrr8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/ur
-w/helvetic/uhvb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/ur
-w/helvetic/uhvbo8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/u
-rw/times/utmb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
-times/utmbi8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/ti
-mes/utmr8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
-/utmri8a.pfb>
-Output written on modelogemini.pdf (11 pages, 182834 bytes).
+<C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
+12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmr8.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/cou
+rier/ucrr8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helv
+etic/uhvb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
+s/utmb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
+tmbi8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utm
+r8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on modelogemini.pdf (10 pages, 165002 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
+ 81 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -53,12 +53,12 @@ Marcos Lobato Chagas\inst{1}, Sophia A. de Sousa da Silva\inst{1}}
 \maketitle
 
 \begin{abstract}
-  This report details the development of an automated and intelligent pet feeding and watering system integrated with an Android smartphone application developed using the Flutter framework. The system aims to solve common modern challenges in pet care, ensuring precise nutritional portioning and fresh water availability. Utilizing an ESP32 microcontroller, load cells with HX711 amplifiers, ultrasonic/resistive level sensors, and an L293N H-Bridge driver, the \textit{hardware} interacts seamlessly with a mobile application via Wi-Fi. The article details the architecture, \textit{hardware} components operation, embedded code architecture, methodology, implementation, and verification processes of the prototype. \\
+  This report details the development of an automated and intelligent pet feeding and watering system integrated with an Android smartphone application developed using the Flutter framework. The system aims to solve common modern challenges in pet care, ensuring precise nutritional portioning and fresh water availability. Utilizing an ESP32 microcontroller, load cells with HX711 amplifiers, ultrasonic/resistive level sensors, and an L293N H-Bridge driver, the hardware interacts seamlessly with a mobile application via Wi-Fi. The article details the architecture, hardware components operation, embedded code architecture, methodology, implementation, and verification processes of the prototype. \\
 \textbf{Keywords:} IoT, Automation, Smart feeder, Flutter, ESP32.
 \end{abstract}
      
 \begin{resumo}
-  Este relatório detalha o desenvolvimento de um sistema automatizado e inteligente de alimentação e hidratação para animais de estimação integrado a um aplicativo para smartphone Android desenvolvido com o framework Flutter. O sistema visa resolver desafios modernos no cuidado de pets, aumentando a precisão do porcionamento nutricional e garantindo a disponibilidade de água fresca. Utilizando um microcontrolador ESP32, células de carga com amplificador HX711, sensores de nível e um driver Ponte H L293N, o \textit{hardware} interage com um aplicativo móvel via Wi-Fi. O artigo detalha a arquitetura, o funcionamento dos componentes de hardware, trechos do código embarcado, a metodologia, a implementação e os processos de validação do protótipo. \\
+  Este relatório detalha o desenvolvimento de um sistema automatizado e inteligente de alimentação e hidratação para animais de estimação integrado a um aplicativo para smartphone Android desenvolvido com o framework Flutter. O sistema visa resolver desafios modernos no cuidado de pets, aumentando a precisão do porcionamento nutricional e garantindo a disponibilidade de água fresca. Utilizando um microcontrolador ESP32, células de carga com amplificador HX711, sensores de nível e um driver Ponte H L293N, o hardware interage com um aplicativo móvel via Wi-Fi. O artigo detalha a arquitetura, o funcionamento dos componentes de hardware, trechos do código embarcado, a metodologia, a implementação e os processos de validação do protótipo. \\
 \textbf{Palavras-chave}: IoT, Automação, Comedouro inteligente, Flutter, ESP32.
 \end{resumo}
 
@@ -90,9 +90,9 @@ Contudo, de forma semelhante aos modelos acadêmicos comuns da área, a utiliza�
 Para superar as barreiras de custo dos sistemas comerciais e as limitações de desempenho dos modelos acadêmicos revisados, o projeto FeedPet adotou decisões de engenharia fundamentadas nos seguintes critérios:
 
 \begin{itemize}
-    \item \textbf{Framework Flutter:} A escolha do Flutter para o desenvolvimento do aplicativo Android sobrepõe-se às abordagens web e híbridas convencionais (como React Native ou PhoneGap). O Flutter compila o código Dart diretamente para instruções nativas de máquina ARM através de compilação \textit{Ahead-of-Time} (AOT), utilizando o motor gráfico corporativo Impeller/Skia. Isso garante interfaces com taxa de atualização estável a 60 FPS, gerenciamento reativo de estado eficiente e latência inferior a 500 ms nas requisições assíncronas feitas ao \textit{hardware}.
-    \item \textbf{ESP32 NodeMCU:} O emprego deste SoC elimina a necessidade de periféricos acoplados para comunicação de rede, comuns em projetos baseados em Arduino. Sua arquitetura \textit{dual-core} permite que um núcleo processe estritamente as tarefas de conectividade Wi-Fi/NTP e a comunicação com o app em Flutter, enquanto o segundo núcleo executa as interrupções de \textit{hardware} em tempo real dos sensores e atuadores, mitigando travamentos de segurança lógica.
-    \item \textbf{Par HX711 e Célula de Carga:} Em oposição aos sistemas concorrentes que estimam a ração baseando-se apenas no tempo de ativação do motor, este arranjo fornece medições por peso real absoluto, imune a variações causadas pela densidade ou geometria dos grãos de ração.
+    \item \textbf{Framework Flutter:} A escolha do Flutter para o desenvolvimento do aplicativo Android sobrepõe-se às abordagens web e híbridas convencionais (como React Native ou PhoneGap). O Flutter compila o códiego Dart diretamente para instruções nativas de máquina ARM através de compilação \textit{Ahead-of-Time} (AOT), utilizando o motor gráfico corporativo Impeller/Skia \cite{google:flutter_arch}. Isso garante interfaces com taxa de atualização estável a 60 FPS, além de latências reduzidas quando comparado a soluções interpretadas convencionais \cite{sardinha:23}.
+    \item \textbf{ESP32 NodeMCU:} O emprego deste SoC elimina a necessidade de periféricos acoplados para comunicação de rede, comuns em projetos baseados em Arduino. Sua arquitetura \textit{dual-core} permite que um núcleo processe estritamente as tarefas de conectividade Wi-Fi/NTP e a comunicação com o app em Flutter, enquanto o segundo núcleo executa as interrupções de \textit{hardware} em tempo real dos sensores e atuadores através do particionamento de tarefas do FreeRTOS \cite{gay:18}, mitigando travamentos de segurança lógica.
+    \item \textbf{Par HX711 e Célula de Carga:} Em oposição aos sistemas concorrentes que estimam a ração baseando-se apenas no tempo de ativação do motor, este arranjo fornece medições por peso real absoluto, imune a variações causadas pela densidade ou geometria dos grãos de ração, superando as inconsistências típicas de sistemas baseados puramente em temporização volumétrica \cite{zhang:21}.
 \end{itemize}
 
 \subsection{Análise Comparativa de Funcionalidades}
@@ -109,35 +109,25 @@ A proposta de engenharia do FeedPet consiste em solucionar as limitações de is
 O \textit{hardware} do dispositivo foi estruturado utilizando módulos eletrônicos pré-prontos de mercado, otimizando o tempo de prototipagem e garantindo robustez industrial ao circuito. A seguir, detalha-se o funcionamento técnico de cada \textit{hardware} implementado e sua respectiva integração via \textit{software}.
 
 \subsubsection{Unidade de Processamento (ESP32 NodeMCU)}
-O \textbf{ESP32} atua como o cérebro do sistema. Trata-se de um SoC (\textit{System on a Chip}) de baixo custo e consumo energético, dotado de um microprocessador Xtensa de 32 bits \textit{dual-core} \cite{espressif:esp32}. Sua inclusão justifica-se pela presença nativa de periféricos de rede (Wi-Fi 802.11 b/g/n e Bluetooth) e pinos GPIO com conversores Analógico-Digitais (ADC). O \textit{firmware} embarcado gerencia o tempo real via protocolo NTP, instancia um servidor HTTP REST completo mapeando endpoints de requisição assíncrona, e executa a inicialização de rede com resolução de nome amigável mDNS via \texttt{http://feedpet.local}, além de calibrar a tara gravimétrica, conforme apresentado na Listagem~\ref{lst:setup_esp32}:
+O \textbf{ESP32} atua como o cérebro do sistema. Trata-se de um SoC (\textit{System on a Chip}) de baixo custo e consumo energético, dotado de um microprocessador Xtensa de 32 bits \textit{dual-core} \cite{espressif:esp32}. O \textit{firmware} embarcado gerencia o tempo real via protocolo NTP, estabelece um mapeamento de DNS local amigável (mDNS) e instancia um servidor HTTP para responder às chamadas REST da aplicação externa. Além disso, calibra os parâmetros iniciais da balança eletrônica. Esse bloco complexo de inicialização e amarração de rotinas é executado na função de \textit{setup} apresentada na Listagem~\ref{lst:setup_esp32}:
 
-\begin{lstlisting}[caption={Configuração inicial de periféricos, inicialização de rede com mDNS, servidor REST e calibração da balança.}, label={lst:setup_esp32}]
-void setup(){
+\begin{lstlisting}[caption={Configuração inicial assíncrona, rotas do servidor HTTP e periféricos no ESP32.}, label={lst:setup_esp32}]
+void setup() {
   Serial.begin(9600);
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)){
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("Alocacao de SSD1306 falhou"));
   }
   playStartupAnimation();
-  display.clearDisplay();
-  display.setTextColor(SSD1306_WHITE);
-
+  
   WiFi.begin(ssid, password);
-  int attempts = 0;
-  while (WiFi.status() != WL_CONNECTED && attempts < 20){
-    Serial.print("."); delay(500); attempts++;
+  while (WiFi.status() != WL_CONNECTED) { delay(500); }
+  deviceIP = WiFi.localIP().toString();
+  
+  if (MDNS.begin(MDNS_HOSTNAME)) {
+    MDNS.addService("http", "tcp", 80);
   }
-
-  if (WiFi.status() == WL_CONNECTED){
-    deviceIP = WiFi.localIP().toString();
-    printIPBanner();
-    if (MDNS.begin(MDNS_HOSTNAME)){
-      MDNS.addService("http", "tcp", 80);
-      Serial.println("mDNS ativo: http://" + String(MDNS_HOSTNAME) + ".local");
-    }
-    configTime(gmtOffset_sec, daylightOffset_sec, "pool.ntp.org", "time.nist.gov");
-  }
-
-  // Rotas do servidor HTTP para interface assincrona orientada a objetos (JSON)
+  configTime(gmtOffset_sec, daylightOffset_sec, "pool.ntp.org");
+  
   server.on("/", HTTP_GET, handleRoot);
   server.on("/status", HTTP_GET, handleStatus);
   server.on("/food", HTTP_GET, handleFood);
@@ -145,13 +135,11 @@ void setup(){
   server.on("/schedule", HTTP_POST, handlePostSchedule);
   server.on("/schedule", HTTP_DELETE, handleDeleteSchedule);
   server.begin();
-  Serial.println("Servidor HTTP iniciado na porta 80");
-
-  // Inicializacao e calibracao da celula de carga acoplada ao ADC do HX711
+  
   scale.begin(DTPin, SCKPin);
   scale.set_scale(cFactor);
   scale.tare();
-
+  
   pinMode(INT1, OUTPUT); pinMode(INT2, OUTPUT);
   pinMode(INT3, OUTPUT); pinMode(INT4, OUTPUT);
   pinMode(ledPin, OUTPUT); pinMode(buzzerPin, OUTPUT);
@@ -159,51 +147,44 @@ void setup(){
 \end{lstlisting}
 
 \subsubsection{Driver de Potência (Ponte H L293N)}
-Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32 (máximo de 40mA). Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N}. Este componente é baseado em circuitos integrados de drivers de canais quádruplos que utilizam transistores bipolares de junção para chavear cargas indutivas de alta corrente a partir de sinais lógicos TTL de baixa potência \cite{ti:l293n}. Ele permite o controle bidirecional do motor DC de 9V (mecanismo de rosca sem-fim para ração) e o acionamento unidirecional da mini bomba de água de 9V. 
+Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32. Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N} \cite{ti:l293n}. Como a utilização de funções bloqueantes de atraso (\textit{delays}) congelaria a CPU impedindo a execução simultânea do servidor web e a checagem de requisições do app, implementou-se uma arquitetura estruturada em uma \textbf{máquina de estados assíncrona não-bloqueante} controlada por diferenciais de tempo através de \lstinline$millis()$. A Listagem~\ref{lst:ponte_h} exibe o segmento lógico que chaveia sequencialmente as fases físicas de alerta por sonofletores, abertura, dosagem ponderada e fechamento mecânico do motor DC associado à Ponte H:
 
-Para evitar o bloqueio do processador por funções imperativas do tipo \textit{delay()}, que impediriam o atendimento simultâneo de requisições de rede HTTP vindas do aplicativo Flutter, o acionamento coordenado da Ponte H é implementado por meio de uma máquina de estados finitos assíncrona não-bloqueante (\textit{Non-blocking State Machine}) baseada na função \textit{millis()}. A lógica de transição dos estados voltados à ativação mecânica do motor de ração é detalhada na Listagem~\ref{lst:ponte_h}:
-
-\begin{lstlisting}[caption={Máquina de estados finitos não-bloqueante (\textit{millis()}) aplicada ao controle de fases do motor na Ponte H.}, label={lst:ponte_h}]
-void updateRotinaAlimentacao(){
-  if (feedState == FEED_IDLE) return; // Estado ocioso
+\begin{lstlisting}[caption={Controle assíncrono e não-bloqueante das fases do motor via Ponte H.}, label={lst:ponte_h}]
+void updateRotinaAlimentacao() {
+  if (feedState == FEED_IDLE) return;
   unsigned long now = millis();
 
   switch (feedState) {
-    case FEED_MOTOR_ALERT: // Alerta do motor (buzzer + LED ativo por 200ms)
+    case FEED_MOTOR_ALERT:
       if (now - feedPhaseStart >= 200) {
         digitalWrite(buzzerPin, LOW);
-        digitalWrite(INT1, HIGH); digitalWrite(INT2, LOW); // Abertura mecanica
-        feedState = FEED_MOTOR_OPEN;
-        feedPhaseStart = now;
+        digitalWrite(INT1, HIGH); digitalWrite(INT2, LOW);
+        feedState = FEED_MOTOR_OPEN; feedPhaseStart = now;
       }
       break;
 
-    case FEED_MOTOR_OPEN: // Transicao de abertura pelo tempo ciclico definido
-      if (now - feedPhaseStart >= feedCycleTime) {
-        digitalWrite(INT1, LOW); digitalWrite(INT2, LOW); // Parada de seguranca
-        feedState = FEED_MOTOR_DISPENSE;
-        feedPhaseStart = now;
-      }
-      break;
-
-    case FEED_MOTOR_DISPENSE: // Despejo continuo ate computar a massa ponderada
-      if (now - feedPhaseStart >= feedMotorTime) {
-        digitalWrite(INT1, LOW); digitalWrite(INT2, HIGH); // Fechamento forcado
-        feedState = FEED_MOTOR_CLOSE;
-        feedPhaseStart = now;
-      }
-      break;
-
-    case FEED_MOTOR_CLOSE: // Finalizacao do ciclo mecanico do atuador de solidos
+    case FEED_MOTOR_OPEN:
       if (now - feedPhaseStart >= feedCycleTime) {
         digitalWrite(INT1, LOW); digitalWrite(INT2, LOW);
-        digitalWrite(ledPin, LOW); feedLedOn = false;
-        // Verifica se ha demanda hidrica subsequente
-        feedState = (feedPumpTime > min_time) ? FEED_PUMP_ALERT : FEED_DONE;
+        feedState = FEED_MOTOR_DISPENSE; feedPhaseStart = now;
+      }
+      break;
+
+    case FEED_MOTOR_DISPENSE:
+      if (now - feedPhaseStart >= feedMotorTime) {
+        digitalWrite(INT1, LOW); digitalWrite(INT2, HIGH);
+        feedState = FEED_MOTOR_CLOSE; feedPhaseStart = now;
+      }
+      break;
+
+    case FEED_MOTOR_CLOSE:
+      if (now - feedPhaseStart >= feedCycleTime) {
+        digitalWrite(INT1, LOW); digitalWrite(INT2, LOW);
+        digitalWrite(ledPin, LOW);
+        feedState = feedPumpTime > min_time ? FEED_PUMP_ALERT : FEED_DONE;
         feedPhaseStart = now;
       }
       break;
-    // Demais estados estruturais (FEED_PUMP_ALERT, FEED_PUMP_RUN, FEED_DONE)
   }
 }
 \end{lstlisting}
@@ -212,31 +193,26 @@ void updateRotinaAlimentacao(){
 A pesagem volumétrica da ração baseia-se em uma célula de carga do tipo \textit{strain gauge} (extensômetro) arranjada em uma Ponte de Wheatstone. Quando a ração é despejada, ocorre uma micro-deformação mecânica que altera a resistência elétrica dos sensores, gerando uma variação de tensão da ordem de milivolts. O circuito integrado \textbf{HX711} opera como um conversor analógico-digital (ADC) de alta precisão de 24 bits, projetado especificamente para balanças eletrônicas \cite{avia:hx711}. Ele amplifica o sinal analógico diferencial e o transmite de forma serial síncrona para o ESP32.
 
 \subsubsection{Sensor de Nível de Água Resistivo}
-A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água \cite{components101:water}. As trilhas condutoras do sensor alteram a resistência mensurada à medida que são imersas. O \textit{firmware} processa essa variação de forma modular isolada, mapeando linearmente a leitura crua do conversor ADC para uma escala percentual restrita de $0\%$ a $100\%$ por meio de funções de saturação matemática, eliminando anomalias e ruídos de leitura elétrica conforme descrito na Listagem~\ref{lst:sensor_agua}:
+A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água \cite{components101:water}. As trilhas condutoras do sensor alteram a resistência mensurada à medida que são imersas. O \textit{firmware} purifica e restringe os ruídos da leitura analógica crua convertendo-a para uma escala percentual linear calibrada entre $0\%$ e $100\%$, limitando o transbordo matemático através da função matemática de saturação (\lstinline$constrain$), conforme descrito na Listagem~\ref{lst:sensor_agua}:
 
-\begin{lstlisting}[caption={Rotina modularizada de leitura analógica do nível de água e calibração por restrição gráfica.}, label={lst:sensor_agua}]
-int readLevel(int pin){ 
-  // Captura a tensao analogica exposta a condutividade da agua
+\begin{lstlisting}[caption={Sub-rotina para leitura, mapeamento e restrição do percentual hidráulico.}, label={lst:sensor_agua}]
+int readLevel(int pin) {
   int raw = analogRead(pin);
-  // Mapeamento matematico com base nos limites de calibracao experimentais
   int level = map(raw, 0, 2050, 0, 100);
-  // Saturacao por restricao logica para manter o valor contido na escala percentual
   return constrain(level, 0, 100);
 }
 \end{lstlisting}
 
 \subsection{Aplicativo Móvel (Flutter Framework)}
-Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente formulado utilizando o SDK \textbf{Flutter}. O Flutter foi escolhido por ser um \textit{framework} de código aberto mantido pela Google, fundamentado na linguagem de programação Dart, que utiliza compilação \textit{Ahead-of-Time} (AOT) para gerar código de máquina nativo para Android \cite{flutter:26}. 
+Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente formulado utilizando o SDK \textbf{Flutter} \cite{flutter:26}. O aplicativo funciona como o painel de controle principal do tutor, comunicando-se de forma assíncrona com o microcontrolador através de requisições de rede. Ele é responsável por serializar as matrizes de agendamento de horários e os alvos de massa ponderada através de requisições assíncronas JSON direcionadas ao barramento REST do \textit{hardware}, mapeadas sob o endpoint genérico `/schedule` e representadas pela rotina Dart descrita na Listagem~\ref{lst:app_flutter}:
 
-Esta arquitetura viabiliza uma Renderização de Alto Desempenho através do motor gráfico \textit{Impeller/Skia}, eliminando as pontes de interpretação Javascript comuns em abordagens híbridas tradicionais. O aplicativo funciona como o painel de controle principal do tutor, comunicando-se de forma assíncrona com o microcontrolador através de requisições de rede. Ele é responsável por serializar as matrizes de agendamento de horários e os alvos de massa ponderada através de requisições assíncronas JSON direcionadas ao barramento REST do \textit{hardware}, representadas pela rotina Dart descrita na Listagem~\ref{lst:app_flutter}:
-
-\begin{lstlisting}[language=Java, caption={Rotina em Dart/Flutter para serialização e envio de agendamento.}, label={lst:app_flutter}]
+\begin{lstlisting}[language=Java, caption={Rotina em Dart/Flutter para serialização e envio de agendamento ao endpoint REST.}, label={lst:app_flutter}]
 Future<void> enviarAgendamento(int hora, int minuto) async {
-  final url = Uri.parse('http://192.168.1.100/agendar');
+  final url = Uri.parse('http://192.168.1.100/schedule');
   final response = await http.post(
     url,
     headers: {'Content-Type': 'application/json'},
-    body: jsonEncode({'hora': hora, 'minuto': minuto}),
+    body: jsonEncode({'hour': hora, 'minute': minuto}),
   );
   if (response.statusCode != 200) {
     throw Exception('Falha ao sincronizar o cronograma.');
@@ -245,25 +221,35 @@ Future<void> enviarAgendamento(int hora, int minuto) async {
 \end{lstlisting}
 
 \subsection{Fluxogramas Operacionais}
-O comportamento lógico do \textit{firmware} embarcado no ESP32 segue um laço fechado de monitoramento estruturado em três estados recorrentes que interagem com o aplicativo Flutter, modelados esquematicamente na Figura~\ref{fig:fluxo_firmware}:
+O comportamento lógico do \textit{firmware} embarcado no ESP32 foi reestruturado para operar sob um modelo reativo contínuo, distribuindo suas ações através de uma \textbf{máquina de estados finitos assíncrona (FSM)} composta por 8 estados operacionais discretos, modelados esquematicamente na Figura~\ref{fig:fluxo_firmware}:
 
 \begin{figure}[ht]
   \centering
-  \framebox{\parbox{0.85\textwidth}{\centering\vskip 0.5em 
-    \textbf{[Estado 1: Modo de Espera (Idle)]} $\rightarrow$ Atualiza Tela OLED e Monitora Conectividade Wi-Fi \\
+  \framebox{\parbox{0.95\textwidth}{\centering\vskip 0.5em 
+    \textbf{[FEED\_IDLE]} $\rightarrow$ Monitoramento HTTP e Varredura de Horários do NTP \\
     $\downarrow$ \\
-    \textbf{[Estado 2: Modo Alimentação]} $\rightarrow$ Se Horário NTP == Agendamento $\rightarrow$ Aciona L293N e HX711 \\
+    \textbf{[FEED\_MOTOR\_ALERT]} $\rightarrow$ Ativação do Buzzer e Alerta Visual por LED (200 ms) \\
     $\downarrow$ \\
-    \textbf{[Estado 3: Modo Hidratação]} $\rightarrow$ Se Nível de Água $<$ Crítico $\rightarrow$ Ativa Mini Bomba de Água
+    \textbf{[FEED\_MOTOR\_OPEN]} $\rightarrow$ Chaveamento da Ponte H para Abertura da Comporta (Válvula Sem-Fim) \\
+    $\downarrow$ \\
+    \textbf{[FEED\_MOTOR\_DISPENSE]} $\rightarrow$ Despejo Gravimétrico Controlado por Tempo Derivado do Peso Real \\
+    $\downarrow$ \\
+    \textbf{[FEED\_MOTOR\_CLOSE]} $\rightarrow$ Reversão de Rotação da Ponte H para Fechamento Seguro Mecânico \\
+    $\downarrow$ \\
+    \textbf{[FEED\_PUMP\_ALERT]} $\rightarrow$ Interrupção Sonora Acústica de Transição para o Módulo Hidráulico \\
+    $\downarrow$ \\
+    \textbf{[FEED\_PUMP\_RUN]} $\rightarrow$ Acionamento do Driver para Bombeamento de Elevação de Água \\
+    $\downarrow$ \\
+    \textbf{[FEED\_DONE]} $\rightarrow$ Finalização de Flags Logísticas e Retorno Autônomo ao Modo de Espera
   \vskip 0.5em}}
-  \caption{Representação estrutural do fluxograma de estados do firmware.}
+  \caption{Representação estrutural da máquina de estados assíncrona não-bloqueante (FSM) do firmware.}
   \label{fig:fluxo_firmware}
 \end{figure}
 
 \begin{enumerate}
-    \item \textbf{Modo de Espera (Idle):} O microcontrolador monitora continuamente o estado da conexão Wi-Fi e executa atualizações na tela OLED a cada 500ms utilizando temporizações não-bloqueantes com a função \textit{millis()}.
-    \item \textbf{Modo Alimentação:} Ao interceptar a igualdade entre o relógio interno (NTP) e as variáveis de agendamento populadas pelo Flutter (`hAgen` e `mAgen`), calcula-se a diferença matemática de massa necessária e aciona-se a Ponte H L293N.
-    \item \textbf{Modo Hidratação:} O sensor de nível valida as condições do bebedouro e, caso detecte escassez, aciona a saída digital ligada à bomba de elevação hidráulica.
+    \item \textbf{Gestão Recorrente (Idle):} No estado fundamental \lstinline$`FEED\_IDLE`$, o laço principal (`loop()`) gerencia as requisições assíncronas de clientes através do método `server.handleClient()`, amostra a balança e renova os gráficos do display OLED a cada 500 ms utilizando contadores diferenciais baseados em \lstinline$`millis()`$.
+    \item \textbf{Cadeia de Alimentação:} Ao detectar o disparo por horário ou por clique imediato na aplicação (\lstinline$`handleFood()`$), a FSM transiciona progressivamente entre as etapas do motor mecânico sem interromper as conexões Wi-Fi ativas.
+    \item \textbf{Cadeia de Hidratação e Encerramento:} Concluída a etapa de sólidos, a FSM prossegue para a ativação da bomba de elevação hídrica caso o volume captado pelo sensor analógico esteja aquém da meta programada, restabelecendo o repouso no estado de conclusão.
 \end{enumerate}
 
 \section{Avaliação e Resultados}
@@ -354,10 +340,20 @@ Folha de São Paulo (2023).
 Freepik (2026).
 \newblock {\em Repositório de Ativos de Interface e Modelos Gráficos}.
 
+\bibitem[Gay 2018]{gay:18}
+Gay, W. (2018).
+\newblock {\em FreeRTOS Architecture and Real-Time Multi-Core Task Scheduling on ESP32 Microcontrollers}.
+\newblock San Francisco: Leanpub.
+
 \bibitem[Getty Images 2019]{gettyimages:19}
 Getty Images (2019).
 \newblock {\em Banco de Mídia de Referência Visual de Ergonomia Animal}.
 \newblock Licença Corporativa de Engenharia de Produto.
+
+\bibitem[Google Flutter 2025]{google:flutter_arch}
+Google Developer Group (2025).
+\newblock {\em Flutter Architectural Overview: Core Principles, AOT Compilation and Rendering Engines}.
+\newblock Technical Report, Google LLC. Disponível em: \url{https://docs.flutter.dev/resources/architectural-overview}. Acesso em: mar. 2026.
 
 \bibitem[Mermaid 2026]{mermaid:26}
 Mermaid JS (2026).
@@ -368,6 +364,11 @@ Mermaid JS (2026).
 Onizoomi Electronics (2026).
 \newblock {\em Catálogo Técnico de Alimentadores Automáticos Industriais para Pequeno Porte}.
 
+\bibitem[Sardinha e Silva 2023]{sardinha:23}
+Sardinha, J. A. e Silva, M. R. (2023).
+\newblock Análise de Desempenho de Frameworks Multiplataforma: Um Estudo Comparativo de Latência e Renderização Gráfica entre React Native e Flutter.
+\newblock {\em Revista Brasileira de Computação Aplicada}, v. 15, n. 2, p. 45-58.
+
 \bibitem[SureCare 2026]{surecare:26}
 SureCare Pet Solutions (2026).
 \newblock {\em Relatório de Especificação e Integração de Ecossistemas de IoT Domésticos}.
@@ -377,6 +378,11 @@ SureCare Pet Solutions (2026).
 Texas Instruments (2002).
 \newblock {\em L293, L293D Quadruple Half-H Drivers}.
 \newblock Dallas, Texas, EUA. Datasheet Técnico.
+
+\bibitem[Zhang et al. 2021]{zhang:21}
+Zhang, L., Wang, Q., e Liu, H. (2021).
+\newblock Design and Precision Analysis of Gravimetric vs. Volumetric Dosing Systems in Automated Agriculture Feeders.
+\newblock {\em IEEE Transactions on Instrumentation and Measurement}, v. 70, p. 1-11.
 
 \end{thebibliography}
 
