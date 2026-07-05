@@ -204,7 +204,7 @@ int readLevel(int pin) {
 \end{lstlisting}
 
 \subsection{Aplicativo Móvel (Flutter Framework)}
-Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente formulado utilizando o SDK \textbf{Flutter} \cite{flutter:26}. O aplicativo funciona como o painel de controle principal do tutor, comunicando-se de forma assíncrona com o microcontrolador através de requisições de rede. Ele é responsável por serializar as matrizes de agendamento de horários e os alvos de massa ponderada através de requisições assíncronas JSON direcionadas ao barramento REST do \textit{hardware}, mapeadas sob o endpoint genérico `/schedule` e representadas pela rotina Dart descrita na Listagem~\ref{lst:app_flutter}:
+Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente formulado utilizando o SDK \textbf{Flutter} \cite{flutter:26}. O aplicativo funciona como o painel de controle principal do tutor, comunicando-se de forma assíncrona com o microcontrolador através de requisições de rede. Ele é responsável por serializar as matrizes de agendamento de horários e os alvos de massa ponderada através de requisições assíncronas JSON direcionadas ao barramento REST do \textit{hardware}, mapeadas sob o endpoint genérico \lstinline$/schedule$ e representadas pela rotina Dart descrita na Listagem~\ref{lst:app_flutter}:
 
 \begin{lstlisting}[language=Java, caption={Rotina em Dart/Flutter para serialização e envio de agendamento ao endpoint REST.}, label={lst:app_flutter}]
 Future<void> enviarAgendamento(int hora, int minuto) async {
@@ -247,8 +247,8 @@ O comportamento lógico do \textit{firmware} embarcado no ESP32 foi reestruturad
 \end{figure}
 
 \begin{enumerate}
-    \item \textbf{Gestão Recorrente (Idle):} No estado fundamental \lstinline$`FEED\_IDLE`$, o laço principal (`loop()`) gerencia as requisições assíncronas de clientes através do método `server.handleClient()`, amostra a balança e renova os gráficos do display OLED a cada 500 ms utilizando contadores diferenciais baseados em \lstinline$`millis()`$.
-    \item \textbf{Cadeia de Alimentação:} Ao detectar o disparo por horário ou por clique imediato na aplicação (\lstinline$`handleFood()`$), a FSM transiciona progressivamente entre as etapas do motor mecânico sem interromper as conexões Wi-Fi ativas.
+    \item \textbf{Gestão Recorrente (Idle):} No estado fundamental \lstinline$FEED\_IDLE$, o laço principal (\lstinline$loop()$) gerencia as requisições assíncronas de clientes através do método \lstinline$server.handleClient()$, amostra a balança e renova os gráficos do display OLED a cada 500 ms utilizando contadores diferenciais baseados em \lstinline$millis()$.
+    \item \textbf{Cadeia de Alimentação:} Ao detectar o disparo por horário ou por clique imediato na aplicação (\lstinline$handleFood()$), a FSM transiciona progressivamente entre as etapas do motor mecânico sem interromper as conexões Wi-Fi ativas.
     \item \textbf{Cadeia de Hidratação e Encerramento:} Concluída a etapa de sólidos, a FSM prossegue para a ativação da bomba de elevação hídrica caso o volume captado pelo sensor analógico esteja aquém da meta programada, restabelecendo o repouso no estado de conclusão.
 \end{enumerate}
 
@@ -319,7 +319,6 @@ Blueoprint (2026).
 \bibitem[Components101 2020]{components101:water}
 Components101 (2020).
 \newblock {\em Water Level Sensor Module: Pinout, Specification and Datasheet}.
-\newblock Disponível em: \url{https://components101.com}. Acesso em: jul. 2026.
 
 \bibitem[Espressif 2023]{espressif:esp32}
 Espressif Systems (2023).
@@ -353,7 +352,7 @@ Getty Images (2019).
 \bibitem[Google Flutter 2025]{google:flutter_arch}
 Google Developer Group (2025).
 \newblock {\em Flutter Architectural Overview: Core Principles, AOT Compilation and Rendering Engines}.
-\newblock Technical Report, Google LLC. Disponível em: \url{https://docs.flutter.dev/resources/architectural-overview}. Acesso em: mar. 2026.
+\newblock Technical Report, Google LLC.
 
 \bibitem[Mermaid 2026]{mermaid:26}
 Mermaid JS (2026).
