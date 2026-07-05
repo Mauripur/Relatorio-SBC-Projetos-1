@@ -110,7 +110,7 @@ A proposta de engenharia do FeedPet consiste em solucionar as limitações de is
 O hardware do dispositivo foi estruturado utilizando módulos eletrônicos pré-prontos de mercado, otimizando o tempo de prototipagem e garantindo robustez industrial ao circuito. A seguir, detalha-se o funcionamento técnico de cada elemento de hardware implementado e sua respectiva integração via software.
 
 \subsubsection{Unidade de Processamento (ESP32 NodeMCU)}
-O \textbf{ESP32} atua como o cérebro do sistema. Trata-se de um SoC (\textit{System on a Chip}) de baixo custo e consumo energético, dotado de um microprocessador Xtensa de 32 bits dual-core. Sua inclusão justifica-se pela presença nativa de periféricos de rede (Wi-Fi 802.11 b/g/n e Bluetooth) e pinos GPIO com conversores Analógico-Digitais (ADC). O firmware embarcado gerencia o tempo real via protocolo NTP e executa o bloco de inicialização apresentado na Listagem~\ref{lst:setup_esp32}:
+O \textbf{ESP32} atua como o cérebro do sistema. Trata-se de um SoC (\textit{System on a Chip}) de baixo custo e consumo energético, dotado de um microprocessador Xtensa de 32 bits dual-core \cite{espressif:esp32}. Sua inclusão justifica-se pela presença nativa de periféricos de rede (Wi-Fi 802.11 b/g/n e Bluetooth) e pinos GPIO com conversores Analógico-Digitais (ADC). O firmware embarcado gerencia o tempo real via protocolo NTP e executa o bloco de inicialização apresentado na Listagem~\ref{lst:setup_esp32}:
 
 \begin{lstlisting}[caption={Configuração inicial de periféricos e conexões de rede do ESP32.}, label={lst:setup_esp32}]
 void setup() {
@@ -133,7 +133,7 @@ void setup() {
 \end{lstlisting}
 
 \subsubsection{Driver de Potência (Ponte H L293N)}
-Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32 (máximo de 40mA). Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N}. Este componente é baseado em circuitos integrados de drivers de canais quádruplos que utilizam transistores bipolares de junção para chavear cargas indutivas de alta corrente a partir de sinais lógicos TTL de baixa potência. Ele permite o controle bidirecional do motor DC de 9V (mecanismo de rosca sem-fim para ração) e o acionamento unidirecional da mini bomba de água de 9V. O acionamento coordenado da Ponte H é detalhado na Listagem~\ref{lst:ponte_h}:
+Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32 (máximo de 40mA). Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N}. Este componente é baseado em circuitos integrados de drivers de canais quádruplos que utilizam transistores bipolares de junção para chavear cargas indutivas de alta corrente a partir de sinais lógicos TTL de baixa potência \cite{ti:l293n}. Ele permite o controle bidirecional do motor DC de 9V (mecanismo de rosca sem-fim para ração) e o acionamento unidirecional da mini bomba de água de 9V. O acionamento coordenado da Ponte H é detalhado na Listagem~\ref{lst:ponte_h}:
 
 \begin{lstlisting}[caption={Lógica de acionamento do motor e da bomba de água via Ponte H.}, label={lst:ponte_h}]
 if (tempo_motor > 0) {
@@ -153,10 +153,10 @@ if (tempo_motor > 0) {
 \end{lstlisting}
 
 \subsubsection{Módulo Amplificador HX711 e Célula de Carga}
-A pesagem volumétrica da ração baseia-se em uma célula de carga do tipo \textit{strain gauge} (extensômetro) arranjada em uma Ponte de Wheatstone. Quando a ração é despejada, ocorre uma micro-deformação mecânica que altera a resistência elétrica dos sensores, gerando uma variação de tensão da ordem de milivolts. O circuito integrado \textbf{HX711} opera como um conversor analógico-digital (ADC) de alta precisão de 24 bits, projetado especificamente para balanças eletrônicas. Ele amplifica o sinal analógico diferencial e o transmite de forma serial síncrona para o ESP32.
+A pesagem volumétrica da ração baseia-se em uma célula de carga do tipo \textit{strain gauge} (extensômetro) arranjada em uma Ponte de Wheatstone. Quando a ração é despejada, ocorre uma micro-deformação mecânica que altera a resistência elétrica dos sensores, gerando uma variação de tensão da ordem de milivolts. O circuito integrado \textbf{HX711} opera como um conversor analógico-digital (ADC) de alta precisão de 24 bits, projetado especificamente para balanças eletrônicas \cite{avia:hx711}. Ele amplifica o sinal analógico diferencial e o transmite de forma serial síncrona para o ESP32.
 
 \subsubsection{Sensor de Nível de Água Resistivo}
-A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água. As trilhas condutoras do sensor alteram a resistência medida à medida que são imersas. O firmware processa essa variação mapeando a leitura analógica crua para uma escala percentual ($0\%$ a $100\%$), conforme descrito na Listagem~\ref{lst:sensor_agua}:
+A leitura do nível estático de líquido no bebedouro ocorre por meio de um sensor resistivo que funciona como um divisor de tensão exposto à condutividade elétrica da água \cite{components101:water}. As trilhas condutoras do sensor alteram a resistência medida à medida que são imersas. O firmware processa essa variação mapeando a leitura analógica crua para uma escala percentual ($0\%$ a $100\%$), conforme descrito na Listagem~\ref{lst:sensor_agua}:
 
 \begin{lstlisting}[caption={Leitura analógica e conversão para escala percentual hídrica.}, label={lst:sensor_agua}]
 void measurements() {
@@ -172,7 +172,7 @@ void measurements() {
 \end{lstlisting}
 
 \subsection{Aplicativo Móvel (Flutter Framework)}
-Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente reformulado utilizando o SDK \textbf{Flutter}. O Flutter foi escolhido por ser um \textit{framework} de código aberto mantido pela Google, fundamentado na linguagem de programação Dart, que utiliza compilação \textit{Ahead-of-Time} (AOT) para gerar código de máquina nativo para Android. 
+Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente formulado utilizando o SDK \textbf{Flutter}. O Flutter foi escolhido por ser um \textit{framework} de código aberto mantido pela Google, fundamentado na linguagem de programação Dart, que utiliza compilação \textit{Ahead-of-Time} (AOT) para gerar código de máquina nativo para Android \cite{flutter:26}. 
 
 Esta arquitetura viabiliza uma Renderização de Alto Desempenho através do motor gráfico \textit{Impeller/Skia}, eliminando as pontes de interpretação Javascript comuns em abordagens híbridas tradicionais. O aplicativo funciona como o painel de controle principal do tutor, comunicando-se de forma assíncrona com o microcontrolador através de requisições de rede. Ele é responsável por serializar as matrizes de agendamento de horários e os alvos de massa ponderada através de requisições assíncronas JSON direcionadas ao barramento REST do hardware, representadas pela rotina Dart descrita na Listagem~\ref{lst:app_flutter}:
 
@@ -262,9 +262,29 @@ Alves, G. L. (2020).
 \newblock {\em AutoFeeder: Alimentador Automático para Animais Domésticos de Pequeno Porte}.
 \newblock Trabalho de Conclusão de Curso (Bacharelado em Ciência da Computação) -- Centro Universitário Unifacvest, Lages, SC.
 
+\bibitem[Tinkercad 2023]{tinkercad:23}
+Autodesk Tinkercad (2023).
+\newblock {\em Simulador de Circuitos Eletrônicos Embutidos e Prototipagem Virtual de Hardware}.
+\newblock Plataforma Educacional de Engenharia.
+
+\bibitem[Avia Semiconductor 2014]{avia:hx711}
+Avia Semiconductor (2014).
+\newblock {\em HX711: 24-Bit Analog-to-Digital Converter (ADC) for Weigh Scales}.
+\newblock Xiamen, China. Datasheet Técnico.
+
 \bibitem[Blueoprint 2026]{blueoprint:26}
 Blueoprint (2026).
 \newblock {\em IDE de Modelagem e Arquitetura de Sistemas Integrados}.
+
+\bibitem[Components101 2020]{components101:water}
+Components101 (2020).
+\newblock {\em Water Level Sensor Module: Pinout, Specification and Datasheet}.
+\newblock Disponível em: \url{https://components101.com}. Acesso em: jul. 2026.
+
+\bibitem[Espressif 2023]{espressif:esp32}
+Espressif Systems (2023).
+\newblock {\em ESP32 Technical Reference Manual}.
+\newblock Versão 4.9. Shanghai, China.
 
 \bibitem[Flutter 2026]{flutter:26}
 Flutter Team (2026).
@@ -299,10 +319,10 @@ SureCare Pet Solutions (2026).
 \newblock {\em Relatório de Especificação e Integração de Ecossistemas de IoT Domésticos}.
 \newblock White Paper de Automação Residencial.
 
-\bibitem[Tinkercad 2023]{tinkercad:23}
-Autodesk Tinkercad (2023).
-\newblock {\em Simulador de Circuitos Eletrônicos Embutidos e Prototipagem Virtual de Hardware}.
-\newblock Plataforma Educacional de Engenharia.
+\bibitem[Texas Instruments 2002]{ti:l293n}
+Texas Instruments (2002).
+\newblock {\em L293, L293D Quadruple Half-H Drivers}.
+\newblock Dallas, Texas, EUA. Datasheet Técnico.
 
 \end{thebibliography}
 

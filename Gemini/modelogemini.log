@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  4 JUL 2026 20:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  4 JUL 2026 20:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -431,7 +431,7 @@ LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 ) [4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 8075) has occurred while \output is active []
 
  [5]
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
@@ -444,13 +444,13 @@ L3 programming layer <2026-04-28>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8190 strings out of 467682
- 130444 string characters out of 5416153
- 778801 words of memory out of 5000000
- 37143 multiletter control sequences out of 15000+600000
- 650369 words of font info for 92 fonts, out of 8000000 for 9000
+ 8196 strings out of 467682
+ 130524 string characters out of 5416153
+ 777801 words of memory out of 5000000
+ 37148 multiletter control sequences out of 15000+600000
+ 650884 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,12n,79p,962b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,79p,962b,1773s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
 i12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmr12.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
@@ -462,7 +462,7 @@ w/times/utmb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
 imes/utmbi8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
 es/utmr8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on modelogemini.pdf (9 pages, 168863 bytes).
+Output written on modelogemini.pdf (9 pages, 169756 bytes).
 PDF statistics:
  83 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
