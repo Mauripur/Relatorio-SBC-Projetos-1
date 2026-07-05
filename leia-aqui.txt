@@ -5,7 +5,7 @@ Acho que dá pra editar direto pelo github se vc pedir autorização para editar
 Vou colocar abaixo um tutorial básico de git/github, caso tenhas interesse.
 
 Mesmo assim, creio que no overleaf seja mais prático pelo fato de ser possível editar ao mesmo tempo.
-Eu só quis usar o github mesmo pra ter um registro das coisas que eu editei pra saber quando eu fiz besteira aí posso voltar sem atrapalhar vc :)
+Eu só quis usar o github mesmo pra ter um registro das coisas que eu editei pra saber quando eu fiz besteira aí posso voltar sem atrapalhar :)
 
 Qualquer dúvida, só me perguntar
 
