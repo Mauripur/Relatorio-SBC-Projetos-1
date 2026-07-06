@@ -201,6 +201,13 @@ int readLevel(int pin) {
 }
 \end{lstlisting}
 
+\subsubsection{Módulo de Interface Visual (Display OLED 0.96'' I2C)}
+Para prover uma interface física de telemetria em tempo real diretamente no dispositivo, incorporou-se um \textbf{Display OLED de 0.96 polegadas} baseado no controlador embarcado \textbf{SSD1306}. O componente possui uma resolução de $128 \times 64$ pixels auto-iluminados por tecnologia de diodos orgânicos de emissão de luz, o que dispensa o uso de \textit{backlight} reflexivo e reduz drasticamente o consumo energético do nó IoT \cite{solomon:ssd1306}.
+
+A integração de dados com o ESP32 ocorre por meio do barramento serial síncrono \textbf{I2C} (\textit{Inter-Integrated Circuit}), operando através de apenas dois pinos lógicos: SDA (\textit{Serial Data}) e SCL (\textit{Serial Clock}), mapeados no endereço hexadecimal padrão \lstinline$0x3C$. A utilização do protocolo I2C é uma decisão de engenharia crítica, pois minimiza o desperdício de portas GPIO do microcontrolador, mantendo pinos livres para os atuadores de potência.
+
+Sob a perspectiva de software, o barramento é gerenciado de forma assíncrona por meio das bibliotecas \lstinline$Adafruit_SSD1306$ e \lstinline$Wire.h$ \cite{adafruit:ssd1306}. Para evitar o congelamento do processamento principal por chamadas bloqueantes, os gráficos de peso da ração e percentual hídrico são renderizados em buffers de memória locais e despachados ao display em intervalos controlados de 500~ms através da estrutura não-bloqueante baseada em \lstinline$millis()$, em perfeita consonância com a máquina de estados (FSM) descrita nos fluxogramas operacionais.
+
 \subsection{Aplicativo Móvel (Flutter Framework)}
 Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente formulado utilizando o SDK \textbf{Flutter} \cite{flutter:26}. O aplicativo funciona como o painel de controle principal do tutor, sendo responsável pelo tratamento de dados lógicos, estruturação e manipulação assíncrona local e remota dos cronogramas alimentares.
 
@@ -326,6 +333,11 @@ As soluções comerciais mapeadas em \cite{onizoomi:26, surecare:26} e as bases 
 
 \begin{thebibliography}{}
 
+\bibitem[Adafruit 2019]{adafruit:ssd1306}
+Adafruit Industries (2019).
+\newblock {\em Adafruit SSD1306 OLED Display Library: Hardware Interface and Graphics Driver Reference}.
+\newblock Repositório de Documentação Open-Source.
+
 \bibitem[Alves 2020]{alves:20}
 Alves, G. L. (2020).
 \newblock {\em AutoFeeder: Alimentador Automático para Animais Domésticos de Pequeno Porte}.
@@ -396,6 +408,11 @@ Onizoomi Electronics (2026).
 Sardinha, J. A. e Silva, M. R. (2023).
 \newblock Análise de Desempenho de Frameworks Multiplataforma: Um Estudo Comparativo de Latência e Renderização Gráfica entre React Native e Flutter.
 \newblock {\em Revista Brasileira de Computação Aplicada}, v. 15, n. 2, p. 45-58.
+
+\bibitem[Solomon Systech 2008]{solomon:ssd1306}
+Solomon Systech (2008).
+\newblock {\em SSD1306: 128 x 64 Dot Matrix OLED/PLED Segment/Common Driver with Controller}.
+\newblock Hong Kong. Datasheet Técnico.
 
 \bibitem[SureCare 2026]{surecare:26}
 SureCare Pet Solutions (2026).
