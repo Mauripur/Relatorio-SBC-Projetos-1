@@ -1,5 +1,4 @@
-\documentclass[12pt]{article}\usepackage{sbc-template}
-\usepackage{graphicx,url}
+\documentclass[12pt]{article}\usepackage{sbc-template}\usepackage{graphicx,url}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage{amsmath}
@@ -68,7 +67,7 @@ O projeto busca formular um alimentador inteligente integrado com um aplicativo 
 
 Ultimamente, é possível observar que diversos tutores estão procurando certas facilidades no seu dia a dia e também produtos que garantem qualidade de vida para os animais domésticos. Em contrapartida, de acordo com dados epidemiológicos veterinários \cite{folha:23}, cerca de 25\% a 40\% dos animais no Brasil sofrem de sobrepeso ou obesidade. Isso significa que o cuidado alimentar e o controle de porções diárias não estão sendo devidamente gerenciados na ausência dos proprietários.
 
-Para garantir que o projeto seja eficiente, o diferencial é a integração em tempo real do aplicativo com o dispositivo físico. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é delegada ao alimentador eletrônico de forma automatizada. Além disso, por conta desse monitoramento remoto, a solução torna-se ideal para indivíduos com rotinas imprevisíveis, uma vez que o dispositivo opera sob dosagens programadas ou acionamentos sob demanda. Assim, os donos mitigam o risco de subnutrição ou superalimentação, garantindo a disciplina biológica e a qualidade de vida para cães e gatos.
+Para garantir que o projeto seja eficiente, o diferencial é a integration em tempo real do aplicativo com o dispositivo físico. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é delegada ao alimentador eletrônico de forma automatizada. Além disso, por conta desse monitoramento remoto, a solução torna-se ideal para indivíduos com rotinas imprevisíveis, uma vez que o dispositivo opera sob dosagens programadas ou acionamentos sob demanda. Assim, os donos mitigam o risco de subnutrição ou superalimentação, garantindo a disciplina biológica e a qualidade de vida para cães e gatos.
 
 O objetivo principal deste projeto é criar e validar um protótipo functional de comedouro e bebedouro inteligente (FeedPet) controlado por meio de um aplicativo móvel. O dispositivo é focado em animais de pequeno a médio porte, contendo recipientes independentes para ração e água. O aplicativo associado é responsável pelo gerenciamento lógico, permitindo selecionar os intervalos de tempo, o volume hidráulico e a massa exata de alimento que serão disponibilizados ao animal.
 
@@ -77,7 +76,7 @@ O objetivo principal deste projeto é criar e validar um protótipo functional d
 Para a fundamentação de um sistema embarcado distribuído focado no monitoramento animal, faz-se necessário mapear e contrapor as abordagens vigentes sob as óticas comercial e acadêmica, explicitando as lacunas de desenvolvimento (\textit{gaps}) que justificam a concepção do FeedPet.
 
 \subsection{Soluções Comerciais de Mercado}
-As soluções já adotadas no mercado de automação pet, como os produtos referenciados em \cite{onizoomi:26} e \cite{surecare:26}, possuem limitações que restringem seu uso em larga escala. Dentre os gargalos identificados, destacam-se o alto custo de aquisição, a venda isolada de módulos de alimentação e hidratação (forçando o tutor a adquirir dois ecossistemas distintos para obter uma solução completa) e a baixa capacidade de personalização das porções. 
+As soluções já adotadas no mercado de automação pet, como os produtos referenciados in \cite{onizoomi:26} e \cite{surecare:26}, possuem limitações que restringem seu uso em larga escala. Dentre os gargalos identificados, destacam-se o alto custo de aquisição, a venda isolada de módulos de alimentação e hidratação (forçando o tutor a adquirir dois ecossistemas distintos para obter uma solução completa) e a baixa capacidade de personalização das porções. 
 
 Muitos desses produtos industriais priorizam a conveniência de prateleira em detrimento da individualidade biológica de cada animal de estimação. Isso resulta na padronização de sistemas universais restritos a tempos fixos de descarga mecânica ou volumes pré-definidos de fábrica, limitando a flexibilidade do usuário e a eficácia clínica da dieta de animais com restrições calóricas.
 
@@ -90,7 +89,7 @@ Contudo, de forma semelhante aos modelos acadêmicos comuns da área, a utiliza�
 Para superar as barreiras de custo dos sistemas comerciais e as limitações de desempenho dos modelos acadêmicos revisados, o projeto FeedPet adotou decisões de engenharia fundamentadas nos seguintes critérios:
 
 \begin{itemize}
-    \item \textbf{Framework Flutter:} A escolha do Flutter para o desenvolvimento do aplicativo Android sobrepõe-se às abordagens web e híbridas convencionais (como React Native ou PhoneGap). O Flutter compila o códiego Dart diretamente para instruções nativas de máquina ARM através de compilação \textit{Ahead-of-Time} (AOT), utilizando o motor gráfico corporativo Impeller/Skia \cite{google:flutter_arch}. Isso garante interfaces com taxa de atualização estável a 60 FPS, além de latências reduzidas quando comparado a soluções interpretadas convencionais \cite{sardinha:23}.
+    \item \textbf{Framework Flutter:} A escolha do Flutter para o desenvolvimento do aplicativo Android sobrepõe-se às abordagens web e híbridas convencionais (como React Native ou PhoneGap). O Flutter compila o código Dart diretamente para instruções nativas de máquina ARM através de compilação \textit{Ahead-of-Time} (AOT), utilizando o motor gráfico corporativo Impeller/Skia \cite{google:flutter_arch}. Isso garante interfaces com taxa de atualização estável a 60 FPS, além de latências reduzidas quando comparado a soluções interpretadas convencionais \cite{sardinha:23}.
     \item \textbf{ESP32 NodeMCU:} O emprego deste SoC elimina a necessidade de periféricos acoplados para comunicação de rede, comuns em projetos baseados em Arduino. Sua arquitetura \textit{dual-core} permite que um núcleo processe estritamente as tarefas de conectividade Wi-Fi/NTP e a comunicação com o app em Flutter, enquanto o segundo núcleo executa as interrupções de \textit{hardware} em tempo real dos sensores e atuadores através do particionamento de tarefas do FreeRTOS \cite{gay:18}, mitigando travamentos de segurança lógica.
     \item \textbf{Par HX711 e Célula de Carga:} Em oposição aos sistemas concorrentes que estimam a ração baseando-se apenas no tempo de ativação do motor, este arranjo fornece medições por peso real absoluto, imune a variações causadas pela densidade ou geometria dos grãos de ração, superando as inconsistências típicas de sistemas baseados puramente em temporização volumétrica \cite{zhang:21}.
 \end{itemize}
@@ -204,9 +203,64 @@ int readLevel(int pin) {
 \end{lstlisting}
 
 \subsection{Aplicativo Móvel (Flutter Framework)}
-Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente formulado utilizando o SDK \textbf{Flutter} \cite{flutter:26}. O aplicativo funciona como o painel de controle principal do tutor, comunicando-se de forma assíncrona com o microcontrolador através de requisições de rede. Ele é responsável por serializar as matrizes de agendamento de horários e os alvos de massa ponderada através de requisições assíncronas JSON direcionadas ao barramento REST do \textit{hardware}, mapeadas sob o endpoint genérico \lstinline$/schedule$ e representadas pela rotina Dart descrita na Listagem~\ref{lst:app_flutter}:
+Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente formulado utilizando o SDK \textbf{Flutter} \cite{flutter:26} e a linguagem Dart. O aplicativo funciona como o painel de controle distribuído do sistema, operando sob dupla responsabilidade: a gestão e persistência local offline dos dados e a sincronização assíncrona via rede HTTP com o barramento REST do microcontrolador.
 
-\begin{lstlisting}[language=Java, caption={Rotina em Dart/Flutter para serialização e envio de agendamento ao endpoint REST.}, label={lst:app_flutter}]
+Para assegurar o armazenamento confiável de múltiplos alarmes de rotina mesmo diante de falhas de energia ou indisponibilidade de sinal Wi-Fi, implementou-se um mecanismo de persistência permanente em disco por meio do \textit{plugin} \lstinline$shared_preferences$. O mapeamento do domínio é gerenciado pela classe de modelo \lstinline$Schedule$, que armazena metadados estruturados (identificador gerado por UUID, tipo de porção, horários fracionados e estado lógico da flag de ativação). Esta estrutura encapsula os métodos analíticos \lstinline$toJson()$ e \lstinline$Schedule.fromJson()$, abstraindo a serialização e desserialização de dados complexos em mapas chave-valor primitivos codificados em texto através da biblioteca \lstinline$dart:convert$. 
+
+A intermediação operacional com o subsistema de memória não-volátil do smartphone ocorre através da classe estática \lstinline$ScheduleService$. Além de concentrar o tratamento do ciclo de vida dos arquivos locais (CRUD), este componente executa algoritmos nativos de ordenação linear baseados no cálculo absoluto do tempo acumulado em minutos (\lstinline$hour * 60 + minute$), garantindo exibição indexada e tratamento sequencial estável na camada de interface gráfica. Os segmentos fundamentais que compõem este modelo de arquitetura de software estão descritos na Listagem~\ref{lst:app_model}:
+
+\begin{lstlisting}[language=Java, caption={Camada de modelo Dart e serviço utilitário para persistência, serialização JSON e ordenação cronológica via SharedPreferences.}, label={lst:app_model}]
+class Schedule {
+  final String id;
+  final String type; // 'food'
+  final int hour;
+  final int minute;
+  bool enabled;
+
+  Schedule({
+    required this.id, required this.type,
+    required this.hour, required this.minute,
+    this.enabled = true,
+  });
+
+  Map<String, dynamic> toJson() => {
+        'id': id, 'type': type, 'hour': hour,
+        'minute': minute, 'enabled': enabled,
+      };
+
+  factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
+        id: json['id'], type: json['type'],
+        hour: json['hour'], minute: json['minute'],
+        enabled: json['enabled'] ?? true,
+      );
+}
+
+class ScheduleService {
+  static const _key = 'schedules';
+
+  static Future<List<Schedule>> getAll() async {
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getStringList(_key) ?? [];
+    final list = raw.map((e) => Schedule.fromJson(jsonDecode(e))).toList();
+    list.sort((a, b) {
+      final aMin = a.hour * 60 + a.minute;
+      final bMin = b.hour * 60 + b.minute;
+      return aMin.compareTo(bMin);
+    });
+    return list;
+  }
+
+  static Future<void> save(List<Schedule> schedules) async {
+    final prefs = await SharedPreferences.getInstance();
+    final raw = schedules.map((e) => jsonEncode(e.toJson())).toList();
+    await prefs.setStringList(_key, raw);
+  }
+}
+\end{lstlisting}
+
+Complementarmente ao armazenamento local, a sincronização de dados remotos ocorre de forma distribuída. Ao consolidar um novo registro na memória do aparelho, a rotina assíncrona invoca o cliente HTTP nativo do Flutter para disparar chamadas assíncronas encapsuladas no formato JSON em direção ao endpoint genérico \lstinline$/schedule$ instanciado no servidor web interno do ESP32. Esse processo transfere as matrizes de dados de tempo para os registradores voláteis do \textit{hardware}, permitindo que o microcontrolador execute os disparos por amostragem em tempo real via NTP, conforme exposto na Listagem~\ref{lst:app_flutter}:
+
+\begin{lstlisting}[language=Java, caption={Rotina assíncrona de rede em Dart para envio e sincronismo remoto das matrizes de agendamento JSON no endpoint REST.}, label={lst:app_flutter}]
 Future<void> enviarAgendamento(int hora, int minuto) async {
   final url = Uri.parse('http://192.168.1.100/schedule');
   final response = await http.post(
@@ -371,7 +425,7 @@ Sardinha, J. A. e Silva, M. R. (2023).
 
 \bibitem[SureCare 2026]{surecare:26}
 SureCare Pet Solutions (2026).
-\newblock {\em Relatório de Especificação e Integração de Ecossistemas de IoT Domésticos}.
+\newblock {\em Relatório de Especificação e Integration de Ecossistemas de IoT Domésticos}.
 \newblock White Paper de Automação Residencial.
 
 \bibitem[Texas Instruments 2002]{ti:l293n}
