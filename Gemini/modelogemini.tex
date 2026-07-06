@@ -1,5 +1,4 @@
-\documentclass[12pt]{article}\usepackage{sbc-template}\usepackage{graphicx,url}
-\usepackage[utf8]{inputenc}
+\documentclass[12pt]{article}\usepackage{sbc-template}\usepackage{graphicx,url}\usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -69,7 +68,7 @@ Ultimamente, é possível observar que diversos tutores estão procurando certas
 
 Para garantir que o projeto seja eficiente, o diferencial é a integração em tempo real do aplicativo com o dispositivo físico. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é delegada ao alimentador eletrônico de forma automatizada. Além disso, por conta desse monitoramento remoto, a solução torna-se ideal para indivíduos com rotinas imprevisíveis, uma vez que o dispositivo opera sob dosagens programadas ou acionamentos sob demanda. Assim, os donos mitigam o risco de subnutrição ou superalimentação, garantindo a disciplina biológica e a qualidade de vida para cães e gatos.
 
-O objetivo principal deste projeto é criar e validar um protótipo funcional de comedouro e bebedouro inteligente (FeedPet) controlado por meio de um aplicativo móvel. O dispositivo é focado em animais de pequeno a médio porte, contendo recipientes independentes para ração e água. O aplicativo associado é responsável pelo gerenciamento lógico, permitindo selecionar os intervalos de tempo, o volume hidráulico e a massa exata de alimento que serão disponibilizados ao animal.
+O objetivo principal deste projeto é criar e validar um protótipo funcional de comedouro e bebedouro inteligente (FeedPet) controlado por meio de um aplicativo móvel. O dispositivo é focado em animais de pequeno a médio porte, contendo recipientes independentes para ração e água. O aplicativo associado é responsible pelo gerenciamento lógico, permitindo selecionar os intervalos de tempo, o volume hidráulico e a massa exata de alimento que serão disponibilizados ao animal.
 
 \section{Trabalhos Relacionados}
 
@@ -97,7 +96,7 @@ Para superar as barreiras de custo dos sistemas comerciais e as limitações de 
 \subsection{Análise Comparativa de Funcionalidades}
 A análise das soluções mapeadas e do sistema proposto evidencia as vantagens competitivas e tecnológicas do FeedPet frente às alternativas comerciais e acadêmicas vigentes. Dispositivos industriais de prateleira consagrados, como os desenvolvidos pela SureCare \cite{surecare:26}, entregam dosagem fundamentada em peso real absoluto, porém manifestam alto custo de aquisição, operam sob arquitetura de código fechado (\textit{closed source}) e carecem de um módulo de água integrado. Por outro lado, soluções como a da Onizoomi \cite{onizoomi:26} são disponibilizadas em faixas de preço medianas por meio de aplicações web, mas negligenciam tanto o controle por peso real quanto o monitoramento hídrico.
 
-No cenário das abordagens e modelos acadêmicos tradicionais, a inclusão simultânea de pesagem por célula de carga e de um módulo de hidratação independente sob o mesmo barramento é classificada como rara; adicionalmente, a interface com o usuário nestas pesquisas costuma depender de ferramentas \textit{no-code} de alta abstracão visual, como o MIT App Inventor, operando com baixo custo de componentes, mas com restrições severas de desempenho. O FeedPet diferencia-se de forma definitiva de todas as alternativas ao integrar a pesagem gravimétrica da ração e a gestão hidráulica automatizada de água em uma aplicação nativa Flutter de alta performance e baixa latência, alcançando um custo total de prototipagem altamente viável de apenas R\$ 200,00.
+No cenário das abordagens e modelos acadêmicos tradicionais, a inclusão simultânea de pesagem por célula de carga e de um módulo de hidratação independente sob o mesmo barramento é classificada como rara; adicionalmente, a interface com o usuário nestas pesquisas costuma depender de ferramentas \textit{no-code} de alta abstração visual, como o MIT App Inventor, operando com baixo custo de componentes, mas com restrições severas de desempenho. O FeedPet diferencia-se de forma definitiva de todas as alternativas ao integrar a pesagem gravimétrica da ração e a gestão hidráulica automatizada de água em uma aplicação nativa Flutter de alta performance e baixa latência, alcançando um custo total de prototipagem altamente viável de apenas R\$ 205,20.
 
 \section{Arquitetura do Sistema e Metodologia}
 
@@ -146,7 +145,7 @@ void setup() {
 \end{lstlisting}
 
 \subsubsection{Driver de Potência (Ponte H L293N)}
-Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32. Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N} \cite{ti:l293n}. Como a utilização de funções bloqueantes de atraso (\textit{delays}) congelaria a CPU impedindo a execução simultânea do servidor web e a checagem de requisições do app, implementou-se uma arquitetura estruturada em uma \textbf{máquina de estados assíncrona não-bloqueante} controlada por diferenciais de tempo através da função \lstinline$millis()$ nativa do ESP32. A Listagem~\ref{lst:ponte_h} exibe o segmento lógico que chaveia sequencialmente as fases físicas de alerta por sonofletores, abertura, dosagem ponderada e fechamento mecânico do motor DC associado à Ponte H:
+Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32. Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N} \cite{ti:l293n}. Como a utilização de funções bloqueantes de atraso (\textit{delays}) congelaria a CPU impedindo a execução simultânea do servidor web e a checagem de requisições do app, implementou-se uma arquitetura estruturada em uma \textbf{máquina de estados assíncrona não-bloqueante} controlada por diferenciais de tempo através da função \lstinline$millis()$, nativa do ESP32. A Listagem~\ref{lst:ponte_h} exibe o segmento lógico que chaveia sequencialmente as fases físicas de alerta por sonofletores, abertura, dosagem ponderada e fechamento mecânico do motor DC associado à Ponte H:
 
 \begin{lstlisting}[caption={Controle assíncrono e não-bloqueante das fases do motor via Ponte H.}, label={lst:ponte_h}]
 void updateRotinaAlimentacao() {
@@ -248,9 +247,12 @@ A arquitetura do código divide-se em duas operações lógicas principais:
 \end{itemize}
 
 \subsection{Fluxogramas Operacionais}
-O comportamento lógico do \textit{firmware} embarcado no ESP32 foi reestruturado para operar sob um modelo reativo contínuo, distribuindo suas ações através de uma \textbf{máquina de estados finitos assíncrona (FSM)} composta por 8 estados operacionais discretos, modelados esquematicamente nas Figuras~\ref{fig:fluxograma-dispositivo-idle}, ~\ref{fig:fluxograma-dispositivo-ca} e ~\ref{fig:fluxograma-dispositivo-ch}:
+O comportamento lógico do \textit{firmware} embarcado no ESP32 foi reestruturado para operar sob um modelo reativo contínuo, distribuindo suas ações através de uma \textbf{máquina de estados finitos assíncrona (FSM)} composta por estados operacionais discretos, modelados esquematicamente nas Figuras~\ref{fig:fluxograma-dispositivo-idle}, ~\ref{fig:fluxograma-dispositivo-ca} e ~\ref{fig:fluxograma-dispositivo-ch}:
 
-\begin{figure}
+\begin{enumerate}
+    \item \textbf{Gestão Recorrente (Idle):} No estado fundamental \lstinline$FEED_IDLE$, o laço principal (\lstinline$loop()$) gerencia continuamente as requisições assíncronas de clientes através do método \lstinline$server.handleClient()$. De forma paralela e não-bloqueante, o sistema realiza a amostragem da balança e a renovação dos gráficos do display OLED a cada 500 ms por meio de contadores diferenciais baseados na função \lstinline$millis()$. Ao detectar um gatilho válido por horário (sincronia NTP) ou requisição remota imediata (\lstinline$handleFood()$), o sistema altera o estado global para \lstinline$FEED_MOTOR_ALERT$, iniciando os ciclos automáticos.
+    
+\begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{Diagrama-ESP32-H2.png}
     \caption{Fluxograma Dispositivo - Gestão Recorrente (Idle)}
@@ -258,30 +260,30 @@ O comportamento lógico do \textit{firmware} embarcado no ESP32 foi reestruturad
     \label{fig:fluxograma-dispositivo-idle}
 \end{figure}
 
-\begin{figure}
+    \item \textbf{Cadeia de Alimentação:} Esta etapa gerencia a execução sequencial da FSM para o porcionamento físico de sólidos. O ciclo é iniciado no estado \lstinline$FEED_MOTOR_ALERT$, acionando o buzzer e o LED indicador por 200 ms. Em seguida, o estado \lstinline$FEED_MOTOR_OPEN$ chaveia os pinos da Ponte H L293N para rotação horária do motor DC até que o tempo físico de abertura (\lstinline$feedCycleTime$) seja alcançado. No estado \lstinline$FEED_MOTOR_DISPENSE$, a comporta permanece aberta para a queda gravimétrica da ração, coletando leituras de peso absoluto em tempo real via conversor ADC de 24 bits do módulo HX711. Ao atingir a massa alvo calculada ou estourar o tempo de segurança (\lstinline$feedMotorTime$), a Ponte H entra em reversão sob o estado \lstinline$FEED_MOTOR_CLOSE$ por um ciclo completo para efetuar o fechamento mecânico seguro da válvula.
+
+\begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{Diagrama-CA.png}
     \caption{Fluxograma Dispositivo - Cadeia de Alimentação}
     \textit{Fonte}: Os Autores
     \label{fig:fluxograma-dispositivo-ca}
 \end{figure}
+    
+    \item \textbf{Cadeia de Hidratação e Encerramento:} Após a conclusão da dispensação de sólidos, a FSM avalia se o parâmetro de acionamento hídrico é válido (\lstinline$feedPumpTime > min_time$). Caso positivo, transiciona para o estado \lstinline$FEED_PUMP_ALERT$ para emissão de um alerta sonoro acústico de transição e ativa a mini bomba de água de 9V via canais auxiliares da Ponte H no estado \lstinline$FEED_PUMP_RUN$. Durante o bombeamento, o sensor resistivo realiza amostragens analógicas contínuas tratadas pelas funções \lstinline$map()$ e \lstinline$constrain()$ para mapear o enchimento linear de 0\% a 100\%. Quando o nível alvo é satisfeito ou o tempo limite expira, a bomba é desativada e o estado de conclusão \lstinline$FEED_DONE$ redefine as \textit{flags} operacionais na memória, restabelecendo de forma autônoma o repouso no estado fundamental \lstinline$FEED_IDLE$.
 
-\begin{figure}
+\begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{Diagrama-CH.png}
     \caption{Fluxograma Dispositivo - Cadeia de Hidratação}
     \textit{Fonte}: Os Autores
     \label{fig:fluxograma-dispositivo-ch}
 \end{figure}
-
-\begin{enumerate}
-    \item \textbf{Gestão Recorrente (Idle):} No estado fundamental \lstinline$FEED_IDLE$, o laço principal (\lstinline$loop()$) gerencia as requisições assíncronas de clientes através do método \lstinline$server.handleClient()$, amostra a balança e renova os gráficos do display OLED a cada 500 ms utilizando contadores diferenciais baseados em \lstinline$millis()$.
-    \item \textbf{Cadeia de Alimentação:} Ao detectar o disparo por horário ou por clique imediato na aplicação (\lstinline$handleFood()$), a FSM transiciona progressivamente entre as etapas do motor mecânico sem interromper as conexões Wi-Fi ativas.
-    \item \textbf{Cadeia de Hidratação e Encerramento:} Concluída a etapa de sólidos, a FSM prossegue para a ativação da bomba de elevação hídrica caso o volume captado pelo sensor analógico esteja aquém da meta programada, restabelecendo o repouso no estado de conclusão.
 \end{enumerate}
 
 \section{Avaliação e Resultados}
 
+\subsection{Precisão e Desempenho}
 A validação do protótipo ocorreu por meio de testes de bancada controlados. Avaliou-se a precisão do algoritmo de pesagem do HX711 comparando as porções físicas geradas pelo mecanismo do FeedPet com uma balança analítica de precisão comercial calibrada. O desvio médio obtido nas dosagens de ração granulada de tamanho médio situou-se em uma faixa de erro inferior a $\pm 4\%$, o que valida o emprego da célula de carga para fins de controle nutritional doméstico.
 
 A comunicação assíncrona entre o aplicativo móvel compilado em Flutter e o ESP32 apresentou uma latência de rede média e estável de 480~ms operando sob uma rede Wi-Fi local de 2.4 GHz, garantindo excelente responsividade para comandos executados sob demanda e atualizações instantâneas de telemetria na tela do \textit{smartphone}.
@@ -304,8 +306,7 @@ A Tabela~\ref{tab:custos_projeto} detalha os custos de aquisição dos component
     Célula de carga + 1 Módulo HX711               & 1                         & R\$ 11,30                 \\ \hline
     Motor DC 9V                                    & 1                         & R\$ 18,90                 \\ \hline
     Mini Bomba de Água 9V                          & 1                         & R\$ 24,00                 \\ \hline
-    Conversor Buck-Boost                           & 1                         & R\$ 12,00                 \\ \hline
-    Bateria Alcalina 9V                            & 1                         & R\$ 11,80                 \\ \hline
+    Display I2C 0.96” OLED				& 1				& R\$ 29,00			\\ \hline
     Diodos emissores de luz (LED)                  & 4                         & R\$ 02,00                 \\ \hline
     Botão Pulsador (Push Button)                   & 2                         & R\$ 03,00                 \\ \hline
     Buzzer Sonoro Piezocíclico                     & 1                         & R\$ 05,00                 \\ \hline
@@ -313,7 +314,7 @@ A Tabela~\ref{tab:custos_projeto} detalha os custos de aquisição dos component
     Cabos de Conexão (Jumpers)                     & 1 (kit)                   & R\$ 10,00                 \\ \hline
     Resistores de Película de Carbono              & 1 (kit)                   & R\$ 05,00                 \\ \hline
     Produção do App				& \multicolumn{2}{|r|}{R\$ 18,00}		\\ \hline
-    \multicolumn{2}{|l|}{\textbf{Total Geral}}                                 & \textbf{R\$ 200,00}       \\ \hline
+    \multicolumn{2}{|l|}{\textbf{Total Geral}}                                 & \textbf{R\$ 205,20}       \\ \hline
     \end{tabular}
 \end{table}
 
@@ -398,7 +399,7 @@ Sardinha, J. A. e Silva, M. R. (2023).
 
 \bibitem[SureCare 2026]{surecare:26}
 SureCare Pet Solutions (2026).
-\newblock {\em Relatório de Especificação e Integração de Ecossistemas de IoT Domésticos}.
+\newblock {\em Relatório de Especificação e Integration de Ecossistemas de IoT Domésticos}.
 \newblock White Paper de Automação Residencial.
 
 \bibitem[Texas Instruments 2002]{ti:l293n}
