@@ -254,14 +254,6 @@ O comportamento lógico do \textit{firmware} embarcado no ESP32 foi reestruturad
     \label{fig:fluxograma-dispositivo-idle}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{Diagrama-ESP32-H1.drawio.png}
-    \caption{Fluxograma Dispositivo - Cadeia de Alimentação}
-    \textit{Fonte}: Os Autores
-    \label{fig:fluxograma-dispositivo-cadeia}
-\end{figure}
-
 \begin{enumerate}
     \item \textbf{Gestão Recorrente (Idle):} No estado fundamental \lstinline$FEED_IDLE$, o laço principal (\lstinline$loop()$) gerencia as requisições assíncronas de clientes através do método \lstinline$server.handleClient()$, amostra a balança e renova os gráficos do display OLED a cada 500 ms utilizando contadores diferenciais baseados em \lstinline$millis()$.
     \item \textbf{Cadeia de Alimentação:} Ao detectar o disparo por horário ou por clique imediato na aplicação (\lstinline$handleFood()$), a FSM transiciona progressivamente entre as etapas do motor mecânico sem interromper as conexões Wi-Fi ativas.
