@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  6 JUL 2026 12:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.1)  6 JUL 2026 13:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -440,52 +440,37 @@ File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-
-LaTeX Warning: Reference `lst:app_model' on page 7 undefined on input line 210.
-
-
 (C:\Users\LV\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
 [7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
-<Diagrama-ESP32-H2.png, id=36, 5834.79875pt x 1224.575pt>
+<Diagrama-ESP32-H2.png, id=33, 5834.79875pt x 1224.575pt>
 File: Diagrama-ESP32-H2.png Graphic file (type png)
 <use Diagrama-ESP32-H2.png>
-Package pdftex.def Info: Diagrama-ESP32-H2.png  used on input line 282.
+Package pdftex.def Info: Diagrama-ESP32-H2.png  used on input line 255.
 (pdftex.def)             Requested size: 426.79135pt x 89.55952pt.
-<Diagrama-CA.png, id=38, 6675.94125pt x 3242.1125pt>
+<Diagrama-CA.png, id=35, 6675.94125pt x 3242.1125pt>
 File: Diagrama-CA.png Graphic file (type png)
 <use Diagrama-CA.png>
-Package pdftex.def Info: Diagrama-CA.png  used on input line 290.
+Package pdftex.def Info: Diagrama-CA.png  used on input line 263.
 (pdftex.def)             Requested size: 426.79135pt x 207.2323pt.
-<Diagrama-CH.png, id=39, 7279.195pt x 3932.6925pt>
+<Diagrama-CH.png, id=36, 7279.195pt x 3932.6925pt>
 File: Diagrama-CH.png Graphic file (type png)
 <use Diagrama-CH.png>
-Package pdftex.def Info: Diagrama-CH.png  used on input line 298.
+Package pdftex.def Info: Diagrama-CH.png  used on input line 271.
 (pdftex.def)             Requested size: 426.79135pt x 230.55064pt.
-
-[9 <./Diagrama-ESP32-H2.png>] [10 <./Diagrama-CA.png> <./Diagrama-CH.png>]
-[11] [12] [13] (modelogemini.aux)
+ [8] [9 <./Diagrama-ESP32-H2.png> <./Diagrama-CA.png> <./Diagrama-CH.png>]
+[10] [11] [12] (modelogemini.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-04-28>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 8378 strings out of 467682
- 133124 string characters out of 5416153
- 808801 words of memory out of 5000000
- 37331 multiletter control sequences out of 15000+600000
+ 8340 strings out of 467682
+ 132697 string characters out of 5416153
+ 786801 words of memory out of 5000000
+ 37293 multiletter control sequences out of 15000+600000
  650369 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,12n,79p,1017b,1773s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -499,9 +484,9 @@ s/utmb8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
 tmbi8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utm
 r8a.pfb><C:/Users/LV/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on modelogemini.pdf (13 pages, 995304 bytes).
+Output written on modelogemini.pdf (12 pages, 992467 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
+ 94 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

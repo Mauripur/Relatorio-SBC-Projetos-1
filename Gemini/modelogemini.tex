@@ -67,16 +67,16 @@ O projeto busca formular um alimentador inteligente integrado com um aplicativo 
 
 Ultimamente, é possível observar que diversos tutores estão procurando certas facilidades no seu dia a dia e também produtos que garantem qualidade de vida para os animais domésticos. Em contrapartida, de acordo com dados epidemiológicos veterinários \cite{folha:23}, cerca de 25\% a 40\% dos animais no Brasil sofrem de sobrepeso ou obesidade. Isso significa que o cuidado alimentar e o controle de porções diárias não estão sendo devidamente gerenciados na ausência dos proprietários.
 
-Para garantir que o projeto seja eficiente, o diferencial é a integration em tempo real do aplicativo com o dispositivo físico. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é delegada ao alimentador eletrônico de forma automatizada. Além disso, por conta desse monitoramento remoto, a solução torna-se ideal para indivíduos com rotinas imprevisíveis, uma vez que o dispositivo opera sob dosagens programadas ou acionamentos sob demanda. Assim, os donos mitigam o risco de subnutrição ou superalimentação, garantindo a disciplina biológica e a qualidade de vida para cães e gatos.
+Para garantir que o projeto seja eficiente, o diferencial é a integração em tempo real do aplicativo com o dispositivo físico. Dessa forma, o tutor do animal poderá ter praticidade no dia a dia, visto que a responsabilidade de controlar o cronograma alimentar do animal é delegada ao alimentador eletrônico de forma automatizada. Além disso, por conta desse monitoramento remoto, a solução torna-se ideal para indivíduos com rotinas imprevisíveis, uma vez que o dispositivo opera sob dosagens programadas ou acionamentos sob demanda. Assim, os donos mitigam o risco de subnutrição ou superalimentação, garantindo a disciplina biológica e a qualidade de vida para cães e gatos.
 
-O objetivo principal deste projeto é criar e validar um protótipo functional de comedouro e bebedouro inteligente (FeedPet) controlado por meio de um aplicativo móvel. O dispositivo é focado em animais de pequeno a médio porte, contendo recipientes independentes para ração e água. O aplicativo associado é responsável pelo gerenciamento lógico, permitindo selecionar os intervalos de tempo, o volume hidráulico e a massa exata de alimento que serão disponibilizados ao animal.
+O objetivo principal deste projeto é criar e validar um protótipo funcional de comedouro e bebedouro inteligente (FeedPet) controlado por meio de um aplicativo móvel. O dispositivo é focado em animais de pequeno a médio porte, contendo recipientes independentes para ração e água. O aplicativo associado é responsável pelo gerenciamento lógico, permitindo selecionar os intervalos de tempo, o volume hidráulico e a massa exata de alimento que serão disponibilizados ao animal.
 
 \section{Trabalhos Relacionados}
 
 Para a fundamentação de um sistema embarcado distribuído focado no monitoramento animal, faz-se necessário mapear e contrapor as abordagens vigentes sob as óticas comercial e acadêmica, explicitando as lacunas de desenvolvimento (\textit{gaps}) que justificam a concepção do FeedPet.
 
 \subsection{Soluções Comerciais de Mercado}
-As soluções já adotadas no mercado de automação pet, como os produtos referenciados in \cite{onizoomi:26} e \cite{surecare:26}, possuem limitações que restringem seu uso em larga escala. Dentre os gargalos identificados, destacam-se o alto custo de aquisição, a venda isolada de módulos de alimentação e hidratação (forçando o tutor a adquirir dois ecossistemas distintos para obter uma solução completa) e a baixa capacidade de personalização das porções. 
+As soluções já adotadas no mercado de automação pet, como os produtos referenciados em \cite{onizoomi:26} e \cite{surecare:26}, possuem limitações que restringem seu uso em larga escala. Dentre os gargalos identificados, destacam-se o alto custo de aquisição, a venda isolada de módulos de alimentação e hidratação (forçando o tutor a adquirir dois ecossistemas distintos para obter uma solução completa) e a baixa capacidade de personalização das porções. 
 
 Muitos desses produtos industriais priorizam a conveniência de prateleira em detrimento da individualidade biológica de cada animal de estimação. Isso resulta na padronização de sistemas universais restritos a tempos fixos de descarga mecânica ou volumes pré-definidos de fábrica, limitando a flexibilidade do usuário e a eficácia clínica da dieta de animais com restrições calóricas.
 
@@ -97,7 +97,7 @@ Para superar as barreiras de custo dos sistemas comerciais e as limitações de 
 \subsection{Análise Comparativa de Funcionalidades}
 A análise das soluções mapeadas e do sistema proposto evidencia as vantagens competitivas e tecnológicas do FeedPet frente às alternativas comerciais e acadêmicas vigentes. Dispositivos industriais de prateleira consagrados, como os desenvolvidos pela SureCare \cite{surecare:26}, entregam dosagem fundamentada em peso real absoluto, porém manifestam alto custo de aquisição, operam sob arquitetura de código fechado (\textit{closed source}) e carecem de um módulo de água integrado. Por outro lado, soluções como a da Onizoomi \cite{onizoomi:26} são disponibilizadas em faixas de preço medianas por meio de aplicações web, mas negligenciam tanto o controle por peso real quanto o monitoramento hídrico.
 
-No cenário das abordagens e modelos acadêmicos tradicionais, a inclusão simultânea de pesagem por célula de carga e de um módulo de hidratação independente sob o mesmo barramento é classificada como rara; adicionalmente, a interface com o usuário nestas pesquisas costuma depender de ferramentas \textit{no-code} de alta abstração visual, como o MIT App Inventor, operando com baixo custo de componentes, mas com restrições severas de desempenho. O FeedPet diferencia-se de forma definitiva de todas as alternativas ao integrar a pesagem gravimétrica da ração e a gestão hidráulica automatizada de água em uma aplicação nativa Flutter de alta performance e baixa latência, alcançando um custo total de prototipagem altamente viável de apenas R\$ 200,00.
+No cenário das abordagens e modelos acadêmicos tradicionais, a inclusão simultânea de pesagem por célula de carga e de um módulo de hidratação independente sob o mesmo barramento é classificada como rara; adicionalmente, a interface com o usuário nestas pesquisas costuma depender de ferramentas \textit{no-code} de alta abstracão visual, como o MIT App Inventor, operando com baixo custo de componentes, mas com restrições severas de desempenho. O FeedPet diferencia-se de forma definitiva de todas as alternativas ao integrar a pesagem gravimétrica da ração e a gestão hidráulica automatizada de água em uma aplicação nativa Flutter de alta performance e baixa latência, alcançando um custo total de prototipagem altamente viável de apenas R\$ 200,00.
 
 \section{Arquitetura do Sistema e Metodologia}
 
@@ -146,7 +146,7 @@ void setup() {
 \end{lstlisting}
 
 \subsubsection{Driver de Potência (Ponte H L293N)}
-Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32. Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N} \cite{ti:l293n}. Como a utilização de funções bloqueantes de atraso (\textit{delays}) congelaria a CPU impedindo a execução simultânea do servidor web e a checagem de requisições do app, implementou-se uma arquitetura estruturada em uma \textbf{máquina de estados assíncrona não-bloqueante} controlada por diferenciais de tempo através de \lstinline$millis()$. A Listagem~\ref{lst:ponte_h} exibe o segmento lógico que chaveia sequencialmente as fases físicas de alerta por sonofletores, abertura, dosagem ponderada e fechamento mecânico do motor DC associado à Ponte H:
+Motores e bombas hidráulicas demandam níveis de corrente elétrica superiores aos limites suportados diretamente pelos pinos lógicos do ESP32. Para sanar essa limitação, empregou-se o módulo \textbf{Ponte H L293N} \cite{ti:l293n}. Como a utilização de funções bloqueantes de atraso (\textit{delays}) congelaria a CPU impedindo a execução simultânea do servidor web e a checagem de requisições do app, implementou-se uma arquitetura estruturada em uma \textbf{máquina de estados assíncrona não-bloqueante} controlada por diferenciais de tempo através da função \lstinline$millis()$ nativa do ESP32. A Listagem~\ref{lst:ponte_h} exibe o segmento lógico que chaveia sequencialmente as fases físicas de alerta por sonofletores, abertura, dosagem ponderada e fechamento mecânico do motor DC associado à Ponte H:
 
 \begin{lstlisting}[caption={Controle assíncrono e não-bloqueante das fases do motor via Ponte H.}, label={lst:ponte_h}]
 void updateRotinaAlimentacao() {
@@ -203,36 +203,23 @@ int readLevel(int pin) {
 \end{lstlisting}
 
 \subsection{Aplicativo Móvel (Flutter Framework)}
-Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente formulado utilizando o SDK \textbf{Flutter} \cite{flutter:26} e a linguagem Dart. O aplicativo funciona como o painel de controle distribuído do sistema, operando sob dupla responsabilidade: a gestão e persistência local offline dos dados e a sincronização assíncrona via rede HTTP com o barramento REST do microcontrolador.
+Diferente das abordagens baseadas em ferramentas de modelagem visual engessadas, o aplicativo de controle do FeedPet foi integralmente formulado utilizando o SDK \textbf{Flutter} \cite{flutter:26}. O aplicativo funciona como o painel de controle principal do tutor, sendo responsável pelo tratamento de dados lógicos, estruturação e manipulação assíncrona local e remota dos cronogramas alimentares.
 
-Para assegurar o armazenamento confiável de múltiplos alarmes de rotina mesmo diante de falhas de energia ou indisponibilidade de sinal Wi-Fi, implementou-se um mecanismo de persistência permanente em disco por meio do \textit{plugin} \lstinline$shared_preferences$. O mapeamento do domínio é gerenciado pela classe de modelo \lstinline$Schedule$, que armazena metadados estruturados (identificador gerado por UUID, tipo de porção, horários fracionados e estado lógico da flag de ativação). Esta estrutura encapsula os métodos analíticos \lstinline$toJson()$ e \lstinline$Schedule.fromJson()$, abstraindo a serialização e desserialização de dados complexos em mapas chave-valor primitivos codificados em texto através da biblioteca \lstinline$dart:convert$. 
+Para garantir que as informações de dosagem e horários permaneçam salvas em caso de reinicialização do dispositivo móvel e organizadas cronologicamente antes da renderização em tela, o ecossistema conta com o modelo de dados \lstinline$Schedule$ e o serviço de persistência local estável \lstinline$ScheduleService$, o qual faz uso da biblioteca nativa \lstinline$shared_preferences$, conforme descrito de forma concisa na Listagem~\ref{lst:app_flutter}:
 
-A intermediação operacional com o subsistema de memória não-volátil do smartphone ocorre através da classe estática \lstinline$ScheduleService$. Além de concentrar o tratamento do ciclo de vida dos arquivos locais (CRUD), este componente executa algoritmos nativos de ordenação linear baseados no cálculo absoluto do tempo acumulado em minutos (\lstinline$hour * 60 + minute$), garantindo exibição indexada e tratamento sequencial estável na camada de interface gráfica. Os segmentos fundamentais que compõem este modelo de arquitetura de software estão descritos na Listagem~\ref{lst:app_model}:
-
-\begin{lstlisting}[language=Java, caption={Camada de modelo Dart e serviço utilitário para persistência, serialização JSON e ordenação cronológica via SharedPreferences.}, label={lst:app_model}]
+\begin{lstlisting}[language=Java, caption={Abstração do Modelo e Serviço de Persistência Assíncrona Local em Dart/Flutter.}, label={lst:app_flutter}]
 class Schedule {
-  final String id;
-  final String type; // 'food'
-  final int hour;
-  final int minute;
+  final String id, type;
+  final int hour, minute;
   bool enabled;
 
-  Schedule({
-    required this.id, required this.type,
-    required this.hour, required this.minute,
-    this.enabled = true,
-  });
+  Schedule({required this.id, required this.type, required this.hour, required this.minute, this.enabled = true});
 
-  Map<String, dynamic> toJson() => {
-        'id': id, 'type': type, 'hour': hour,
-        'minute': minute, 'enabled': enabled,
-      };
+  Map<String, dynamic> toJson() => {'id': id, 'type': type, 'hour': hour, 'minute': minute, 'enabled': enabled};
 
   factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
-        id: json['id'], type: json['type'],
-        hour: json['hour'], minute: json['minute'],
-        enabled: json['enabled'] ?? true,
-      );
+    id: json['id'], type: json['type'], hour: json['hour'], minute: json['minute'], enabled: json['enabled'] ?? true
+  );
 }
 
 class ScheduleService {
@@ -242,11 +229,7 @@ class ScheduleService {
     final prefs = await SharedPreferences.getInstance();
     final raw = prefs.getStringList(_key) ?? [];
     final list = raw.map((e) => Schedule.fromJson(jsonDecode(e))).toList();
-    list.sort((a, b) {
-      final aMin = a.hour * 60 + a.minute;
-      final bMin = b.hour * 60 + b.minute;
-      return aMin.compareTo(bMin);
-    });
+    list.sort((a, b) => (a.hour * 60 + a.minute).compareTo(b.hour * 60 + b.minute));
     return list;
   }
 
@@ -258,21 +241,11 @@ class ScheduleService {
 }
 \end{lstlisting}
 
-Complementarmente ao armazenamento local, a sincronização de dados remotos ocorre de forma distribuída. Ao consolidar um novo registro na memória do aparelho, a rotina assíncrona invoca o cliente HTTP nativo do Flutter para disparar chamadas assíncronas encapsuladas no formato JSON em direção ao endpoint genérico \lstinline$/schedule$ instanciado no servidor web interno do ESP32. Esse processo transfere as matrizes de dados de tempo para os registradores voláteis do \textit{hardware}, permitindo que o microcontrolador execute os disparos por amostragem em tempo real via NTP, conforme exposto na Listagem~\ref{lst:app_flutter}:
-
-\begin{lstlisting}[language=Java, caption={Rotina assíncrona de rede em Dart para envio e sincronismo remoto das matrizes de agendamento JSON no endpoint REST.}, label={lst:app_flutter}]
-Future<void> enviarAgendamento(int hora, int minuto) async {
-  final url = Uri.parse('http://192.168.1.100/schedule');
-  final response = await http.post(
-    url,
-    headers: {'Content-Type': 'application/json'},
-    body: jsonEncode({'hour': hora, 'minute': minuto}),
-  );
-  if (response.statusCode != 200) {
-    throw Exception('Falha ao sincronizar o cronograma.');
-  }
-}
-\end{lstlisting}
+A arquitetura do código divide-se em duas operações lógicas principais:
+\begin{itemize}
+    \item \textbf{Serialização Ponderada:} Os métodos \lstinline$toJson()$ e \lstinline$Schedule.fromJson()$ realizam a conversão bidirecional entre objetos Dart estruturados e strings estruturadas em matrizes JSON, viabilizando o encapsulamento e a leitura segura.
+    \item \textbf{Persistência e Ordenação Linear:} O método \lstinline$save()$ armazena as strings serializadas diretamente no disco persistente da aplicação. Complementarmente, o método \lstinline$getAll()$ recupera a coleção indexada e injeta um algoritmo de comparação linear baseado em minutos totais diários. Isso garante que a interface de usuário ordene de maneira automatizada e cronológica os blocos de alarme da manhã até a noite.
+\end{itemize}
 
 \subsection{Fluxogramas Operacionais}
 O comportamento lógico do \textit{firmware} embarcado no ESP32 foi reestruturado para operar sob um modelo reativo contínuo, distribuindo suas ações através de uma \textbf{máquina de estados finitos assíncrona (FSM)} composta por 8 estados operacionais discretos, modelados esquematicamente nas Figuras~\ref{fig:fluxograma-dispositivo-idle}, ~\ref{fig:fluxograma-dispositivo-ca} e ~\ref{fig:fluxograma-dispositivo-ch}:
@@ -425,7 +398,7 @@ Sardinha, J. A. e Silva, M. R. (2023).
 
 \bibitem[SureCare 2026]{surecare:26}
 SureCare Pet Solutions (2026).
-\newblock {\em Relatório de Especificação e Integration de Ecossistemas de IoT Domésticos}.
+\newblock {\em Relatório de Especificação e Integração de Ecossistemas de IoT Domésticos}.
 \newblock White Paper de Automação Residencial.
 
 \bibitem[Texas Instruments 2002]{ti:l293n}
