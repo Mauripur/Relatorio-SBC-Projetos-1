@@ -221,30 +221,7 @@ Future<void> enviarAgendamento(int hora, int minuto) async {
 \end{lstlisting}
 
 \subsection{Fluxogramas Operacionais}
-O comportamento lógico do \textit{firmware} embarcado no ESP32 foi reestruturado para operar sob um modelo reativo contínuo, distribuindo suas ações através de uma \textbf{máquina de estados finitos assíncrona (FSM)} composta por 8 estados operacionais discretos, modelados esquematicamente na Figura~\ref{fig:fluxo_firmware}:
-
-\begin{figure}[ht]
-  \centering
-  \framebox{\parbox{0.95\textwidth}{\centering\vskip 0.5em 
-    \textbf{[FEED\_IDLE]} $\rightarrow$ Monitoramento HTTP e Varredura de Horários do NTP \\
-    $\downarrow$ \\
-    \textbf{[FEED\_MOTOR\_ALERT]} $\rightarrow$ Ativação do Buzzer e Alerta Visual por LED (200 ms) \\
-    $\downarrow$ \\
-    \textbf{[FEED\_MOTOR\_OPEN]} $\rightarrow$ Chaveamento da Ponte H para Abertura da Comporta (Válvula Sem-Fim) \\
-    $\downarrow$ \\
-    \textbf{[FEED\_MOTOR\_DISPENSE]} $\rightarrow$ Despejo Gravimétrico Controlado por Tempo Derivado do Peso Real \\
-    $\downarrow$ \\
-    \textbf{[FEED\_MOTOR\_CLOSE]} $\rightarrow$ Reversão de Rotação da Ponte H para Fechamento Seguro Mecânico \\
-    $\downarrow$ \\
-    \textbf{[FEED\_PUMP\_ALERT]} $\rightarrow$ Interrupção Sonora Acústica de Transição para o Módulo Hidráulico \\
-    $\downarrow$ \\
-    \textbf{[FEED\_PUMP\_RUN]} $\rightarrow$ Acionamento do Driver para Bombeamento de Elevação de Água \\
-    $\downarrow$ \\
-    \textbf{[FEED\_DONE]} $\rightarrow$ Finalização de Flags Logísticas e Retorno Autônomo ao Modo de Espera
-  \vskip 0.5em}}
-  \caption{Representação estrutural da máquina de estados assíncrona não-bloqueante (FSM) do firmware.}
-  \label{fig:fluxo_firmware}
-\end{figure}
+O comportamento lógico do \textit{firmware} embarcado no ESP32 foi reestruturado para operar sob um modelo reativo contínuo, distribuindo suas ações através de uma \textbf{máquina de estados finitos assíncrona (FSM)} composta por 8 estados operacionais discretos, modelados esquematicamente nas Figuras~\ref{fig:fluxograma-dispositivo-idle}, ~\ref{fig:fluxograma-dispositivo-ca} e ~\ref{fig:fluxograma-dispositivo-ch}:
 
 \begin{figure}
     \centering
@@ -252,6 +229,22 @@ O comportamento lógico do \textit{firmware} embarcado no ESP32 foi reestruturad
     \caption{Fluxograma Dispositivo - Gestão Recorrente (Idle)}
     \textit{Fonte}: Os Autores
     \label{fig:fluxograma-dispositivo-idle}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Diagrama-CA.png}
+    \caption{Fluxograma Dispositivo - Cadeia de Alimentação}
+    \textit{Fonte}: Os Autores
+    \label{fig:fluxograma-dispositivo-ca}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Diagrama-CH.png}
+    \caption{Fluxograma Dispositivo - Cadeia de Hidratação}
+    \textit{Fonte}: Os Autores
+    \label{fig:fluxograma-dispositivo-ch}
 \end{figure}
 
 \begin{enumerate}
